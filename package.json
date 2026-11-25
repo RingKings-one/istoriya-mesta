@@ -9,7 +9,8 @@
     "check:links": "node scripts/check-internal-links.mjs",
     "images:optimize": "node scripts/optimize-images.mjs",
     "prebuild": "npm run images:optimize",
-    "test:images": "node scripts/test-image-pipeline.mjs"
+    "test:images": "node scripts/test-image-pipeline.mjs",
+    "audit:report": "node scripts/report-npm-audit.mjs"
   },
   "dependencies": {
     "astro": "^5.0.0"
