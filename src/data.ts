@@ -4,7 +4,7 @@ const cafeInterior = 'https://images.unsplash.com/photo-1770515927749-33442eabf4
 const historicStreet = 'https://images.unsplash.com/photo-1624793412356-927326a6d9a9?auto=format&fit=crop&w=1800&q=82';
 const coffeeAndBook = 'https://images.unsplash.com/photo-1751710953703-7e1597676e08?auto=format&fit=crop&w=1400&q=82';
 const archiveDesk = 'https://images.unsplash.com/photo-1653491951587-282e99d6c1e5?auto=format&fit=crop&w=1600&q=82';
-const forestPath = 'https://images.unsplash.com/photo-1500673922987-e212871fec22?auto=format&fit=crop&w=1600&q=82';
+const forestPath = 'https://images.unsplash.com/photo-1635746146715-0cc45dfa3bc2?auto=format&fit=crop&w=1600&q=82';
 
 export const nav = [
   { label: 'Города', href: '/cities/' },
