@@ -38,5 +38,5 @@ export const images = {
  */
 export const imageSrcSet = (url: string) =>
   [640, 960, 1440, 2200]
-    .map((width) => `${url.replace(/([?&])w=\\d+/, `$1w=${width}`)} ${width}w`)
+    .map((width) => `${url.replace(/([?&])w=\d+/, `$1w=${width}`)} ${width}w`)
     .join(', ');
