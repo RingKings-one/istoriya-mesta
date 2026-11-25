@@ -1,5 +1,6 @@
 ---
 import EditorialImage from './EditorialImage.astro';
+import { isPlaceholderImage } from '../data';
 import ArrowMark from './ArrowMark.astro';
 const {
   image,
@@ -10,11 +11,12 @@ const {
   href = '/cities/',
   number,
 } = Astro.props;
+const showPlaceholderDisclosure = isPlaceholderImage(image);
 ---
 <a class="feature-card" href={href}>
   <div class="feature-image">
     <EditorialImage src={image} alt={imageAlt} sizes="(max-width: 420px) 100vw, (max-width: 680px) 50vw, 33vw" />
-    <span class="feature-image-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ · НЕ ДОКУМЕНТАЛЬНОЕ ФОТО</span>
+    {showPlaceholderDisclosure && <span class="feature-image-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ · НЕ ДОКУМЕНТАЛЬНОЕ ФОТО</span>}
     {number && <span class="feature-number" aria-hidden="true">{number}</span>}
   </div>
   <div class="feature-copy">
