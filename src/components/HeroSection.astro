@@ -1,10 +1,13 @@
 ---
-import { images, isPlaceholderImage } from '../data';
+import { images, hasLocalImage } from '../data';
+import { ruzaMedia } from '../content/ruza-media';
 import EditorialImage from './EditorialImage.astro';
 import ArrowMark from './ArrowMark.astro';
+const projectHero = hasLocalImage(images.hero);
+const heroPhoto = ruzaMedia.parkView;
 ---
 <section class="hero hero--atlas" data-opening aria-labelledby="home-title">
-  <EditorialImage className="hero-image" src={images.hero} sizes="100vw" alt="" loading="eager" fetchpriority="high" position="var(--hero-focal-point, center 54%)" />
+  <EditorialImage className="hero-image" src={projectHero ? images.hero : heroPhoto.src} sizes="100vw" alt="" width={heroPhoto.width} height={heroPhoto.height} loading="eager" fetchpriority="high" position="var(--hero-focal-point, center 54%)" />
 
   <div class="hero-content">
     <p class="eyebrow">АТЛАС ЖИВЫХ ИСТОРИЙ</p>
@@ -18,7 +21,7 @@ import ArrowMark from './ArrowMark.astro';
   </div>
 
   <div class="hero-bottomline">
-    {isPlaceholderImage(images.hero) && <p class="hero-asset-note">ВРЕМЕННЫЙ ВИЗУАЛ ДЛЯ НАСТРОЕНИЯ · НЕ ДОКУМЕНТАЛЬНОЕ ФОТО</p>}
+    {!projectHero && <p class="hero-asset-note">ВИД С ГОРОДКА · РУЗА</p>}
     <a class="hero-scroll-cue" href="#atlas-opening">
       <span>Листать дальше</span>
       <ArrowMark direction="forward" />

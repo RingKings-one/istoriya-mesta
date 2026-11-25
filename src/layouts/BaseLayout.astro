@@ -1,7 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { images } from '../data';
+import { ruzaMedia } from '../content/ruza-media';
 import '../styles/global.css';
 import '../styles/hero.css';
 import '../styles/motion.css';
@@ -9,7 +9,9 @@ import '../styles/motion.css';
 const {
   title = 'История места — Атлас живых историй',
   description = 'У каждого места есть история. Мы помогаем её почувствовать.',
+  sharePhoto = ruzaMedia.parkView,
 } = Astro.props;
+const socialImage = new URL(sharePhoto.src, import.meta.env.DEPLOY_PRIME_URL || import.meta.env.URL || Astro.url).href;
 ---
 <!doctype html>
 <html lang="ru">
@@ -25,18 +27,17 @@ const {
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={images.hero} />
-    <meta property="og:image:alt" content="Временный редакционный визуал проекта «История места»" />
-    <meta property="og:image:width" content="2200" />
-    <meta property="og:image:height" content="1465" />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={sharePhoto.alt} />
+    <meta property="og:image:width" content={sharePhoto.width} />
+    <meta property="og:image:height" content={sharePhoto.height} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={images.hero} />
+    <meta name="twitter:image" content={socialImage} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://images.unsplash.com" />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>

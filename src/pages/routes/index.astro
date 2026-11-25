@@ -1,53 +1,40 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
+import PhotoFrame from '../../components/PhotoFrame.astro';
+import ArrowMark from '../../components/ArrowMark.astro';
 import EditorialPath from '../../components/EditorialPath.astro';
-import { ruzaSources, ruzaWalks } from '../../content/ruza';
+import { ruzaMedia } from '../../content/ruza-media';
+import { ruzaWalks } from '../../content/ruza-walks';
 ---
-<BaseLayout title="Пешие маршруты по Рузе — История места" description="Две прогулки от кофейни на Федеративной через площадь Партизан, собор и краеведческий музей.">
-  <PageIntro eyebrow="ПЕШИЕ МАРШРУТЫ · РУЗА" title="Руза пешком" description="Начните с кофе на Федеративной. Дальше можно задержаться в центре или продолжить прогулку до Городка." />
-  <div class="section walks">
-    <nav class="walk-index" aria-label="Выбрать прогулку">
-      {ruzaWalks.map(({ id, title }) => <a class="text-link" href={`#${id}`}>{title}</a>)}
-    </nav>
+<BaseLayout title="Руза пешком — История места" description="Две прогулки по Рузе от кофейни на Федеративной через площадь Партизан, собор и музей.">
+  <PageIntro variant="route" eyebrow="АТЛАС · ПЕШИЕ МАРШРУТЫ" edition="МОСКОВСКАЯ ОБЛАСТЬ" title="Руза пешком" description="От кофе на Федеративной до старых фасадов и высокого берега реки." image={ruzaMedia.park.src} />
+  <section class="section walks" aria-label="Выбрать прогулку">
     {ruzaWalks.map((walk) => (
-      <section class="walk" id={walk.id} aria-labelledby={`${walk.id}-title`}>
-        <header>
-          <h2 id={`${walk.id}-title`}>{walk.title}</h2>
-          <p>{walk.dek}</p>
-        </header>
-        {walk.id === 'ruza-za-den' && (
-          <p class="route-note">Перед выходом проверьте <a href={ruzaSources.park.url}>режим работы Городка</a>. Если парк закрыт, выберите <a href="#staraya-ruza">прогулку по центру</a>.</p>
-        )}
-        <ol class="walk-stops">
-          {walk.stops.map((stop) => (
-            <li>
-              <h3>{stop.title}</h3>
-              <p>{stop.note}</p>
-              <div class="stop-links">
-                <a href={stop.map}>Яндекс Карты</a>
-                {stop.story && <a href={stop.story}>Подробнее об остановке</a>}
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
+      <article class="walk" id={walk.id}>
+        <PhotoFrame photo={walk.cover} caption={false} />
+        <div class="walk-copy" data-reveal>
+          <p class="eyebrow">{walk.includesPark ? 'ЦЕНТР И ГОРОДОК · 5 ОСТАНОВОК' : 'ИСТОРИЧЕСКИЙ ЦЕНТР · 4 ОСТАНОВКИ'}</p>
+          <h2>{walk.title}</h2>
+          <p>{walk.lead}</p>
+          <a class="text-link" href={`/routes/${walk.id}/`}>Открыть маршрут <ArrowMark direction="forward" /></a>
+        </div>
+      </article>
     ))}
-  </div>
+  </section>
   <EditorialPath current="routes" />
 </BaseLayout>
 
 <style>
-  .walks { padding-top: 0; }
-  .walk-index { display: flex; flex-wrap: wrap; gap: 16px 28px; margin-bottom: clamp(32px, 5vw, 68px); }
-  .walk { scroll-margin-top: 100px; padding-block: 28px 42px; border-top: 1px solid #d7c7b244; }
-  .walk h2 { margin: 0 0 10px; font: 400 clamp(32px, 5vw, 56px)/1.04 var(--serif); }
-  .walk p { max-width: 55ch; color: var(--muted); }
-  .route-note { padding-inline-start: 16px; border-inline-start: 2px solid var(--rust); }
-  .stop-links { display: flex; flex-wrap: wrap; gap: 6px 20px; }
-  .stop-links a, .route-note a { color: var(--stone); text-decoration: underline; text-underline-offset: .22em; }
-  .walk-stops { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 195px), 1fr)); gap: 28px; margin: 30px 0 0; padding: 0; list-style-position: inside; }
-  .walk-stops li { padding-top: 18px; border-top: 1px solid #a8664b88; }
-  .walk-stops li::marker { color: var(--stone); }
-  .walk-stops h3 { margin: 10px 0; font: 400 25px/1.08 var(--serif); }
+  .walks { display: grid; gap: clamp(36px, 7vw, 108px); }
+  .walk { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: clamp(24px, 6vw, 96px); align-items: center; scroll-margin-top: 90px; }
+  .walk:nth-child(even) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr); }
+  .walk:nth-child(even) :global(figure) { grid-column: 2; grid-row: 1; }
+  .walk :global(figure) { --photo-ratio: 1.45; }
+  .walk h2 { margin: 10px 0 16px; font: 400 clamp(34px, 5.3vw, 76px)/.98 var(--serif); letter-spacing: -.035em; }
+  .walk-copy > p:not(.eyebrow) { max-width: 38ch; color: var(--muted); }
+  @media (max-width: 760px) {
+    .walk, .walk:nth-child(even) { grid-template-columns: minmax(0, 1fr); }
+    .walk:nth-child(even) :global(figure) { grid-column: auto; grid-row: auto; }
+  }
 </style>

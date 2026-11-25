@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import HeroSection from '../components/HeroSection.astro';
 import ArrowMark from '../components/ArrowMark.astro';
-import { images, isPlaceholderImage } from '../data';
+import { ruzaMedia as photo } from '../content/ruza-media';
 import { postcard } from '../content/ruza';
 import EditorialImage from '../components/EditorialImage.astro';
 ---
@@ -15,20 +15,19 @@ import EditorialImage from '../components/EditorialImage.astro';
 
   <section class="section home-intro" id="atlas-opening" tabindex="-1">
     <div class="home-intro-meta">
-      <p class="eyebrow">ЗАМЕТИТЬ БОЛЬШЕ</p>
-      <span class="home-folio">01 <i>—</i> ВНИМАНИЕ К МЕСТУ</span>
+      <p class="eyebrow">ИСТОРИЯ МЕСТА · КОФЕЙНЯ</p>
+      <span class="home-folio">ФЕДЕРАТИВНАЯ, 7 · РУЗА</span>
     </div>
     <div class="home-intro-copy" data-reveal>
-      <h2>Путешествие начинается не с расстояния, а с <em>внимания.</em></h2>
+      <h2>Всё начинается с <em>чашки кофе.</em></h2>
       <p>
-        У каждого города есть свой ритм. Он звучит в знакомых улицах, старых фасадах,
-        разговорах за чашкой кофе и деталях, мимо которых легко пройти.
+        В кофейне на Федеративной можно сесть у окна, взять путеводитель и выбрать, куда идти дальше. Отсюда начинаются наши прогулки по Рузе.
       </p>
-      <a class="text-link" href="/stories/">Почувствовать атмосферу <ArrowMark direction="forward" /></a>
+      <a class="text-link" href="/cafe/">Заглянуть в кофейню <ArrowMark direction="forward" /></a>
     </div>
     <figure class="home-intro-image" data-reveal>
-      <EditorialImage src={images.street} sizes="(max-width: 680px) 100vw, 54vw" alt="" />
-      <figcaption><span>НАСТРОЕНИЕ ГОРОДСКОЙ СРЕДЫ</span>{isPlaceholderImage(images.street) && <span>ВРЕМЕННЫЙ ВИЗУАЛ</span>}</figcaption>
+      <EditorialImage src={photo.cafeHands.src} sizes="(max-width: 680px) 100vw, 54vw" alt={photo.cafeHands.alt} width={photo.cafeHands.width} height={photo.cafeHands.height} />
+      <figcaption>{photo.cafeHands.caption}</figcaption>
     </figure>
   </section>
 
@@ -39,9 +38,9 @@ import EditorialImage from '../components/EditorialImage.astro';
 
   <section class="city-feature home-city-feature">
     <div class="home-city-image">
-      <EditorialImage src={images.river} sizes="(max-width: 680px) 100vw, 52vw" alt="" />
+      <EditorialImage src={photo.river.src} sizes="(max-width: 680px) 100vw, 52vw" alt={photo.river.alt} width={photo.river.width} height={photo.river.height} />
       <span class="home-image-index">ГЛАВА 01 <i>·</i> РУЗА</span>
-      {isPlaceholderImage(images.river) && <span class="home-image-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ ДЛЯ НАСТРОЕНИЯ</span>}
+
     </div>
     <div class="feature-copy home-city-copy" data-reveal>
       <p class="eyebrow">ПЕРВАЯ ГЛАВА · 01</p>
@@ -67,8 +66,8 @@ import EditorialImage from '../components/EditorialImage.astro';
       <a class="text-link" href="/routes/">Выбрать прогулку по Рузе <ArrowMark direction="forward" /></a>
     </div>
     <figure class="home-route-image" data-reveal>
-      <EditorialImage src={images.forest} sizes="(max-width: 680px) 100vw, 50vw" alt="" />
-      <figcaption><span>ПУТЬ КАК СПОСОБ УВИДЕТЬ БОЛЬШЕ</span>{isPlaceholderImage(images.forest) && <span>ВРЕМЕННЫЙ ВИЗУАЛ</span>}</figcaption>
+      <EditorialImage src={photo.park.src} sizes="(max-width: 680px) 100vw, 50vw" alt={photo.park.alt} width={photo.park.width} height={photo.park.height} />
+      <figcaption>{photo.park.caption}</figcaption>
     </figure>
   </section>
 
@@ -83,20 +82,18 @@ import EditorialImage from '../components/EditorialImage.astro';
     </div>
     <div class="card-grid">
       <FeatureCard
-        image={images.church}
+        image={photo.cathedral.src}
         eyebrow="АТЛАС"
         title="Города"
         text="Открывайте места и их характер."
         href="/cities/"
-        number="01"
       />
       <FeatureCard
-        image={images.coffee}
+        image={photo.cafeInterior.src}
         eyebrow="АТМОСФЕРА"
         title="Кофейня"
         text="Пространство встреч, вкуса и впечатлений."
         href="/cafe/"
-        number="02"
       />
       <FeatureCard
         image={postcard.src}
@@ -104,7 +101,6 @@ import EditorialImage from '../components/EditorialImage.astro';
         title="Архив"
         text="Открытка 1910-х, старый план и музейные подборки."
         href="/archive/"
-        number="03"
       />
     </div>
   </section>

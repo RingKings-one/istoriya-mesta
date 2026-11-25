@@ -1,0 +1,25 @@
+---
+import EditorialImage from './EditorialImage.astro';
+import type { PlacePhoto } from '../content/ruza-media';
+
+interface Props {
+  photo: PlacePhoto;
+  sizes?: string;
+  caption?: boolean;
+  class?: string;
+  reveal?: boolean;
+  priority?: boolean;
+}
+const { photo, sizes = '(max-width: 760px) 100vw, 56vw', caption = true, class: className, reveal = true, priority = false } = Astro.props;
+---
+<figure class:list={['photo-frame', className]} data-reveal={reveal ? '' : undefined}>
+  <EditorialImage src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} sizes={sizes} loading={priority ? 'eager' : 'lazy'} fetchpriority={priority ? 'high' : undefined} />
+  {caption && <figcaption>{photo.caption}</figcaption>}
+</figure>
+
+<style>
+  .photo-frame { margin: 0; min-width: 0; }
+  .photo-frame :global(picture) { display: block; overflow: hidden; background: #232c25; }
+  .photo-frame :global(img) { display: block; width: 100%; height: auto; aspect-ratio: var(--photo-ratio, auto); object-position: var(--photo-position, center); }
+  figcaption { margin-top: 10px; color: var(--muted); font-size: .84rem; line-height: 1.5; }
+</style>

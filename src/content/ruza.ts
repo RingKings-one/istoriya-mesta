@@ -1,4 +1,4 @@
-import type { RouteStop, SourceReference, StoryRecord } from './model';
+import type { SourceReference, StoryRecord } from './model';
 
 export const ruzaSources = {
   history: { label: 'Администрация округа · История Рузы', url: 'https://ruzaregion.ru/okrug/istoriya' },
@@ -31,7 +31,7 @@ export const postcard = {
 
 const storyDrafts = [
   {
-    slug: 'gorod-kotoryy-pomnit',
+    slug: 'gorod-kotoryy-pomnit' as const,
     title: 'Руза — город, который помнит',
     dek: 'Земляные валы Городка и память на площади Партизан.',
     sources: [ruzaSources.history, ruzaSources.park, ruzaSources.plan, ruzaSources.memory],
@@ -39,10 +39,10 @@ const storyDrafts = [
       { heading: 'Город на высоком берегу', body: 'Отсчёт истории города здесь ведут от 1328 года — одной из датировок грамоты Ивана Калиты, в которой упоминается Руза. Место старого укрепления сохранилось в рельефе. На Городке земляные валы помогают увидеть, как высокий берег и склоны защищали город.' },
       { heading: 'Имена на площади', body: 'У городской памяти есть и другое место — мемориал на площади Партизан. На его плитах высечены имена ружан, не вернувшихся с войны. Фотографии города и окрестностей военного времени хранятся в фондах краеведческого музея.' },
     ],
-    related: { label: 'Маршрут по историческому центру', href: '/routes/#ruza-za-den' },
+    related: { label: 'Маршрут по историческому центру', href: '/routes/ruza-za-den/' },
   },
   {
-    slug: 'gorod-po-ulitsam',
+    slug: 'gorod-po-ulitsam' as const,
     title: 'Город, который можно прочитать по улицам',
     dek: 'Как старый план, собор и деревянные дома помогают увидеть устройство Рузы.',
     sources: [ruzaSources.history, ruzaSources.plan, ruzaSources.buildings, ruzaSources.streetNames, ruzaSources.cathedral],
@@ -51,10 +51,10 @@ const storyDrafts = [
       { heading: 'Как менялись названия', body: 'Для двух центральных улиц краеведы и рабочая группа восстановили исторические названия: Революционная была Никольской, а Социалистическая — Покровской. На соседних улицах сохранились и другие ориентиры старой Рузы, в том числе Покровская церковь и Дмитриевский храм.' },
       { heading: 'Два деревянных дома', body: 'На Социалистической улице сохранился особняк, известный как дом Чёрной барыни. В истории округа его относят к провинциальному ампиру. У дома Леонтьева другая биография. Деревянный особняк в стиле модерн изготовили в Выборге и привезли в Рузу в 1908 году.' },
     ],
-    related: { label: 'Прогулка по площади и старым улицам', href: '/routes/#staraya-ruza' },
+    related: { label: 'Прогулка по площади и старым улицам', href: '/routes/staraya-ruza/' },
   },
   {
-    slug: 'muzey-kotoryy-sobiraet-pamyat',
+    slug: 'muzey-kotoryy-sobiraet-pamyat' as const,
     title: 'Музей, который собирает память',
     dek: 'От земской читальни до коллекции городских фотографий.',
     sources: [ruzaSources.museum, ruzaSources.postcard, ruzaSources.photographs, ruzaSources.exhibition],
@@ -65,7 +65,7 @@ const storyDrafts = [
     related: { label: 'Посмотреть открытку в архиве', href: '/archive/#postcard' },
   },
   {
-    slug: 'mezhdu-vodoy-i-lesom',
+    slug: 'mezhdu-vodoy-i-lesom' as const,
     title: 'Город между водой и лесом',
     dek: 'Речной изгиб и высокий берег, с которого начиналась Руза.',
     sources: [ruzaSources.history, ruzaSources.park, ruzaSources.postcard],
@@ -76,7 +76,7 @@ const storyDrafts = [
     related: { label: 'История Старой Рузы и Малеевки', href: '/stories/#literaturnye-okrestnosti' },
   },
   {
-    slug: 'ruza-segodnya',
+    slug: 'ruza-segodnya' as const,
     title: 'Руза сегодня',
     dek: 'Площадь, музей и кофейня как три точки одной прогулки.',
     sources: [ruzaSources.cafe, ruzaSources.museum, ruzaSources.cathedral],
@@ -86,7 +86,7 @@ const storyDrafts = [
     ],
     related: { label: 'Кофейня на Федеративной', href: '/cafe/' },
   },
-];
+] satisfies Array<Pick<StoryRecord, 'title' | 'dek' | 'sources' | 'sections'> & { slug: string; related: { label: string; href: string } }>;
 
 export const ruzaStories = storyDrafts.map((story) => ({
   ...story,
@@ -103,27 +103,3 @@ export const literaryNotes = [
 ];
 
 export const yandexPlace = (query: string) => `https://yandex.ru/maps/?text=${encodeURIComponent(`Руза, ${query}`)}`;
-
-type WalkStop = RouteStop & { map: string; story?: string };
-const stops = {
-  cafe: { title: 'Кофейня «История места»', note: 'Федеративная улица, 7. Точка встречи перед прогулкой.', map: ruzaSources.cafe.url, story: '/cafe/' },
-  square: { title: 'Площадь Партизан', note: 'Бывшая Торговая площадь. Рассмотрите фасады по периметру и мемориал.', map: yandexPlace('площадь Партизан'), story: '/stories/gorod-po-ulitsam/' },
-  cathedral: { title: 'Воскресенский собор', note: 'Площадь Партизан, 21. Осмотрите собор со стороны площади.', map: yandexPlace('площадь Партизан, 21') },
-  museum: { title: 'Рузский краеведческий музей', note: 'Площадь Партизан, 14. Сверьте расписание выставок перед прогулкой.', map: yandexPlace('площадь Партизан, 14'), story: '/stories/muzey-kotoryy-sobiraet-pamyat/' },
-  park: { title: 'Парк «Городок»', note: 'Красноармейская улица, 1. При открытом парке завершите прогулку у старых валов и речного вида.', map: yandexPlace('парк Городок'), story: '/stories/mezhdu-vodoy-i-lesom/' },
-} satisfies Record<string, WalkStop>;
-
-export const ruzaWalks: { id: string; title: string; dek: string; stops: WalkStop[] }[] = [
-  {
-    id: 'ruza-za-den',
-    title: 'Пройти Рузу за один день',
-    dek: 'От кофейни через бывшую Торговую площадь и музей к высокому берегу реки.',
-    stops: [stops.cafe, stops.square, stops.cathedral, stops.museum, stops.park],
-  },
-  {
-    id: 'staraya-ruza',
-    title: 'Площадь и старые улицы',
-    dek: 'Короткая прогулка по центру с остановками у собора и музея. Подходит и в дни, когда Городок закрыт.',
-    stops: [stops.cafe, stops.square, stops.cathedral, stops.museum],
-  },
-];

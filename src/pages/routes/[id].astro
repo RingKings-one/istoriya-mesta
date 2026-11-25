@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import PhotoFrame from '../../components/PhotoFrame.astro';
+import { ruzaSources } from '../../content/ruza';
+import { ruzaWalks } from '../../content/ruza-walks';
+
+export function getStaticPaths() {
+  return ruzaWalks.map((walk) => ({ params: { id: walk.id }, props: { walk } }));
+}
+
+const { walk } = Astro.props;
+const nextWalk = ruzaWalks.find((candidate) => candidate.id !== walk.id);
+---
+<BaseLayout title={`${walk.title} — История места`} description={walk.lead}>
+  <PageIntro variant="route" eyebrow="РУЗА ПЕШКОМ" edition={walk.stops.length === 5 ? '5 ОСТАНОВОК' : '4 ОСТАНОВКИ'} title={walk.title} description={walk.lead} image={walk.cover.src} />
+  <div class="section route-layout">
+    <aside class="route-overview">
+      <a class="text-link" href="/routes/">Все маршруты</a>
+      <nav aria-label="Остановки маршрута">
+        <ol class="route-links">
+          {walk.stops.map(({ id, title }) => <li><a href={`#${id}`} data-route-link>{title}</a></li>)}
+        </ol>
+      </nav>
+      {walk.includesPark && <p>Проверьте <a href={ruzaSources.park.url}>режим работы Городка</a>. На время закрытия подойдёт <a href="/routes/staraya-ruza/">короткая прогулка по центру</a>.</p>}
+    </aside>
+
+    <ol class="route-trail" data-route-trail>
+      {walk.stops.map((stop) => (
+        <li class="trail-stop" id={stop.id}>
+          <div class="trail-copy">
+            <span class="trail-marker" aria-hidden="true"></span>
+            <p class="eyebrow">{stop.address}</p>
+            <h2>{stop.title}</h2>
+            <p>{stop.walk}</p>
+            <p class="trail-look"><strong>На что посмотреть.</strong> {stop.look}</p>
+            <div class="trail-actions">
+              <a class="text-link" href={stop.map}>Точка на Яндекс Картах</a>
+              {stop.story && <a class="text-link" href={stop.story.href}>{stop.story.label}</a>}
+            </div>
+          </div>
+          <PhotoFrame photo={stop.photo} />
+        </li>
+      ))}
+    </ol>
+  </div>
+  {nextWalk && <nav class="section route-next" aria-label="Другая прогулка"><a class="text-link" href={`/routes/${nextWalk.id}/`}>{nextWalk.title}</a></nav>}
+</BaseLayout>
+
+<script>
+  const trail = document.querySelector<HTMLOListElement>('[data-route-trail]');
+  const routeLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-route-link]'));
+  const stops = Array.from(trail?.querySelectorAll<HTMLElement>('.trail-stop') ?? []);
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let frame: number | undefined;
+  let activeId: string | undefined;
+
+  function updateTrail() {
+    frame = undefined;
+    if (!trail || !stops.length) return;
+    const first = stops[0].getBoundingClientRect().top;
+    const last = stops[stops.length - 1].getBoundingClientRect().top;
+    const marker = window.innerHeight * 0.46;
+    const extent = Math.max(1, last - first);
+    trail.style.setProperty('--trail-length', `${extent}px`);
+    const progress = Math.max(0, Math.min(1, (marker - first) / extent));
+    trail.style.setProperty('--trail-progress', String(progress));
+
+    let nextId = stops[0].id;
+    for (const stop of stops) {
+      if (stop.getBoundingClientRect().top > marker) break;
+      nextId = stop.id;
+    }
+    if (activeId === nextId) return;
+    activeId = nextId;
+    for (const link of routeLinks) {
+      if (link.hash === `#${activeId}`) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    }
+  }
+
+  const schedule = () => {
+    if (frame === undefined) frame = window.requestAnimationFrame(updateTrail);
+  };
+  if (trail) {
+    trail.dataset.progressReady = '';
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    motion.addEventListener('change', schedule);
+    if ('ResizeObserver' in window) new ResizeObserver(schedule).observe(trail);
+    schedule();
+  }
+</script>
+
+<style>
+  .route-layout { display: grid; grid-template-columns: minmax(150px, .28fr) minmax(0, 1fr); align-items: start; gap: clamp(28px, 6vw, 90px); }
+  .route-overview { position: sticky; top: 104px; }
+  .route-overview p { border-top: 1px solid #d7c7b244; padding-top: 18px; font-size: .9rem; color: var(--muted); }
+  .route-overview p a { color: var(--stone); text-decoration: underline; text-underline-offset: .2em; }
+  .route-links { display: grid; gap: 13px; padding-inline-start: 1.45em; margin: 24px 0; }
+  .route-links a[aria-current] { color: var(--stone); text-decoration: underline; text-underline-offset: .28em; }
+  .route-trail { --trail-inset: clamp(30px, 5vw, 76px); position: relative; display: grid; gap: clamp(50px, 9vw, 130px); margin: 0; padding-inline-start: var(--trail-inset); list-style: none; counter-reset: stop; }
+  .route-trail::before, .route-trail::after { content: ''; position: absolute; left: 10px; top: 13px; width: 1px; height: var(--trail-length, 80%); background: #a8664b57; }
+  .route-trail::after { background: #d8a083; transform-origin: top; transform: scaleY(var(--trail-progress, 0)); }
+  .trail-stop { min-width: 0; position: relative; counter-increment: stop; scroll-margin-top: 96px; }
+  .trail-marker { position: absolute; z-index: 1; top: 3px; left: calc(-1 * var(--trail-inset)); display: grid; place-items: center; width: 21px; height: 21px; border: 1px solid #d8a083; border-radius: 50%; background: var(--night); color: var(--stone); font-size: .69rem; }
+  .trail-marker::before { content: counter(stop); }
+  .trail-copy h2 { margin: 10px 0 14px; font: 400 clamp(31px, 4.6vw, 62px)/1.02 var(--serif); }
+  .trail-copy > p:not(.eyebrow) { max-width: 63ch; color: var(--muted); }
+  .trail-look strong { color: var(--light); }
+  .trail-actions { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 20px 0 24px; }
+  .trail-stop :global(figure) { --photo-ratio: 1.73; }
+  .route-next { padding-top: 0; text-align: end; }
+  @media (max-width: 760px) {
+    .route-layout { grid-template-columns: minmax(0, 1fr); }
+    .route-overview { position: static; }
+    .trail-stop :global(figure) { --photo-ratio: 1.24; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .route-trail::after { display: none; }
+  }
+</style>

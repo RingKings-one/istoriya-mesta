@@ -37,3 +37,22 @@
     from { opacity: .84; translate: 0 7px; }
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .photo-frame.has-entered:not(:focus-within) > picture {
+    animation: documentary-frame 740ms var(--ease-editorial);
+  }
+
+  .cafe-opening[data-opening] .cafe-hero-media > picture {
+    animation: opening-image 1.55s var(--ease-editorial);
+  }
+
+  .archive-back[open] > .photo-frame {
+    animation: editorial-enter 420ms var(--ease-editorial);
+  }
+}
+
+@keyframes documentary-frame {
+  from { clip-path: inset(4% 0 4% 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
