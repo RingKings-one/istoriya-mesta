@@ -32,8 +32,8 @@ export const images = {
  * Local project photographs are processed by scripts/optimize-images.mjs.
  */
 export const imageSrcSet = (url: string) => {
-  const maxWidth = Number(url.match(/[?&]w=(\\d+)/)?.[1] ?? 2200);
+  const maxWidth = Number(url.match(/[?&]w=(\d+)/)?.[1] ?? 2200);
   const widths = [640, 960, 1440].filter((width) => width < maxWidth);
   widths.push(maxWidth);
-  return [...new Set(widths)].map((width) => `${url.replace(/([?&])w=\\d+/, `$1w=${width}`)} ${width}w`).join(', ');
+  return [...new Set(widths)].map((width) => `${url.replace(/([?&])w=\d+/, `$1w=${width}`)} ${width}w`).join(', ');
 };
