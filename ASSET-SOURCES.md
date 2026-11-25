@@ -6,7 +6,7 @@ All six images are served from Unsplash's image CDN and are marked free to use u
 
 | Site role | Creator | Photograph / source | Depicted location or subject |
 | --- | --- | --- | --- |
-| Hero / river / Ruza feature / route card | Marie Volkert | [A river running through a small town surrounded by mountains](https://unsplash.com/photos/a-river-running-through-a-small-town-surrounded-by-mountains-2re291-BjaU) | Berat, Albania — atmospheric reference only |
+| Hero / river / Ruza feature / route card | [Marie Volkert / Reiseblog Worldonabudget](https://www.worldonabudget.de/) | [A river running through a small town surrounded by mountains](https://unsplash.com/photos/a-river-running-through-a-small-town-surrounded-by-mountains-2re291-BjaU) | Berat, Albania — atmospheric reference only |
 | Cafe interior | Mavi Atlas | [Interior of a cafe with graffiti and bookshelves](https://unsplash.com/photos/interior-of-a-cafe-with-graffiti-and-bookshelves--oOkWRitZb0) | Ankara, Türkiye |
 | Historic street / city cards | Franz Michael Schneeberger | [A narrow cobblestone street in an old European city](https://unsplash.com/photos/a-narrow-cobblestone-street-in-an-old-european-city-SDVBWRK0nLs) | Steyr, Austria |
 | Coffee / book | Esra Afşar | [Coffee, snacks, and a book create a cozy café scene](https://unsplash.com/photos/coffee-snacks-and-a-book-create-a-cozy-cafe-scene-rvToqALnyiM) | Istanbul, Türkiye |
