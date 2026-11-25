@@ -26,7 +26,7 @@ import { images, imageSrcSet } from '../../data';
     <div class="ruza-opening-copy">
       <p>{ruzaProfile.summary}</p>
       <span class="ruza-edition">АТЛАС ЖИВЫХ ИСТОРИЙ <i>—</i> ГЛАВА 01</span>
-      <span class="ruza-status">СТАТУС РЕДАКЦИОННОЙ ГЛАВЫ · {ruzaProfile.status}</span>
+      <span class="ruza-status">СТАТУС РЕДАКЦИОННОЙ ГЛАВЫ · {ruzaProfile.status === 'researching' ? 'ИССЛЕДОВАНИЕ ПРОДОЛЖАЕТСЯ' : ruzaProfile.status.toUpperCase()}</span>
     </div>
   </section>
   <section class="ruza-spread">
