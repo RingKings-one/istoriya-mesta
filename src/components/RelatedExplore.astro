@@ -1,0 +1,66 @@
+---
+import { getRelatedEntries } from '../content/model';
+
+interface Props {
+  entryId: string;
+  heading?: string;
+  eyebrow?: string;
+}
+
+const {
+  entryId,
+  heading = 'Продолжить исследование',
+  eyebrow = 'СЛЕДУЮЩИЕ ГЛАВЫ',
+} = Astro.props;
+
+const relatedEntries = getRelatedEntries(entryId);
+---
+
+{relatedEntries.length > 0 && (
+  <nav class="related-explore section" aria-label="Связанные материалы">
+    <div class="related-heading">
+      <div>
+        <p class="eyebrow">{eyebrow}</p>
+        <h2>{heading}</h2>
+      </div>
+      <span class="related-count">{String(relatedEntries.length).padStart(2, '0')} НАПРАВЛЕНИЯ</span>
+    </div>
+    <ul class="related-list">
+      {relatedEntries.map((entry, index) => (
+        <li>
+          <a href={entry.href}>
+            <span class="related-number">{String(index + 1).padStart(2, '0')}</span>
+            <span class="related-copy">
+              <strong>{entry.title}</strong>
+              <small>{entry.excerpt}</small>
+            </span>
+            <span class="related-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<style>
+  .related-explore { padding-top: 34px; border-top: 1px solid #d7c7b244; }
+  .related-heading { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:18px; }
+  .related-heading h2 { margin:10px 0 0; font:clamp(30px,4vw,48px)/1.05 var(--serif); font-weight:400; }
+  .related-count { color:var(--muted); font-size:9px; letter-spacing:.14em; white-space:nowrap; }
+  .related-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 28px; margin:0; padding:0; list-style:none; }
+  .related-list li { min-width:0; border-top:1px solid #d7c7b233; }
+  .related-list a { display:grid; grid-template-columns:34px minmax(0,1fr) 20px; gap:12px; align-items:start; min-height:86px; padding:17px 0; color:var(--light); text-decoration:none; }
+  .related-number { padding-top:2px; color:var(--rust); font:18px var(--serif); }
+  .related-copy { display:grid; gap:5px; }
+  .related-copy strong { font:22px/1.1 var(--serif); font-weight:400; }
+  .related-copy small { max-width:440px; color:var(--muted); font-size:10px; line-height:1.55; }
+  .related-arrow { justify-self:end; color:var(--stone); transition:transform .2s ease; }
+  .related-list a:hover .related-arrow { transform:translate(3px,-3px); }
+  .related-list a:focus-visible { outline:1px solid var(--stone); outline-offset:5px; }
+  @media(max-width:680px) {
+    .related-heading { align-items:start; flex-direction:column; gap:8px; }
+    .related-list { grid-template-columns:1fr; }
+    .related-list a { min-height:76px; }
+  }
+  @media(prefers-reduced-motion:reduce) { .related-arrow { transition:none; } .related-list a:hover .related-arrow { transform:none; } }
+</style>
