@@ -38,7 +38,10 @@ try {
     const outsidePictures = html.replace(/<picture\b[^>]*>[\s\S]*?<\/picture>/g, '').match(/<img\b/g);
     if (outsidePictures?.length) throw new Error(`Raw image element outside EditorialImage picture in ${file}`);
     for (const image of images) {
-      for (const attribute of ['alt=', 'loading=', 'decoding=']) {
+      if (!(image.includes(' alt ') || image.includes(' alt=') || image.endsWith(' alt>'))) {
+        throw new Error(`Image missing alt attribute in ${file}: ${image}`);
+      }
+      for (const attribute of ['loading=', 'decoding=']) {
         if (!image.includes(attribute)) throw new Error(`Image missing ${attribute} in ${file}: ${image}`);
       }
       imageCount += 1;
