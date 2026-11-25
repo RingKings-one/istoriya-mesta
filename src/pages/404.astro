@@ -1,4 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Страница не найдена — История места"><section class="section"><p class="eyebrow">404</p><h1>Кажется, мы свернули не туда.</h1><p>Этой страницы пока нет.</p><a class="button button-filled" href="/">На главную ↗</a></section></BaseLayout>
+<BaseLayout
+  title="Страница не найдена — История места"
+  description="Кажется, мы свернули не туда. Вернитесь на главную и продолжите исследование."
+>
+  <section class="not-found section">
+    <p class="eyebrow">ОШИБКА 404</p>
+    <h1>Кажется, мы свернули не туда.</h1>
+    <p>Этой страницы пока нет. Но история продолжается — вернитесь к началу и выберите направление.</p>
+    <a class="button button-filled" href="/">На главную ↗</a>
+  </section>
+</BaseLayout>
