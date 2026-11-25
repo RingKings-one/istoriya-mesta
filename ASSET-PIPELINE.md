@@ -24,7 +24,7 @@ assets/source/
     archive-postcard-front.tif
 ```
 
-Generated keys are derived from relative paths, e.g. `ruza--ruza-river-panorama`. Keep source filenames stable after wiring an asset into page data.
+Generated keys are derived from relative paths, e.g. `ruza--ruza-river-panorama`. The stable `localKey` in `src/data.ts` must match this key. Keep source filenames stable after wiring an asset into page data. The shared `EditorialImage.astro` component reads `src/generated/image-manifest.json` and emits AVIF/WebP `<source>` candidates automatically when a matching local key exists; otherwise it preserves the current Unsplash URL and responsive CDN `srcset`.
 
 ## Generated variants
 
