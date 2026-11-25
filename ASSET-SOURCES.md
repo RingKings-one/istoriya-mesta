@@ -10,7 +10,7 @@ Creator attribution and the original capture location have **not** been independ
 | Cafe interior | [photo-1770515927749-33442eabf462](https://images.unsplash.com/photo-1770515927749-33442eabf462?auto=format&fit=crop&w=1800&q=82) | Browser load verified |
 | Historic street / city cards | [photo-1624793412356-927326a6d9a9](https://images.unsplash.com/photo-1624793412356-927326a6d9a9?auto=format&fit=crop&w=1800&q=82) | Browser load verified |
 | Coffee / book | [photo/1504812036248-733753e0d165](https://images.unsplash.com/photo/1504812036248-733753e0d165?auto=format&fit=crop&w=1400&q=82) | Browser load verified; canonical redirect target |
-| Archive / map / camera / books | [photo-1653491951587-282e99d6c1e5](https://images.unsplash.com/photo-1653491951587-282e99d6c1e5?auto=format&fit=crop&w=1600&q=82) | Pending browser verification |
+| Archive / map / camera / books | [photo-1653491951587-282e99d6c1e5](https://images.unsplash.com/photo-1653491951587-282e99d6c1e5?auto=format&fit=crop&w=1600&q=82) | Browser load verified; travel still life |
 | Forest / walking route | [photo-1635746146715-0cc45dfa3bc2](https://images.unsplash.com/photo-1635746146715-0cc45dfa3bc2?auto=format&fit=crop&w=1600&q=82) | Pending browser verification |
 
 ## Replacement rule
