@@ -43,7 +43,10 @@ for (const file of files) {
   seen.add(key);
   const metadata = await sharp(file, { failOn: 'error' }).rotate().metadata();
   if (!metadata.width || !metadata.height) throw new Error(`Missing image dimensions: ${file}`);
-  const widths = [...new Set([...targetWidths.filter((width) => width < metadata.width), metadata.width])].sort((a,b) => a-b);
+  const swapsDimensions = [5, 6, 7, 8].includes(metadata.orientation);
+  const orientedWidth = swapsDimensions ? metadata.height : metadata.width;
+  const orientedHeight = swapsDimensions ? metadata.width : metadata.height;
+  const widths = [...new Set([...targetWidths.filter((width) => width < orientedWidth), orientedWidth])].sort((a,b) => a-b);
   const variants = { avif: [], webp: [] };
   for (const width of widths) {
     const base = path.join(outputRoot, `${key}-${width}`);
@@ -57,8 +60,8 @@ for (const file of files) {
   }
   manifest.assets[key] = {
     source: path.relative(root, file).split(path.sep).join('/'),
-    width: metadata.width, height: metadata.height,
-    aspectRatio: Number((metadata.width / metadata.height).toFixed(4)), variants,
+    width: orientedWidth, height: orientedHeight,
+    aspectRatio: Number((orientedWidth / orientedHeight).toFixed(4)), variants,
   };
   console.log(`Optimized ${key}: ${widths.join(', ')}px`);
 }
