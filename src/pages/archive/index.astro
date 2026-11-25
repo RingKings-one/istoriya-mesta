@@ -3,7 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import EditorialPath from '../../components/EditorialPath.astro';
 import ArrowMark from '../../components/ArrowMark.astro';
-import { images, imageSrcSet } from '../../data';
+import { images } from '../../data';
+import EditorialImage from '../../components/EditorialImage.astro';
 ---
 <BaseLayout
   title="Архив — История места"
@@ -26,21 +27,21 @@ import { images, imageSrcSet } from '../../data';
     <div class="archive-heading"><p class="eyebrow">РАЗДЕЛЫ КОЛЛЕКЦИИ</p><span>01 / 03</span></div>
     <div class="archive-grid">
       <a class="archive-tile archive-tile-large" href="/stories/">
-        <img src={images.camera} srcset={imageSrcSet(images.camera)} sizes="(max-width: 680px) 100vw, 58vw" alt="" loading="lazy" />
+        <EditorialImage src={images.camera} sizes="(max-width: 680px) 100vw, 58vw" alt="" />
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">01</span>
         <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>
         <span class="archive-tile-copy"><small>КАДРЫ И НАБЛЮДЕНИЯ</small><strong>Фотографическая память</strong><em>Перейти к историям <ArrowMark direction="forward" /></em></span>
       </a>
       <a class="archive-tile" href="/routes/">
-        <img src={images.map} srcset={imageSrcSet(images.map)} sizes="(max-width: 680px) 100vw, 42vw" alt="" loading="lazy" />
+        <EditorialImage src={images.map} sizes="(max-width: 680px) 100vw, 42vw" alt="" />
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">02</span>
         <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>
         <span class="archive-tile-copy"><small>СХЕМЫ И ПРОСТРАНСТВО</small><strong>Карты и маршруты</strong><em>Исследовать <ArrowMark direction="forward" /></em></span>
       </a>
       <a class="archive-tile" href="/cities/ruza/">
-        <img src={images.books} srcset={imageSrcSet(images.books)} sizes="(max-width: 680px) 100vw, 42vw" alt="" loading="lazy" />
+        <EditorialImage src={images.books} sizes="(max-width: 680px) 100vw, 42vw" alt="" />
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">03</span>
         <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>
