@@ -1,8 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
-import FeatureCard from '../../components/FeatureCard.astro';
-import { images } from '../../data';
+import { images, imageSrcSet } from '../../data';
 ---
 <BaseLayout
   title="Города — История места"
@@ -18,15 +17,21 @@ import { images } from '../../data';
     <p class="eyebrow">ПЕРВАЯ ГЛАВА</p>
     <h2>Начнём с одного города.</h2>
     <p>Атлас будет расти постепенно — с вниманием к характеру каждого места, а не к количеству точек на карте.</p>
-    <div class="card-grid">
-      <FeatureCard
-        image={images.street}
-        eyebrow="МОСКОВСКАЯ ОБЛАСТЬ"
-        title="Руза"
-        text="Первая глава проекта. Знакомство с городом через места, людей и повседневную атмосферу."
-        href="/cities/ruza/"
-        number="01"
-      />
+  </section>
+  <section class="city-feature">
+    <img
+      src={images.street}
+      srcset={imageSrcSet(images.street)}
+      sizes="(max-width: 680px) 100vw, 50vw"
+      alt=""
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="feature-copy">
+      <p class="eyebrow">МОСКОВСКАЯ ОБЛАСТЬ · ПЕРВАЯ ГЛАВА</p>
+      <h2>Руза</h2>
+      <p>Знакомство с городом через места, людей и повседневную атмосферу. Первая глава атласа — начало большого исследования, которое будет пополняться проверенными историями и фотографиями.</p>
+      <a class="text-link" href="/cities/ruza/">Исследовать город ↗</a>
     </div>
   </section>
 </BaseLayout>
