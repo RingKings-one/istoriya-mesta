@@ -1,17 +1,10 @@
 ---
-import { images, imageSrcSet } from '../data';
+import { images } from '../data';
+import EditorialImage from './EditorialImage.astro';
 import ArrowMark from './ArrowMark.astro';
 ---
 <section class="hero hero--atlas" aria-labelledby="home-title">
-  <img
-    class="hero-image"
-    src={images.hero}
-    srcset={imageSrcSet(images.hero)}
-    sizes="100vw"
-    alt=""
-    fetchpriority="high"
-    decoding="async"
-  />
+  <EditorialImage className="hero-image" src={images.hero} sizes="100vw" alt="" loading="eager" fetchpriority="high" position="center 54%" />
 
   <div class="hero-content">
     <p class="eyebrow">АТЛАС ЖИВЫХ ИСТОРИЙ</p>
