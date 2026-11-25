@@ -22,14 +22,14 @@ export const images = {
   coffee: coffeeAndBook,
   archive: archiveDesk,
   museum: archiveDesk,
-  map: archiveDesk,
+  map: forestPath,
   forest: forestPath,
   church: historicStreet,
   building: historicStreet,
   gazebo: forestPath,
   dock: riverTown,
-  books: archiveDesk,
-  camera: archiveDesk,
+  books: coffeeAndBook,
+  camera: historicStreet,
 };
 
 /**
