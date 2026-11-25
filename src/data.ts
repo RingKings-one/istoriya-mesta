@@ -36,7 +36,12 @@ export const images = {
  * Generate responsive Unsplash CDN candidates from the canonical asset URL.
  * Keep the image role stable; the browser chooses the smallest suitable width.
  */
-export const imageSrcSet = (url: string) =>
-  [640, 960, 1440, 2200]
-    .map((width) => `${url.replace(/([?&])w=\d+/, `$1w=${width}`)} ${width}w`)
+export const imageSrcSet = (url: string) => {
+  const maxWidth = Number(url.match(/[?&]w=(\\d+)/)?.[1] ?? 2200);
+  const widths = [640, 960, 1440].filter((width) => width < maxWidth);
+  widths.push(maxWidth);
+
+  return widths
+    .map((width) => `${url.replace(/([?&])w=\\d+/, `$1w=${width}`)} ${width}w`)
     .join(', ');
+};
