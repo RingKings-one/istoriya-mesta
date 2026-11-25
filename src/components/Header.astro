@@ -1,5 +1,82 @@
 ---
-import {nav} from '../data'; const path=Astro.url.pathname;
+import { nav } from '../data';
+
+const currentPath = Astro.url.pathname;
 ---
-<header class="site-header"><a class="brand" href="/" aria-label="История места — главная"><span class="brand-mark">⌂</span><span>История<br/>места</span></a><nav class="desktop-nav" id="primary-navigation" aria-label="Основная навигация">{nav.map(item=><a class:list={[{active:path.startsWith(item.href)}]} href={item.href}>{item.label}</a>)}</nav><a class="header-cta" href="/cities/">Открыть атлас ↗</a><button class="menu-toggle" type="button" aria-label="Открыть меню" aria-controls="primary-navigation" aria-expanded="false">☰</button></header>
-<script>const toggle=document.querySelector<HTMLButtonElement>('.menu-toggle');const nav=document.querySelector<HTMLElement>('#primary-navigation');const close=()=>{toggle?.setAttribute('aria-expanded','false');toggle?.setAttribute('aria-label','Открыть меню');nav?.classList.remove('is-open')};toggle?.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню');nav?.classList.toggle('is-open',open)});nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});</script>
+<header class="site-header">
+  <a class="brand" href="/" aria-label="История места — главная">
+    <span class="brand-mark" aria-hidden="true">⌂</span>
+    <span>История<br />места</span>
+  </a>
+
+  <nav class="desktop-nav" id="primary-navigation" aria-label="Основная навигация">
+    {nav.map((item) => {
+      const isCurrent = currentPath.startsWith(item.href);
+      return (
+        <a
+          class:list={{ active: isCurrent }}
+          href={item.href}
+          aria-current={isCurrent ? 'page' : undefined}
+        >
+          {item.label}
+        </a>
+      );
+    })}
+  </nav>
+
+  <a class="header-cta" href="/cities/">Открыть атлас ↗</a>
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Открыть меню"
+    aria-controls="primary-navigation"
+    aria-expanded="false"
+  >
+    <span aria-hidden="true">☰</span>
+  </button>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const navigation = document.querySelector<HTMLElement>('#primary-navigation');
+
+  const closeMenu = (returnFocus = false) => {
+    toggle?.setAttribute('aria-expanded', 'false');
+    toggle?.setAttribute('aria-label', 'Открыть меню');
+    navigation?.classList.remove('is-open');
+    if (returnFocus) toggle?.focus();
+  };
+
+  toggle?.addEventListener('click', () => {
+    const shouldOpen = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(shouldOpen));
+    toggle.setAttribute('aria-label', shouldOpen ? 'Закрыть меню' : 'Открыть меню');
+    navigation?.classList.toggle('is-open', shouldOpen);
+
+    if (shouldOpen) {
+      navigation?.querySelector<HTMLAnchorElement>('a')?.focus();
+    }
+  });
+
+  navigation?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => closeMenu());
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+      closeMenu(true);
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (
+      target instanceof Node &&
+      !navigation?.contains(target) &&
+      !toggle?.contains(target) &&
+      toggle?.getAttribute('aria-expanded') === 'true'
+    ) {
+      closeMenu();
+    }
+  });
+</script>
