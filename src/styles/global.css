@@ -230,6 +230,7 @@ a {
 .city-feature,
 .split-section {
   display: grid;
+  min-width: 0;
   grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
   align-items: center;
   gap: clamp(32px, 5vw, 76px);
@@ -571,6 +572,18 @@ a {
 .credits-list .credits-note {
   max-width: 680px;
   margin-top: 36px;
+}
+
+
+/* Grid children must be allowed to shrink to their track on narrow screens. */
+.intro-grid > *,
+.city-feature > *,
+.split-section > *,
+.route-feature > *,
+.section-heading > *,
+.card-grid > *,
+.credits-list li > * {
+  min-width: 0;
 }
 
 @media (max-width: 900px) {
