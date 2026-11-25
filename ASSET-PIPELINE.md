@@ -7,7 +7,7 @@ Project photography is stored with the repository, optimized during the build, a
 ## Folder contract
 
 - `assets/source/` — original photographs supplied/selected for the project. This directory is not published as a public URL.
-- `public/images/optimized/` — generated build output. Do not edit generated files by hand.
+- `public/images/optimized/` — generated build output, excluded from Git. Do not edit or commit generated files by hand; CI and deployment regenerate them from `assets/source/`.
 - `public/images/optimized/manifest.json` — generated dimensions, aspect ratios, format variants, widths and byte sizes.
 - Stable role aliases remain in `src/data.ts`; page composition should not depend on arbitrary filenames.
 
