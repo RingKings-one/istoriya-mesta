@@ -23,9 +23,9 @@ async function collectFiles(directory) {
 }
 
 function assetKey(file) {
-  return path.relative(sourceRoot, file).replace(/\\.[^.]+$/, '')
+  return path.relative(sourceRoot, file).replace(/\.[^.]+$/, '')
     .split(path.sep)
-    .map((part) => part.normalize('NFKD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''))
+    .map((part) => part.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''))
     .filter(Boolean).join('--');
 }
 
@@ -62,5 +62,5 @@ for (const file of files) {
   };
   console.log(`Optimized ${key}: ${widths.join(', ')}px`);
 }
-await fs.writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\\n`);
+await fs.writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 console.log(files.length ? `Image pipeline complete: ${files.length} source image(s), AVIF + WebP variants written.` : 'Image pipeline ready: no source photographs yet; empty manifest written. Add originals under assets/source/.');
