@@ -1,4 +1,5 @@
 ---
+import SiteOpening from '../components/SiteOpening.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { ruzaMedia } from '../content/ruza-media';
@@ -9,7 +10,7 @@ import '../styles/motion.css';
 const {
   title = 'История места — Атлас живых историй',
   description = 'У каждого места есть история. Мы помогаем её почувствовать.',
-  sharePhoto = ruzaMedia.parkView,
+  sharePhoto = ruzaMedia.wideCity,
 } = Astro.props;
 const socialImage = new URL(sharePhoto.src, import.meta.env.DEPLOY_PRIME_URL || import.meta.env.URL || Astro.url).href;
 ---
@@ -42,6 +43,7 @@ const socialImage = new URL(sharePhoto.src, import.meta.env.DEPLOY_PRIME_URL || 
     <title>{title}</title>
   </head>
   <body>
+    <SiteOpening />
     <a class="skip-link" href="#main-content">Перейти к содержимому</a>
     <Header />
     <main id="main-content">

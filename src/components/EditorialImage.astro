@@ -1,5 +1,6 @@
 ---
 import manifest from '../generated/image-manifest.json';
+import { ruzaMedia, type PlacePhoto } from '../content/ruza-media';
 import { imageAssets, imageSrcSet } from '../data';
 
 const {
@@ -17,6 +18,11 @@ const {
 
 const asset = Object.values(imageAssets).find((candidate) => candidate.src === src);
 const local = asset ? manifest.assets[asset.localKey] : undefined;
+const documentary: PlacePhoto | undefined = Object.values(ruzaMedia).find((photo) => photo.src === src);
+const documentarySrcSet = documentary?.compact
+  ? `${documentary.compact.src} ${documentary.compact.width}w, ${src} ${documentary.width}w`
+  : undefined;
+const fallbackSrcSet = asset && !local ? imageSrcSet(src) : documentarySrcSet;
 const focalPoint = position ?? asset?.focalPoint ?? 'center';
 const avifSrcSet = local?.variants.avif.map((variant) => `${variant.src} ${variant.width}w`).join(', ');
 const webpSrcSet = local?.variants.webp.map((variant) => `${variant.src} ${variant.width}w`).join(', ');
@@ -27,14 +33,14 @@ const webpSrcSet = local?.variants.webp.map((variant) => `${variant.src} ${varia
   <img
     class={className}
     src={src}
-    srcset={asset && !local ? imageSrcSet(src) : undefined}
-    sizes={asset && !local ? sizes : undefined}
+    srcset={fallbackSrcSet}
+    sizes={fallbackSrcSet ? sizes : undefined}
     alt={alt}
     loading={loading}
     decoding="async"
     fetchpriority={fetchpriority}
-    width={local?.width ?? width}
-    height={local?.height ?? height}
+    width={local?.width ?? width ?? documentary?.width}
+    height={local?.height ?? height ?? documentary?.height}
     style={focalPoint ? `object-position: ${focalPoint};` : undefined}
   />
 </picture>

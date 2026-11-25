@@ -10,10 +10,10 @@ export function getStaticPaths() {
 }
 
 const { walk } = Astro.props;
-const nextWalk = ruzaWalks.find((candidate) => candidate.id !== walk.id);
+const nextWalk = ruzaWalks.find((candidate) => candidate.id !== walk.id && candidate.district === walk.district);
 ---
 <BaseLayout title={`${walk.title} — История места`} description={walk.lead}>
-  <PageIntro variant="route" eyebrow="РУЗА ПЕШКОМ" edition={walk.stops.length === 5 ? '5 ОСТАНОВОК' : '4 ОСТАНОВКИ'} title={walk.title} description={walk.lead} image={walk.cover.src} />
+  <PageIntro variant="route" eyebrow={walk.district ? 'РУЗСКИЙ ОКРУГ' : 'РУЗА ПЕШКОМ'} edition={`${walk.stops.length} ${walk.stops.length === 5 ? 'ОСТАНОВОК' : 'ОСТАНОВКИ'}`} title={walk.title} description={walk.lead} image={walk.cover.src} />
   <div class="section route-layout">
     <aside class="route-overview">
       <a class="text-link" href="/routes/">Все маршруты</a>
@@ -109,12 +109,12 @@ const nextWalk = ruzaWalks.find((candidate) => candidate.id !== walk.id);
   .trail-copy > p:not(.eyebrow) { max-width: 63ch; color: var(--muted); }
   .trail-look strong { color: var(--light); }
   .trail-actions { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 20px 0 24px; }
-  .trail-stop :global(figure) { --photo-ratio: 1.73; }
+
   .route-next { padding-top: 0; text-align: end; }
   @media (max-width: 760px) {
     .route-layout { grid-template-columns: minmax(0, 1fr); }
     .route-overview { position: static; }
-    .trail-stop :global(figure) { --photo-ratio: 1.24; }
+
   }
   @media (prefers-reduced-motion: reduce) {
     .route-trail::after { display: none; }

@@ -9,6 +9,13 @@ import { ruzaMedia as photo } from '../../content/ruza-media';
 const front = { ...postcard, caption: 'Лицевая сторона открытки. Начало XX века.' };
 const records = [
   {
+    id: 'old-fortress',
+    era: 'XVII ВЕК · МУЗЕЙНЫЙ ПРЕДМЕТ',
+    title: 'След крепости в музейном зале',
+    body: 'Пушечный ствол из собрания Рузского краеведческого музея датируется XVII веком. Это снимок экспоната, сделанный в 2021 году. В музее можно сопоставить предмет с макетом городища, а на месте прочитать форму валов.',
+    photo: photo.museumCannon,
+  },
+  {
     id: 'plan-1784',
     era: '1784 · ПЛАН ГОРОДА',
     title: 'Руза, вычерченная заново',
@@ -31,8 +38,8 @@ const records = [
   },
 ];
 ---
-<BaseLayout title="Архив Рузы — История места" description="Открытки, исторические фотографии и план: Руза от XVIII века до начала XX века.">
-  <PageIntro eyebrow="ВИЗУАЛЬНЫЙ АРХИВ · РУЗА" title="Архив Рузы" description="Лица города на старых открытках, фотографиях и картах." />
+<BaseLayout title="Архив Рузы — История места" description="Открытки, исторические фотографии и план: Руза от старого укрепления до военных и послевоенных лет.">
+  <PageIntro eyebrow="ВИЗУАЛЬНЫЙ АРХИВ · РУЗА" title="Архив Рузы" description="Старые открытки, план города и история Рузского края в годы войны." />
   <section class="section archive-feature" id="postcard">
     <PhotoFrame photo={front} priority />
     <div data-reveal>
@@ -64,6 +71,17 @@ const records = [
     </div>
   </section>
 
+  <section class="section archive-war" id="war-memory" aria-labelledby="war-title">
+    <div data-reveal>
+      <p class="eyebrow">1941–1942 · ВОЙНА В РУЗСКОМ КРАЕ</p>
+      <h2 id="war-title">Что осталось в памяти</h2>
+      <p><strong>17 января 1942 года</strong> Рузу освободили после оккупации. По данным округа, за время оккупации в районе сожгли и разрушили около двух тысяч домов. Снимки тех лет хранятся в Рузском краеведческом музее. В 2025 году часть этих фотографий вошла в выставку об освобождении края.</p>
+      <p>В каталоге Российской государственной библиотеки есть снимок Михаила Каверзнева 1948 года с видом на северо-запад города. Это уже послевоенная точка отсчёта: по названию и дате можно понять, откуда и когда фотограф снова смотрел на город.</p>
+      <p>На фотографии рядом — Петрищево в 1950-х. Памятник Зое Космодемьянской показывает, как деревня стала местом памяти после войны.</p>
+      <a class="text-link" href="/stories/petrishchevo/">Читать историю Петрищева</a>
+    </div>
+    <PhotoFrame photo={photo.zoyaMemorial} />
+  </section>
   <section class="section archive-return">
     <div data-reveal>
       <p class="eyebrow">ИЗ АРХИВА НА УЛИЦУ</p>
@@ -77,10 +95,10 @@ const records = [
 </BaseLayout>
 
 <style>
-  .archive-feature, .archive-return { display: grid; grid-template-columns: minmax(0,1.45fr) minmax(0,.75fr); gap: clamp(22px, 6vw, 76px); align-items: center; padding-top: 0; scroll-margin-top: 98px; }
+  .archive-feature, .archive-return, .archive-war { display: grid; grid-template-columns: minmax(0,1.45fr) minmax(0,.75fr); gap: clamp(22px, 6vw, 76px); align-items: center; padding-top: 0; scroll-margin-top: 98px; }
   .archive-feature > :global(figure), .archive-back > :global(figure), .archive-record :global(figure) { background: #302d23; padding: clamp(6px,1vw,15px); }
   h2 { margin: 12px 0 20px; font: 400 clamp(38px,5.7vw,86px)/.99 var(--serif); letter-spacing: -.03em; }
-  .archive-feature p:not(.eyebrow), .archive-collection p:not(.eyebrow), .archive-return p:not(.eyebrow) { color: var(--muted); max-width: 58ch; }
+  .archive-war p:not(.eyebrow), .archive-feature p:not(.eyebrow), .archive-collection p:not(.eyebrow), .archive-return p:not(.eyebrow) { color: var(--muted); max-width: 58ch; }
   .archive-feature .text-link, .archive-return .text-link { margin-top: 14px; }
   .archive-back { grid-column: 1/-1; border-top: 1px solid #d7c7b244; padding-top: 15px; }
   .archive-back > summary { width: fit-content; cursor: pointer; color: var(--stone); }
@@ -90,9 +108,11 @@ const records = [
   .archive-record:first-child { grid-column: 1/-1; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,.88fr); gap: clamp(22px,5vw,72px); align-items: center; }
   .archive-record :global(figure) { margin-bottom: 20px; }
   .archive-record h3 { margin: 10px 0 14px; font: 400 clamp(27px,3.2vw,50px)/1.04 var(--serif); }
+  .archive-war { padding-top: 0; align-items: start; }
+  .archive-war :global(figure) { max-width: 390px; }
   .archive-return { grid-template-columns: minmax(0,.7fr) minmax(0,1fr); }
   @media(max-width:740px) {
-    .archive-feature, .archive-return, .archive-grid, .archive-record:first-child { grid-template-columns: minmax(0,1fr); }
+    .archive-feature, .archive-return, .archive-war, .archive-grid, .archive-record:first-child { grid-template-columns: minmax(0,1fr); }
     .archive-record:first-child { gap: 0; }
   }
 </style>

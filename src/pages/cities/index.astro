@@ -16,7 +16,7 @@ import EditorialImage from '../../components/EditorialImage.astro';
     eyebrow="ЖИВОЙ АТЛАС · 01 ГОРОД В РАБОТЕ"
     title="Места, которые хочется почувствовать."
     description="У каждого города свой ритм. Мы собираем его из историй, маршрутов и деталей."
-    image={photo.parkView.src}
+    image={photo.wideCity.src}
   />
   <section class="atlas-intro section" data-reveal>
     <p class="eyebrow">АТЛАС РАСТЁТ ПОСТЕПЕННО</p>
@@ -43,7 +43,7 @@ import EditorialImage from '../../components/EditorialImage.astro';
   .atlas-intro > p:last-child { max-width:330px; margin:5px 0 0; color:var(--muted); }
   .atlas-city { display:grid; grid-template-columns:1.2fr .8fr; gap:clamp(30px,6vw,90px); align-items:center; padding:0 6vw 100px; }
   .atlas-city-image { position:relative; }
-  .atlas-city-image img { width:100%; aspect-ratio:1.5; }
+  .atlas-city-image :global(img) { display:block; width:100%; height:auto; }
   .atlas-city-image > span { position:absolute; top:18px; left:18px; padding:7px 10px; background:#181d1acc; color:var(--stone); font-size:9px; letter-spacing:.14em; }
   .atlas-city-image > .atlas-city-disclosure { position:absolute; top:auto; right:18px; bottom:18px; left:18px; width:fit-content; max-width:calc(100% - 36px); border:1px solid #e8e1d655; background:#181d1acc; padding:6px 8px; color:#e8e1d6; font-size:8px; line-height:1.4; letter-spacing:.1em; }
   .atlas-city-copy h2 { margin:12px 0; font:clamp(54px,7vw,94px)/.95 var(--serif); font-weight:400; }

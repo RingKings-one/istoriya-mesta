@@ -8,8 +8,8 @@
   },
   "cafeFacade": {
     "src": "/images/ruza/cafe-facade.webp",
-    "width": 1200,
-    "height": 800,
+    "width": 1280,
+    "height": 853,
     "alt": "Вечерний фасад кофейни с подсвеченной вывеской",
     "caption": "Вечер на Федеративной, 7."
   },
@@ -22,8 +22,8 @@
   },
   "cafeHands": {
     "src": "/images/ruza/cafe-coffee-table.webp",
-    "width": 1200,
-    "height": 900,
+    "width": 1280,
+    "height": 960,
     "alt": "Две чашки кофе, розовые блюдца и руки гостей за столом",
     "caption": "Кофе за общим столом."
   },
@@ -198,5 +198,165 @@
     "height": 648,
     "alt": "На старой зимней открытке деревянные дома и колокольня Воскресенского собора",
     "caption": "Воскресенский собор над заснеженной Рузой, 1910–1914."
+  },
+  "wideCity": {
+    "src": "/images/ruza/ruza-wide.webp",
+    "width": 2240,
+    "height": 1680,
+    "alt": "Дома Рузы среди зелёных склонов речной долины",
+    "caption": "Руза над речной долиной, 2021.",
+    "credit": {
+      "author": "Mark Nakoykher",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%A0%D1%83%D0%B7%D0%B0_%E2%80%94_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4_%D0%B2_%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B9_%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8,_%D1%84%D0%BE%D1%82%D0%BE_%E2%84%96_10.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    "compact": {
+      "src": "/images/ruza/ruza-wide-840.webp",
+      "width": 840
+    }
+  },
+  "museumFacade": {
+    "src": "/images/ruza/museum-facade.webp",
+    "width": 1500,
+    "height": 734,
+    "alt": "Фасады краеведческого музея и соседнего дома на площади Партизан",
+    "caption": "Краеведческий музей и соседний дом на площади Партизан, 2020.",
+    "credit": {
+      "author": "Sergey Sebelev",
+      "source": "https://commons.wikimedia.org/wiki/File:Ruza_Partizan_Square_Houses_14_(museum)_%26_15-16.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "sport": {
+    "src": "/images/ruza/water-sports-palace.webp",
+    "width": 1111,
+    "height": 833,
+    "alt": "Фасад Дворца водных видов спорта «Руза»",
+    "caption": "Дворец водных видов спорта «Руза».",
+    "credit": {
+      "author": "Правительство Волгоградской области",
+      "source": "https://commons.wikimedia.org/wiki/File:Palace_of_water_sports_in_Ruza.jpg",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    }
+  },
+  "reservoir": {
+    "src": "/images/ruza/ruza-reservoir.webp",
+    "width": 1500,
+    "height": 1125,
+    "alt": "Рузское водохранилище, вид с высокого берега",
+    "caption": "Рузское водохранилище, 2021.",
+    "credit": {
+      "author": "Maksimson",
+      "source": "https://commons.wikimedia.org/wiki/File:RUZA221.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "pokrov": {
+    "src": "/images/ruza/intercession-ruza.webp",
+    "width": 1500,
+    "height": 844,
+    "alt": "Покровская церковь в Рузе с колокольней",
+    "caption": "Покровская церковь на Социалистической улице.",
+    "credit": {
+      "author": "Sergey Sebelev",
+      "source": "https://commons.wikimedia.org/wiki/File:Ruza_Pokrovskaya_Church.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "komlevo": {
+    "src": "/images/ruza/komlevo-znamenie.webp",
+    "width": 1500,
+    "height": 844,
+    "alt": "Знаменский храм в Комлеве на зелёном склоне",
+    "caption": "Знаменский храм в Комлеве, 2021.",
+    "credit": {
+      "author": "Anastasia Gavrilova / Анастасия Гаврилова",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%97%D0%BD%D0%B0%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C_%D0%B2_%D0%9A%D0%BE%D0%BC%D0%BB%D0%B5%D0%B2%D0%BE_%D0%92%D0%B8%D0%BA%D0%B8-%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D1%8F_%D0%A0%D1%83%D0%B7%D0%B0_%D0%B7%D0%B0%D0%BF%D0%BE%D0%B2%D0%B5%D0%B4%D0%BD%D0%B0%D1%8F.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "gorbovo": {
+    "src": "/images/ruza/gorbovo-kazan.webp",
+    "width": 1500,
+    "height": 844,
+    "alt": "Фасад Казанской церкви в Горбове",
+    "caption": "Казанская церковь в Горбове, 2021.",
+    "credit": {
+      "author": "Anastasia Gavrilova / Анастасия Гаврилова",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%A6%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C_%D0%9A%D0%B0%D0%B7%D0%B0%D0%BD%D1%81%D0%BA%D0%BE%D0%B9_%D0%B8%D0%BA%D0%BE%D0%BD%D1%8B_%D0%91%D0%BE%D0%B6%D0%B8%D0%B5%D0%B9_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8_%D0%B2_%D0%93%D0%BE%D1%80%D0%B1%D0%BE%D0%B2%D0%BE_%D0%92%D0%B8%D0%BA%D0%B8-%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D1%8F_%D0%A0%D1%83%D0%B7%D0%B0_%D0%B7%D0%B0%D0%BF%D0%BE%D0%B2%D0%B5%D0%B4%D0%BD%D0%B0%D1%8F_01.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "zoyaMuseum": {
+    "src": "/images/ruza/petrishchevo-museum.webp",
+    "width": 1500,
+    "height": 1125,
+    "alt": "Новый музей «Зоя» в Петрищеве",
+    "caption": "Музей «Зоя» в Петрищеве, снимок 2023 года.",
+    "credit": {
+      "author": "Palbn",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%97%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5_%D0%9C%D1%83%D0%B7%D0%B5%D1%8F_%D0%97%D0%BE%D1%8F_(%D0%BF%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D0%BE_%D0%B2_2020_%D0%B3%D0%BE%D0%B4%D1%83).jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "zoyaHall": {
+    "src": "/images/ruza/petrishchevo-hall.webp",
+    "width": 1500,
+    "height": 1000,
+    "alt": "Экспозиция музея о героях битвы под Москвой",
+    "caption": "Зал героев битвы под Москвой в музее «Зоя».",
+    "credit": {
+      "author": "Alexander Artyominkov / Александр Андреевич Артемёнков",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%97%D0%B0%D0%BB_%D0%B3%D0%B5%D1%80%D0%BE%D0%B5%D0%B2_%D0%A1%D0%BE%D0%B2%D0%B5%D1%82%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%A1%D0%BE%D1%8E%D0%B7%D0%B0_%D0%B1%D0%B8%D1%82%D0%B2%D1%8B_%D0%BF%D0%BE%D0%B4_%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%BE%D0%B9_%D0%B2_%D0%9C%D1%83%D0%B7%D0%B5%D0%B9%D0%BD%D0%BE%D0%BC_%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81%D0%B5_%C2%AB%D0%97%D0%BE%D1%8F%C2%BB.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "zoyaGrave": {
+    "src": "/images/ruza/petrishchevo-first-burial.webp",
+    "width": 1500,
+    "height": 1125,
+    "alt": "Ограждённое место первого захоронения в Петрищеве",
+    "caption": "Место первого захоронения Зои Космодемьянской, снимок 2023 года.",
+    "credit": {
+      "author": "Palbn",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%9C%D0%B5%D1%81%D1%82%D0%BE_%D0%BF%D0%B5%D1%80%D0%B2%D0%BE%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE_%D0%B7%D0%B0%D1%85%D0%BE%D1%80%D0%BE%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F_%D0%97.%D0%90._%D0%9A%D0%BE%D1%81%D0%BC%D0%BE%D0%B4%D0%B5%D0%BC%D1%8C%D1%8F%D0%BD%D1%81%D0%BA%D0%BE%D0%B9.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "zoyaMemorial": {
+    "src": "/images/ruza/petrishchevo-memorial-1950s.webp",
+    "width": 1500,
+    "height": 2222,
+    "alt": "Чёрно-белая фотография памятника Зое Космодемьянской с венками",
+    "caption": "Памятник в Петрищеве. 1950-е годы, Главархив Москвы.",
+    "credit": {
+      "author": "Главархив Москвы",
+      "source": "https://commons.wikimedia.org/wiki/File:History_of_memory_to_Zoya_Kosmodemyanskaya_04.jpg",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+    }
+  },
+  "museumCannon": {
+    "src": "/images/ruza/ruza-museum-cannon.webp",
+    "width": 1500,
+    "height": 844,
+    "alt": "Старинный пушечный ствол на музейной подставке",
+    "caption": "Пушечный ствол XVII века. Снимок экспоната Рузского музея, 2021.",
+    "credit": {
+      "author": "Niklitov",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%9F%D1%83%D1%88%D0%B5%D1%87%D0%BD%D1%8B%D0%B9_%D1%81%D1%82%D0%B2%D0%BE%D0%BB._%D0%A0%D1%83%D0%B7%D1%81%D0%BA%D0%B8%D0%B9_%D0%BA%D1%80%D0%B0%D0%B5%D0%B2%D0%B5%D0%B4%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D1%83%D0%B7%D0%B5%D0%B9.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
   }
 }

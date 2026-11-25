@@ -20,6 +20,7 @@ const archiveVerification = [
       ))}
     </ul>
     <h2>Архивная подборка</h2>
+    <p><a href={ruzaSources.rebuilding.url}>{ruzaSources.rebuilding.label}</a> · <a href={ruzaSources.memory.url}>{ruzaSources.memory.label}</a>.</p>
     <p>{postcard.credit} <a href={ruzaSources.postcard.url}>Открытка</a> · <a href={postcard.rightsUrl}>{postcard.rights}</a>.</p>
     <ul>
       {archiveVerification.map(({ photo, url }) => <li>{photo} Автор оригинала неизвестен. <a href={url}>Сверка изображения</a></li>)}

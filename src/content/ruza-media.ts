@@ -6,6 +6,7 @@ export interface PlacePhoto {
   height: number;
   alt: string;
   caption: string;
+  compact?: { src: string; width: number };
   credit?: { author: string; source: string; license: string; licenseUrl: string };
 }
 

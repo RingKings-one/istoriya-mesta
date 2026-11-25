@@ -20,6 +20,6 @@ const { photo, sizes = '(max-width: 760px) 100vw, 56vw', caption = true, class: 
 <style>
   .photo-frame { margin: 0; min-width: 0; }
   .photo-frame :global(picture) { display: block; overflow: hidden; background: #232c25; }
-  .photo-frame :global(img) { display: block; width: 100%; height: auto; aspect-ratio: var(--photo-ratio, auto); object-position: var(--photo-position, center); }
+  .photo-frame :global(img) { display: block; width: 100%; height: auto; aspect-ratio: var(--photo-ratio, auto); object-fit: contain; }
   figcaption { margin-top: 10px; color: var(--muted); font-size: .84rem; line-height: 1.5; }
 </style>

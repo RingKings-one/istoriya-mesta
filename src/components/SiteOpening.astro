@@ -1,0 +1,68 @@
+<div class="site-opening" id="site-opening" aria-hidden="true">
+  <div class="opening-stamp">
+    <div class="opening-ring"></div>
+    <div class="opening-mark">
+      <span class="opening-cup"></span>
+      <span>История места</span>
+    </div>
+  </div>
+</div>
+<script is:inline>
+  (() => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    try {
+      if (sessionStorage.getItem('istoriya-opening-seen')) return;
+      sessionStorage.setItem('istoriya-opening-seen', 'yes');
+    } catch {
+      return;
+    }
+    const stamp = document.getElementById('site-opening');
+    stamp?.classList.add('is-playing');
+    const closeOpening = () => stamp?.classList.remove('is-playing');
+    stamp?.addEventListener('animationend', (event) => {
+      if (event.target === stamp) closeOpening();
+    });
+    window.setTimeout(closeOpening, 1060);
+    window.addEventListener('keydown', closeOpening, { once: true });
+    window.addEventListener('pointerdown', closeOpening, { once: true });
+  })();
+</script>
+<style>
+  .site-opening { display: none; }
+  @media(prefers-reduced-motion: no-preference) {
+    .site-opening.is-playing {
+      display: grid;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      place-items: center;
+      background: #171c18;
+      pointer-events: none;
+      animation: opening-paper 950ms both;
+    }
+    .opening-stamp {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: clamp(154px, 30vw, 210px);
+      aspect-ratio: 1;
+      color: #e4c5a5;
+      transform: rotate(-5deg);
+      animation: opening-press 630ms cubic-bezier(.2,.72,.25,1) both;
+    }
+    .opening-ring {
+      position: absolute;
+      inset: 0;
+      border: 2px solid #b27854;
+      border-radius: 47% 54% 49% 52%;
+      box-shadow: 0 0 0 2px #8f533834, inset 0 0 0 7px #8f533821;
+      mask-image: conic-gradient(#000 8deg,#0008 70deg,#000 149deg,#000b 260deg,#000 360deg);
+    }
+    .opening-mark { display: grid; gap: 14px; justify-items: center; font: italic 400 clamp(18px,4vw,25px)/1 var(--editorial-serif); }
+    .opening-cup { position: relative; display: block; width: 33px; height: 22px; border: 1px solid; border-radius: 0 0 40% 40%; }
+    .opening-cup::after { position: absolute; top: 3px; left: 100%; width: 9px; height: 10px; border: 1px solid; border-inline-start: 0; border-radius: 0 65% 65% 0; content: ''; }
+    .opening-cup::before { position: absolute; top: 27px; left: -5px; width: 43px; border-top: 1px solid; content: ''; }
+  }
+  @keyframes opening-paper { 0%, 65% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes opening-press { from { opacity: 0; transform: rotate(-11deg) scale(1.15); } to { opacity: 1; transform: rotate(-5deg) scale(1); } }
+</style>

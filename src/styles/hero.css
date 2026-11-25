@@ -22,8 +22,10 @@
     radial-gradient(ellipse at 72% 44%, transparent 0 28%, #0b100d24 78%);
 }
 
+.hero--atlas > picture { left: auto; width: 76%; }
+
 .hero--atlas > picture > .hero-image {
-  object-position: center 54%;
+  object-fit: contain;
   filter: saturate(.82) contrast(1.04);
 }
 
@@ -317,4 +319,24 @@
   .hero--atlas .lead {
     margin-block: 16px;
   }
+}
+
+@media (max-width: 680px) {
+  .hero--atlas {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: auto;
+    gap: 20px;
+    padding: 72px 0 24px;
+  }
+  .hero--atlas::before, .hero--atlas::after { display: none; }
+  .hero--atlas > picture { position: relative; inset: auto; z-index: 0; width: 100%; height: auto; }
+  .hero--atlas > picture > .hero-image { width: 100%; height: auto; object-fit: contain; }
+  .hero--atlas .hero-content, .hero--atlas .hero-bottomline { margin: 0; padding-inline: 6vw; }
+  .hero--atlas .hero-bottomline { position: relative; inset: auto; }
+}
+
+@media (prefers-reduced-motion: no-preference) and (max-width: 680px) {
+  .hero--atlas[data-opening] > picture { animation-name: editorial-enter; }
 }
