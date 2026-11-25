@@ -6,6 +6,7 @@ const root = process.cwd();
 const sourceRoot = path.join(root, 'assets', 'source');
 const outputRoot = path.join(root, 'public', 'images', 'optimized');
 const manifestPath = path.join(outputRoot, 'manifest.json');
+const sourceManifestPath = path.join(root, 'src', 'generated', 'image-manifest.json');
 const supported = new Set(['.jpg', '.jpeg', '.png', '.tif', '.tiff', '.webp', '.avif']);
 const targetWidths = [480, 768, 1200, 1600, 2200];
 
@@ -32,6 +33,7 @@ function assetKey(file) {
 await fs.mkdir(path.dirname(outputRoot), { recursive: true });
 await fs.rm(outputRoot, { recursive: true, force: true });
 await fs.mkdir(outputRoot, { recursive: true });
+await fs.mkdir(path.dirname(sourceManifestPath), { recursive: true });
 const files = await collectFiles(sourceRoot);
 const manifest = { version: 1, generatedAt: new Date().toISOString(), assets: {} };
 const seen = new Set();
@@ -65,5 +67,8 @@ for (const file of files) {
   };
   console.log(`Optimized ${key}: ${widths.join(', ')}px`);
 }
-await fs.writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+await Promise.all([
+  fs.writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`),
+  fs.writeFile(sourceManifestPath, `${JSON.stringify(manifest, null, 2)}\n`),
+]);
 console.log(files.length ? `Image pipeline complete: ${files.length} source image(s), AVIF + WebP variants written.` : 'Image pipeline ready: no source photographs yet; empty manifest written. Add originals under assets/source/.');
