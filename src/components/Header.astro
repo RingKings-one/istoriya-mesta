@@ -32,7 +32,7 @@ const currentPath = Astro.url.pathname;
     aria-controls="primary-navigation"
     aria-expanded="false"
   >
-    <span aria-hidden="true">☰</span>
+    <span class="menu-toggle-icon" aria-hidden="true">☰</span>
   </button>
 </header>
 
@@ -43,6 +43,8 @@ const currentPath = Astro.url.pathname;
   const closeMenu = (returnFocus = false) => {
     toggle?.setAttribute('aria-expanded', 'false');
     toggle?.setAttribute('aria-label', 'Открыть меню');
+    const icon = toggle?.querySelector<HTMLElement>('.menu-toggle-icon');
+    if (icon) icon.textContent = '☰';
     navigation?.classList.remove('is-open');
     if (returnFocus) toggle?.focus();
   };
@@ -51,6 +53,8 @@ const currentPath = Astro.url.pathname;
     const shouldOpen = toggle.getAttribute('aria-expanded') !== 'true';
     toggle.setAttribute('aria-expanded', String(shouldOpen));
     toggle.setAttribute('aria-label', shouldOpen ? 'Закрыть меню' : 'Открыть меню');
+    const icon = toggle.querySelector<HTMLElement>('.menu-toggle-icon');
+    if (icon) icon.textContent = shouldOpen ? '×' : '☰';
     navigation?.classList.toggle('is-open', shouldOpen);
 
     if (shouldOpen) {
@@ -65,6 +69,12 @@ const currentPath = Astro.url.pathname;
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
       closeMenu(true);
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 680 && toggle?.getAttribute('aria-expanded') === 'true') {
+      closeMenu();
     }
   });
 
