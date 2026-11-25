@@ -1,5 +1,6 @@
 ---
 import { imageSrcSet } from '../data';
+import ArrowMark from './ArrowMark.astro';
 const {
   image,
   imageAlt = '',
@@ -20,6 +21,6 @@ const {
     <p class="eyebrow">{eyebrow}</p>
     <h2>{title}</h2>
     <p>{text}</p>
-    <span class="text-link">Открыть материал ↗</span>
+    <span class="text-link">Открыть материал <ArrowMark direction="forward" /></span>
   </div>
 </a>
