@@ -30,21 +30,21 @@ import EditorialImage from '../../components/EditorialImage.astro';
         <EditorialImage src={images.camera} sizes="(max-width: 680px) 100vw, 58vw" alt="" />
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">01</span>
-        {isPlaceholderImage(images.camera) && {isPlaceholderImage(images.map) && {isPlaceholderImage(images.books) && <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>}}}
+        {isPlaceholderImage(images.camera) && <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>}
         <span class="archive-tile-copy"><small>КАДРЫ И НАБЛЮДЕНИЯ</small><strong>Фотографическая память</strong><em>Перейти к историям <ArrowMark direction="forward" /></em></span>
       </a>
       <a class="archive-tile" href="/routes/">
         <EditorialImage src={images.map} sizes="(max-width: 680px) 100vw, 42vw" alt="" />
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">02</span>
-        <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>
+        {isPlaceholderImage(images.map) && <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>}
         <span class="archive-tile-copy"><small>СХЕМЫ И ПРОСТРАНСТВО</small><strong>Карты и маршруты</strong><em>Исследовать <ArrowMark direction="forward" /></em></span>
       </a>
       <a class="archive-tile" href="/cities/ruza/">
         <EditorialImage src={images.books} sizes="(max-width: 680px) 100vw, 42vw" alt="" />
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">03</span>
-        <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>
+        {isPlaceholderImage(images.books) && <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>}
         <span class="archive-tile-copy"><small>ИСТОЧНИКИ И СВИДЕТЕЛЬСТВА</small><strong>Материалы места</strong><em>Открыть главу <ArrowMark direction="forward" /></em></span>
       </a>
     </div>
