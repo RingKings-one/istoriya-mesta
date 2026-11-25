@@ -3,7 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import EditorialPath from '../../components/EditorialPath.astro';
 import ArrowMark from '../../components/ArrowMark.astro';
-import { images, imageSrcSet } from '../../data';
+import { images } from '../../data';
+import EditorialImage from '../../components/EditorialImage.astro';
 ---
 <BaseLayout
   title="Истории — История места"
@@ -25,7 +26,7 @@ import { images, imageSrcSet } from '../../data';
       <span class="journal-status">ЖУРНАЛ ПОПОЛНЯЕТСЯ</span>
     </div>
     <figure class="journal-image">
-      <img src={images.street} srcset={imageSrcSet(images.street)} sizes="(max-width: 680px) 100vw, 58vw" alt="" loading="lazy" />
+      <EditorialImage src={images.street} sizes="(max-width: 680px) 100vw, 58vw" alt="" />
       <figcaption><span>ПОЛЕВЫЕ ЗАМЕТКИ</span><span>ВРЕМЕННЫЙ ВИЗУАЛ · НЕ ДОКУМЕНТАЛЬНОЕ ФОТО</span></figcaption>
     </figure>
   </section>
