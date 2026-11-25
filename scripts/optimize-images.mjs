@@ -35,7 +35,7 @@ await fs.rm(outputRoot, { recursive: true, force: true });
 await fs.mkdir(outputRoot, { recursive: true });
 await fs.mkdir(path.dirname(sourceManifestPath), { recursive: true });
 const files = await collectFiles(sourceRoot);
-const manifest = { version: 1, generatedAt: new Date().toISOString(), assets: {} };
+const manifest = { version: 1, assets: {} };
 const seen = new Set();
 
 for (const file of files) {
