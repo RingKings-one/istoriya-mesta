@@ -32,9 +32,9 @@ try {
   let imageCount = 0;
   for (const file of htmlFiles) {
     const html = await fs.readFile(file, 'utf8');
-    const images = [...html.matchAll(/<img\\b[^>]*>/g)].map((match) => match[0]);
-    const pictures = [...html.matchAll(/<picture\\b[^>]*>[\\s\\S]*?<\\/picture>/g)].map((match) => match[0]);
-    const outsidePictures = html.replace(/<picture\\b[^>]*>[\\s\\S]*?<\\/picture>/g, '').match(/<img\\b/g);
+    const images = [...html.matchAll(/<img\b[^>]*>/g)].map((match) => match[0]);
+    const pictures = [...html.matchAll(/<picture\b[^>]*>[\s\S]*?<\/picture>/g)].map((match) => match[0]);
+    const outsidePictures = html.replace(/<picture\b[^>]*>[\s\S]*?<\/picture>/g, '').match(/<img\b/g);
     if (outsidePictures?.length) throw new Error(`Raw image element outside EditorialImage picture in ${file}`);
     for (const image of images) {
       for (const attribute of ['alt=', 'loading=', 'decoding=']) {
