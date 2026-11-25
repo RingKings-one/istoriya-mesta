@@ -1056,3 +1056,32 @@ a {
     transition: none;
   }
 }
+
+
+/* Transparent labels for temporary editorial imagery. */
+.page-intro-note,
+.hero-asset-note {
+  margin: 14px 0 0;
+  color: #d2c9bc;
+  font-size: 8px;
+  line-height: 1.5;
+  letter-spacing: .12em;
+}
+
+.page-intro-note {
+  max-width: 420px;
+}
+
+.hero-asset-note {
+  max-width: 420px;
+  opacity: .76;
+}
+
+@media (max-width: 680px) {
+  .page-intro-note,
+  .hero-asset-note {
+    max-width: 300px;
+    font-size: 7px;
+    letter-spacing: .1em;
+  }
+}
