@@ -22,7 +22,7 @@
     radial-gradient(ellipse at 72% 44%, transparent 0 28%, #0b100d24 78%);
 }
 
-.hero--atlas > .hero-image {
+.hero--atlas > picture > .hero-image {
   object-position: center 54%;
   filter: saturate(.82) contrast(1.04);
 }
