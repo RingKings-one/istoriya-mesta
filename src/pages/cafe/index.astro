@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
+import EditorialPath from '../../components/EditorialPath.astro';
 import { images, imageSrcSet } from '../../data';
 ---
 <BaseLayout
@@ -35,6 +36,7 @@ import { images, imageSrcSet } from '../../data';
     <div><span>02</span><strong>Материал</strong><p>Фактуры, предметы и детали, которые хочется рассматривать.</p></div>
     <div><span>03</span><strong>Люди</strong><p>Разговоры и ритуалы, благодаря которым место становится своим.</p></div>
   </section>
+  <EditorialPath current="cafe" />
 </BaseLayout>
 
 <style>
