@@ -15,6 +15,20 @@ const publicOutput = path.join(root, 'public', 'images', 'optimized');
 const manifestPath = path.join(root, 'src', 'generated', 'image-manifest.json');
 const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 
+function extractTags(sourceText, opening, closing) {
+  const tags = [];
+  let cursor = 0;
+  while (true) {
+    const start = sourceText.indexOf(opening, cursor);
+    if (start === -1) break;
+    const end = sourceText.indexOf(closing, start + opening.length);
+    if (end === -1) throw new Error(`Unclosed ${opening} tag in generated HTML.`);
+    tags.push(sourceText.slice(start, end + closing.length));
+    cursor = end + closing.length;
+  }
+  return tags;
+}
+
 if (patchedData === originalData) throw new Error('Could not map the isolated smoke-test asset to the Hero image.');
 await fs.mkdir(sourceDir, { recursive: true });
 try {
@@ -38,11 +52,12 @@ try {
   let imageCount = 0;
   for (const file of htmlFiles) {
     const html = await fs.readFile(file, 'utf8');
-    const images = [...html.matchAll(/<img\\b[^>]*>/g)].map((match) => match[0]);
-    const pictures = [...html.matchAll(/<picture\\b[^>]*>[\\s\\S]*?<\\/picture>/g)].map((match) => match[0]);
+    const pictures = extractTags(html, '<picture', '</picture>');
+    const images = pictures.flatMap((picture) => extractTags(picture, '<img', '>'));
+    let outsidePictures = html;
+    for (const picture of pictures) outsidePictures = outsidePictures.replace(picture, '');
+    if (outsidePictures.includes('<img')) throw new Error(`Raw image element outside EditorialImage picture in ${file}`);
     for (const picture of pictures) if (picture.includes('srcset=') && !picture.includes('sizes=')) throw new Error(`Picture srcset missing sizes in ${file}`);
-    const outsidePictures = html.replace(/<picture\\b[^>]*>[\\s\\S]*?<\\/picture>/g, '').match(/<img\\b/g);
-    if (outsidePictures?.length) throw new Error(`Raw image element outside EditorialImage picture in ${file}`);
     for (const image of images) {
       if (!(image.includes(' alt ') || image.includes(' alt=') || image.endsWith(' alt>'))) throw new Error(`Image missing alt attribute in ${file}: ${image}`);
       for (const attribute of ['loading=', 'decoding=']) {
@@ -50,7 +65,7 @@ try {
       }
       imageCount += 1;
     }
-    if ((html.match(/fetchpriority="high"/g) ?? []).length > 1) throw new Error(`More than one high-priority image on ${file}`);
+    if (html.split('fetchpriority="high"').length - 1 > 1) throw new Error(`More than one high-priority image on ${file}`);
   }
 
   const home = await fs.readFile(path.join(dist, 'index.html'), 'utf8');
