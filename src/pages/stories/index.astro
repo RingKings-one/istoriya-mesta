@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import EditorialPath from '../../components/EditorialPath.astro';
+import ArrowMark from '../../components/ArrowMark.astro';
 import { images, imageSrcSet } from '../../data';
 ---
 <BaseLayout
@@ -36,7 +37,7 @@ import { images, imageSrcSet } from '../../data';
     <a class="journal-row" href="/archive/">
       <span class="journal-number">01</span>
       <span class="journal-row-main"><strong>Следы времени</strong><small>Городская среда и память пространства</small></span>
-      <span class="journal-row-tag">СРЕДА</span><span class="journal-arrow">↗</span>
+      <span class="journal-row-tag">СРЕДА</span><ArrowMark direction="forward" class="journal-arrow" />
     </a>
     <a class="journal-row" href="/cafe/">
       <span class="journal-number">02</span>
@@ -70,7 +71,7 @@ import { images, imageSrcSet } from '../../data';
   .journal-row-main strong { font:clamp(19px,2vw,26px) var(--serif); font-weight:400; }
   .journal-row-main small,.journal-row-tag { color:var(--muted); font-size:10px; }
   .journal-row-tag { letter-spacing:.12em; }
-  .journal-arrow { color:var(--stone); font-size:18px; }
+  .journal-arrow { color:var(--stone); width:15px; height:15px; }
   @media(max-width:680px) {
     .journal-lead { grid-template-columns:1fr; gap:24px; }
     .journal-lead-copy h2 { max-width:340px; }
