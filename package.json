@@ -1,0 +1,23 @@
+{
+  "name": "istoriya-mesta",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check:links": "node scripts/check-internal-links.mjs",
+    "images:optimize": "node scripts/optimize-images.mjs",
+    "prebuild": "npm run images:optimize",
+    "test:images": "node scripts/test-image-pipeline.mjs",
+    "audit:report": "node scripts/report-npm-audit.mjs",
+    "test:local-images": "node scripts/test-local-image-render.mjs",
+    "predev": "npm run images:optimize"
+  },
+  "dependencies": {
+    "astro": "^5.0.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
+  }
+}

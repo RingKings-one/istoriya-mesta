@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import EditorialPath from '../../components/EditorialPath.astro';
+import ArrowMark from '../../components/ArrowMark.astro';
+import { images, isPlaceholderImage } from '../../data';
+import EditorialImage from '../../components/EditorialImage.astro';
+---
+<BaseLayout
+  title="Маршруты — История места"
+  description="Неспешные прогулки и маршруты, которые помогают внимательнее увидеть город."
+>
+  <PageIntro
+    edition="МАРШРУТЫ · ПОЛЕВЫЕ ЗАМЕТКИ"
+    variant="route"
+    eyebrow="ПУТЕШЕСТВИЯ · МЕДЛЕННЫЙ РИТМ"
+    title="Путь — тоже часть истории."
+    description="Не гнаться за количеством точек. Замечать, останавливаться и позволять месту раскрыться."
+    image={images.forest}
+  />
+  <section class="route-opening section">
+    <div class="route-opening-copy">
+      <p class="eyebrow">ПЕРВАЯ ПРОГУЛКА · РУЗА</p>
+      <h2>Идти, чтобы <em>замечать.</em></h2>
+      <p>Здесь маршрут начинается с настроения, а не с набора обязательных остановок. Точные точки, расстояния и практические детали появятся после проверки на месте.</p>
+      <a class="text-link" href="/cities/ruza/">Открыть главу о Рузе <ArrowMark direction="forward" /></a>
+    </div>
+    <figure class="route-landscape"><EditorialImage src={images.river} sizes="(max-width: 680px) 100vw, 55vw" alt="" />{isPlaceholderImage(images.river) && <figcaption>ПЕЙЗАЖ КАК ПРИГЛАШЕНИЕ К ПУТИ · ВРЕМЕННЫЙ ВИЗУАЛ</figcaption>}</figure>
+  </section>
+  <section class="route-sequence section">
+    <div class="route-sequence-heading"><p class="eyebrow">РИТМ ПРОГУЛКИ</p><span>ТРИ ОСТАНОВКИ ВНИМАНИЯ</span></div>
+    <ol class="route-rail">
+      <li><span class="route-stop">01</span><div><small>СНАЧАЛА · ОГЛЯДЕТЬСЯ</small><h3>Поймать общий план</h3><p>Почувствовать масштаб, свет и настроение пространства.</p></div></li>
+      <li><span class="route-stop">02</span><div><small>ЗАТЕМ · ПРИБЛИЗИТЬСЯ</small><h3>Замечать детали</h3><p>Оставить время для фактур, архитектуры, природы и случайных открытий.</p></div></li>
+      <li><span class="route-stop">03</span><div><small>В КОНЦЕ · СОХРАНИТЬ</small><h3>Унести своё впечатление</h3><p>Собрать личную историю прогулки — не только список увиденного.</p></div></li>
+    </ol>
+    <p class="route-disclaimer">Это редакционная идея прогулки, а не готовый навигационный трек. Проверенные координаты и параметры маршрута будут добавлены отдельно.</p>
+  </section>
+  <EditorialPath current="routes" />
+</BaseLayout>
+
+<style>
+  .route-opening { display:grid; grid-template-columns:.8fr 1.2fr; gap:clamp(28px,6vw,88px); align-items:center; }
+  .route-opening-copy h2 { margin:16px 0; font:clamp(36px,4.8vw,66px)/1 var(--serif); font-weight:400; }
+  .route-opening-copy h2 em { color:var(--stone); }
+  .route-opening-copy > p:not(.eyebrow) { max-width:400px; color:var(--muted); }
+  .route-opening-copy .text-link { display:inline-block; margin-top:16px; }
+  .route-landscape { margin:0; }
+  .route-landscape img { width:100%; aspect-ratio:1.48; }
+  .route-landscape figcaption { padding-top:11px; color:var(--muted); font-size:9px; letter-spacing:.14em; }
+  .route-sequence { padding-top:44px; }
+  .route-sequence-heading { display:flex; justify-content:space-between; align-items:center; gap:20px; padding-bottom:18px; border-bottom:1px solid #d7c7b244; }
+  .route-sequence-heading > span { color:var(--muted); font-size:9px; letter-spacing:.13em; }
+  .route-rail { position:relative; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; margin:0; padding:34px 0 0; list-style:none; }
+  .route-rail::before { position:absolute; top:50px; right:10%; left:10%; height:1px; background:#a8664b88; content:""; }
+  .route-rail li { position:relative; display:grid; align-content:start; gap:22px; }
+  .route-stop { z-index:1; display:grid; width:34px; height:34px; place-items:center; border:1px solid var(--rust); border-radius:50%; background:var(--night); color:var(--stone); font:14px var(--serif); }
+  .route-rail li small { color:var(--rust); font-size:9px; letter-spacing:.13em; }
+  .route-rail h3 { margin:8px 0; font:clamp(20px,2.3vw,28px)/1.1 var(--serif); font-weight:400; }
+  .route-rail li p { max-width:270px; margin:0; color:var(--muted); font-size:12px; }
+  .route-disclaimer { margin-top:34px; padding-top:16px; border-top:1px solid #d7c7b233; color:var(--muted); font-size:10px; }
+  @media(max-width:680px) {
+    .route-opening { grid-template-columns:1fr; gap:24px; }
+    .route-rail { grid-template-columns:1fr; gap:24px; padding-top:24px; }
+    .route-rail::before { top:38px; bottom:45px; left:16px; width:1px; height:auto; }
+    .route-rail li { grid-template-columns:34px minmax(0,1fr); gap:14px; }
+    .route-stop { grid-row:span 2; }
+    .route-rail li > div { padding-top:2px; }
+    .route-rail h3 { margin:6px 0; }
+    .route-rail li p { max-width:none; }
+    .route-sequence-heading { align-items:flex-start; flex-direction:column; gap:4px; }
+  }
+</style>

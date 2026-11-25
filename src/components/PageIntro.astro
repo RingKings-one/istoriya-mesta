@@ -1,0 +1,62 @@
+---
+import EditorialImage from './EditorialImage.astro';
+import { isPlaceholderImage } from '../data';
+const { eyebrow, title, description, image, edition = 'ГЛАВА 01', variant = 'default' } = Astro.props;
+const showPlaceholderNote = image ? isPlaceholderImage(image) : false;
+---
+<section class={`page-intro page-intro--${variant}`} aria-labelledby="page-title">
+  {image && <EditorialImage src={image} alt="" sizes="100vw" loading="eager" fetchpriority="high" position="var(--intro-image-position, center 55%)" className="page-intro-image" />}
+  <span class="page-intro-edition" aria-hidden="true">{edition}</span>
+  <div class="page-intro-copy">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1 id="page-title">{title}</h1>
+    <p class="lead">{description}</p>
+    {showPlaceholderNote && <p class="page-intro-note">ВРЕМЕННОЕ ИЗОБРАЖЕНИЕ ДЛЯ НАСТРОЕНИЯ · НЕ ФОТОГРАФИЯ КОНКРЕТНОГО МЕСТА</p>}
+  </div>
+</section>
+
+<style>
+  .page-intro > picture > img { object-position: var(--intro-image-position, center 55%); }
+  .page-intro-edition {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: clamp(28px, 7vw, 104px);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #e8e1d6b8;
+    font-size: 8px;
+    letter-spacing: .2em;
+    writing-mode: vertical-rl;
+    transform: translateY(-50%);
+  }
+  .page-intro-edition::before {
+    width: 1px;
+    height: 54px;
+    background: #e8e1d680;
+    content: '';
+  }
+  .page-intro--journal { --intro-image-position: 64% center; }
+  .page-intro--archive { --intro-image-position: center 42%; }
+  .page-intro--route { --intro-image-position: 56% center; }
+  .page-intro--cafe { --intro-image-position: 68% center; }
+  .page-intro--city { --intro-image-position: 58% center; }
+  .page-intro--atlas { --intro-image-position: center 48%; }
+  .page-intro--journal::after {
+    background: linear-gradient(90deg,#0d110ee8 0%,#0d110e76 55%,#0d110e25 100%),linear-gradient(0deg,#0d110eaa 0%,transparent 75%);
+  }
+  .page-intro--archive::before { right: 13vw; width: min(28vw,360px); transform: rotate(45deg) scale(.72); }
+  .page-intro--route::before { border-style: dashed; opacity: .36; }
+  .page-intro--cafe::after {
+    background: linear-gradient(90deg,#17130fe8 0%,#17130e75 58%,#17130e20 100%),linear-gradient(0deg,#17130eaa 0%,transparent 75%);
+  }
+  .page-intro--city .page-intro-copy { max-width: 650px; }
+  .page-intro--city h1 { font-size: clamp(82px, 12vw, 160px); }
+  @media(max-width:680px) {
+    .page-intro-edition { top: 104px; right: 24px; font-size: 7px; }
+    .page-intro-edition::before { height: 32px; }
+    .page-intro--city h1 { font-size: clamp(64px, 18vw, 92px); }
+  }
+  @media(prefers-reduced-motion:reduce) { .page-intro-edition { transform: translateY(-50%); } }
+</style>

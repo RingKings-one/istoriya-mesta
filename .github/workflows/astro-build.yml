@@ -1,0 +1,22 @@
+name: Astro build
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npm run test:images
+      - run: npm run test:local-images
+      - run: npm audit --json > /tmp/npm-audit.json || true
+      - run: npm run audit:report -- /tmp/npm-audit.json
+      - run: npm run build
+      - run: npm run check:links

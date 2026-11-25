@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import EditorialPath from '../../components/EditorialPath.astro';
+import { ruzaProfile } from '../../content';
+import FeatureCard from '../../components/FeatureCard.astro';
+import { images, isPlaceholderImage } from '../../data';
+import EditorialImage from '../../components/EditorialImage.astro';
+---
+<BaseLayout
+  title="Руза — История места"
+  description="Первая глава живого атласа «История места». Открываем Рузу через места, детали и маршруты."
+>
+  <PageIntro
+    edition="АТЛАС · ГЛАВА 01 / РУЗА"
+    variant="city"
+    eyebrow="ПЕРВАЯ ГЛАВА · 01 / МОСКОВСКАЯ ОБЛАСТЬ"
+    title="Руза"
+    description="Знакомство с городом без спешки — через его пространство, настроение и истории."
+    image={images.river}
+  />
+  <section class="ruza-opening section">
+    <div class="ruza-opening-heading">
+      <p class="eyebrow">ПОРТРЕТ МЕСТА</p>
+      <h2>Город раскрывается<br /><em>не сразу.</em></h2>
+    </div>
+    <div class="ruza-opening-copy">
+      <p>{ruzaProfile.summary}</p>
+      <span class="ruza-edition">АТЛАС ЖИВЫХ ИСТОРИЙ <i>—</i> ГЛАВА 01</span>
+      <span class="ruza-status">СТАТУС РЕДАКЦИОННОЙ ГЛАВЫ · {ruzaProfile.status === 'researching' ? 'ИССЛЕДОВАНИЕ ПРОДОЛЖАЕТСЯ' : ruzaProfile.status.toUpperCase()}</span>
+    </div>
+  </section>
+  <section class="ruza-spread">
+    <figure class="ruza-spread-image"><EditorialImage src={images.street} sizes="(max-width: 680px) 100vw, 68vw" alt="" />{isPlaceholderImage(images.street) && <figcaption>ВИЗУАЛЬНЫЙ ОБРАЗ ГОРОДСКОЙ СРЕДЫ · ВРЕМЕННОЕ ИЗОБРАЖЕНИЕ</figcaption>}</figure>
+    <div class="ruza-spread-note">
+      <span class="ruza-side-index">01 / 03</span>
+      <p class="eyebrow">ПОЧУВСТВОВАТЬ</p>
+      <h3>Увидеть знакомое<br />по-новому.</h3>
+      <p>Не торопиться с выводами. Сначала — пространство, настроение и детали, из которых складывается личное ощущение города.</p>
+    </div>
+  </section>
+  <section class="section ruza-directions">
+    <div class="ruza-directions-heading"><div><p class="eyebrow">КАРТА ИССЛЕДОВАНИЯ</p><h2>Выберите направление.</h2></div><p>Три способа приблизиться к характеру места</p></div>
+    <div class="card-grid">
+      <FeatureCard image={images.forest} eyebrow="В ДВИЖЕНИИ" title="Маршруты" text="Прогулки, которые помогают увидеть знакомое по-новому." href="/routes/" number="01" />
+      <FeatureCard image={images.archive} eyebrow="В ПАМЯТИ" title="Истории" text="Наблюдения, сюжеты и человеческие детали." href="/stories/" number="02" />
+      <FeatureCard image={images.camera} eyebrow="В ДЕТАЛЯХ" title="Архив" text="Визуальные материалы и следы времени." href="/archive/" number="03" />
+    </div>
+  </section>
+  <EditorialPath current="ruza" />
+</BaseLayout>
+
+<style>
+  .ruza-opening { display:grid; grid-template-columns:1fr .85fr; gap:clamp(30px,7vw,110px); align-items:end; }
+  .ruza-opening-heading h2 { margin:14px 0 0; font:clamp(42px,6vw,82px)/.98 var(--serif); font-weight:400; }
+  .ruza-opening-heading h2 em { color:var(--stone); }
+  .ruza-opening-copy { max-width:440px; padding-bottom:5px; }
+  .ruza-opening-copy > p { color:var(--muted); font-size:14px; }
+  .ruza-status { display:block; margin-top:14px; color:var(--muted); font-size:8px; letter-spacing:.12em; line-height:1.6; }
+  .ruza-edition { display:flex; gap:10px; align-items:center; margin-top:28px; color:var(--stone); font-size:9px; letter-spacing:.14em; }
+  .ruza-edition i { color:var(--rust); font-style:normal; }
+  .ruza-spread { display:grid; grid-template-columns:1.4fr .6fr; gap:clamp(24px,5vw,70px); align-items:center; padding:0 6vw 90px; }
+  .ruza-spread-image { margin:0; }
+  .ruza-spread-image img { width:100%; aspect-ratio:1.5; }
+  .ruza-spread-image figcaption { padding-top:10px; color:var(--muted); font-size:8px; letter-spacing:.12em; }
+  .ruza-spread-note { position:relative; padding:36px 0 36px 26px; border-left:1px solid #a8664b99; }
+  .ruza-side-index { display:block; margin-bottom:34px; color:var(--rust); font:18px var(--serif); }
+  .ruza-spread-note h3 { margin:12px 0; font:clamp(26px,3.3vw,44px)/1.08 var(--serif); font-weight:400; }
+  .ruza-spread-note > p:last-child { color:var(--muted); font-size:11px; }
+  .ruza-directions-heading { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:26px; }
+  .ruza-directions-heading h2 { margin:10px 0 0; font:clamp(30px,4vw,48px) var(--serif); font-weight:400; }
+  .ruza-directions-heading > p { max-width:230px; color:var(--muted); font-size:11px; }
+  @media(max-width:680px) {
+    .ruza-opening { grid-template-columns:1fr; gap:20px; }
+    .ruza-spread { grid-template-columns:1fr; gap:22px; padding:0 6vw 64px; }
+    .ruza-spread-note { padding:20px 0 20px 18px; }
+    .ruza-side-index { margin-bottom:18px; }
+    .ruza-directions-heading { align-items:flex-start; flex-direction:column; gap:4px; }
+    .ruza-directions-heading > p { margin:0; }
+  }
+</style>
