@@ -524,6 +524,13 @@ a {
 }
 
 
+.credits-list .credits-intro {
+  max-width: 720px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .credits-list ul {
   margin: 42px 0 0;
   border-top: 1px solid #ffffff26;
