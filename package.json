@@ -15,9 +15,12 @@
     "predev": "npm run images:optimize"
   },
   "dependencies": {
-    "astro": "^5.0.0"
+    "astro": "7.4.13"
   },
   "devDependencies": {
     "sharp": "^0.35.5"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }
