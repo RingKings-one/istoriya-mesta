@@ -12,12 +12,31 @@
   }
 
   [data-reveal].has-entered:not(:focus-within) {
-    animation: editorial-enter 650ms var(--ease-editorial);
+    animation: editorial-enter 720ms var(--ease-editorial) var(--reveal-delay, 0ms) both;
+  }
+
+  [data-reveal="image"].has-entered:not(:focus-within) {
+    animation: editorial-image-enter 900ms var(--ease-editorial) var(--reveal-delay, 0ms) both;
+  }
+
+  [data-reveal]:has(> picture).has-entered:not(:focus-within) > picture,
+  [data-reveal]:has(> img).has-entered:not(:focus-within) > img {
+    animation: documentary-image-enter 850ms var(--ease-editorial) var(--reveal-delay, 0ms) both;
   }
 }
 
 @keyframes editorial-enter {
-  from { opacity: .76; translate: 0 13px; }
+  from { opacity: .62; translate: 0 18px; }
+}
+
+@keyframes editorial-image-enter {
+  from { opacity: .55; clip-path: inset(3% 0 3% 0); scale: 1.018; }
+  to { opacity: 1; clip-path: inset(0); scale: 1; }
+}
+
+@keyframes documentary-image-enter {
+  from { opacity: .7; scale: 1.018; }
+  to { opacity: 1; scale: 1; }
 }
 
 @keyframes opening-image {
@@ -30,7 +49,13 @@
   }
 
   [data-reveal].has-entered:not(:focus-within) {
-    animation-duration: 420ms;
+    animation-duration: 480ms;
+  }
+
+  [data-reveal="image"].has-entered:not(:focus-within),
+  [data-reveal]:has(> picture).has-entered:not(:focus-within) > picture,
+  [data-reveal]:has(> img).has-entered:not(:focus-within) > img {
+    animation-duration: 620ms;
   }
 
   @keyframes editorial-enter {
@@ -50,6 +75,13 @@
   .archive-back[open] > .photo-frame {
     animation: editorial-enter 420ms var(--ease-editorial);
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal].has-entered,
+  [data-reveal="image"].has-entered,
+  [data-reveal].has-entered > picture,
+  [data-reveal].has-entered > img { animation: none !important; }
 }
 
 @keyframes documentary-frame {

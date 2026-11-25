@@ -90,17 +90,15 @@
 
 .hero-secondary-link {
   display: inline-flex;
-  min-height: 44px;
   align-items: center;
-  gap: 12px;
   color: #e8e1d6;
-  font-size: 11px;
-  letter-spacing: .05em;
-  transition: color .25s ease;
+  transition: color .25s ease, background .25s ease, border-color .25s ease;
 }
 
 .hero-secondary-link:hover {
-  color: var(--stone);
+  border-color: var(--light);
+  background: #ffffff18;
+  color: var(--light);
 }
 
 .hero-bottomline {
