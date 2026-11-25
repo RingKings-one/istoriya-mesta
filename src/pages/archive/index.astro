@@ -1,4 +1,52 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro'; import PageIntro from '../../components/PageIntro.astro'; import {images} from '../../data';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import FeatureCard from '../../components/FeatureCard.astro';
+import { images } from '../../data';
 ---
-<BaseLayout title="Архив — История места"><PageIntro eyebrow="ВИЗУАЛЬНЫЙ АРХИВ" title="Архив деталей" description="Фотографии, предметы, карты и следы времени." image={images.archive}/><section class="section"><h2>Память в предметах</h2><a class="feature-card" href="/stories/"><img src={images.camera} alt=""/><div class="feature-copy"><h2>Фотографии</h2></div></a></section></BaseLayout>
+<BaseLayout
+  title="Архив — История места"
+  description="Визуальный архив проекта: фотографии, карты, предметы и другие следы времени."
+>
+  <PageIntro
+    eyebrow="ВИЗУАЛЬНЫЙ АРХИВ"
+    title="Память в деталях."
+    description="Фотографии, документы, карты и предметы помогают увидеть место с разных сторон."
+    image={images.archive}
+  />
+  <section class="section">
+    <p class="eyebrow">КОЛЛЕКЦИЯ</p>
+    <h2>Собирать. Сопоставлять. Сохранять.</h2>
+    <p>
+      Архив будет пополняться проверенными материалами и фотографиями проекта.
+      Временные редакционные изображения здесь служат только для настройки
+      композиции и не выдаются за исторические документы.
+    </p>
+    <div class="card-grid">
+      <FeatureCard
+        image={images.camera}
+        eyebrow="ФОТОГРАФИИ"
+        title="Визуальная память"
+        text="Кадры и детали, которые помогают почувствовать время."
+        href="/stories/"
+        number="01"
+      />
+      <FeatureCard
+        image={images.map}
+        eyebrow="КАРТЫ"
+        title="География места"
+        text="Пространственные связи и маршруты исследования."
+        href="/routes/"
+        number="02"
+      />
+      <FeatureCard
+        image={images.books}
+        eyebrow="МАТЕРИАЛЫ"
+        title="Следы и свидетельства"
+        text="Предметы, заметки и источники будущих историй."
+        href="/cities/ruza/"
+        number="03"
+      />
+    </div>
+  </section>
+</BaseLayout>
