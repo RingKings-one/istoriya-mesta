@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import HeroSection from '../components/HeroSection.astro';
 import ArrowMark from '../components/ArrowMark.astro';
-import { images } from '../data';
+import { images, isPlaceholderImage } from '../data';
 import EditorialImage from '../components/EditorialImage.astro';
 ---
 <BaseLayout
@@ -27,7 +27,7 @@ import EditorialImage from '../components/EditorialImage.astro';
     </div>
     <figure class="home-intro-image">
       <EditorialImage src={images.street} sizes="(max-width: 680px) 100vw, 54vw" alt="" />
-      <figcaption><span>НАСТРОЕНИЕ ГОРОДСКОЙ СРЕДЫ</span><span>ВРЕМЕННЫЙ ВИЗУАЛ</span></figcaption>
+      <figcaption><span>НАСТРОЕНИЕ ГОРОДСКОЙ СРЕДЫ</span>{isPlaceholderImage(images.street) && <span>ВРЕМЕННЫЙ ВИЗУАЛ</span>}</figcaption>
     </figure>
   </section>
 
@@ -41,7 +41,7 @@ import EditorialImage from '../components/EditorialImage.astro';
     <div class="home-city-image">
       <EditorialImage src={images.river} sizes="(max-width: 680px) 100vw, 52vw" alt="" />
       <span class="home-image-index">ГЛАВА 01 <i>·</i> РУЗА</span>
-      <span class="home-image-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ ДЛЯ НАСТРОЕНИЯ</span>
+      {isPlaceholderImage(images.river) && <span class="home-image-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ ДЛЯ НАСТРОЕНИЯ</span>}
     </div>
     <div class="feature-copy home-city-copy">
       <p class="eyebrow">ПЕРВАЯ ГЛАВА · 01</p>
@@ -69,7 +69,7 @@ import EditorialImage from '../components/EditorialImage.astro';
     </div>
     <figure class="home-route-image">
       <EditorialImage src={images.forest} sizes="(max-width: 680px) 100vw, 50vw" alt="" />
-      <figcaption><span>ПУТЬ КАК СПОСОБ УВИДЕТЬ БОЛЬШЕ</span><span>ВРЕМЕННЫЙ ВИЗУАЛ</span></figcaption>
+      <figcaption><span>ПУТЬ КАК СПОСОБ УВИДЕТЬ БОЛЬШЕ</span>{isPlaceholderImage(images.forest) && <span>ВРЕМЕННЫЙ ВИЗУАЛ</span>}</figcaption>
     </figure>
   </section>
 
