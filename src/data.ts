@@ -37,11 +37,11 @@ export const images = {
  * Keep the image role stable; the browser chooses the smallest suitable width.
  */
 export const imageSrcSet = (url: string) => {
-  const maxWidth = Number(url.match(/[?&]w=(\\d+)/)?.[1] ?? 2200);
+  const maxWidth = Number(url.match(/[?&]w=(\d+)/)?.[1] ?? 2200);
   const widths = [640, 960, 1440].filter((width) => width < maxWidth);
   widths.push(maxWidth);
 
   return widths
-    .map((width) => `${url.replace(/([?&])w=\\d+/, `$1w=${width}`)} ${width}w`)
+    .map((width) => \`\${url.replace(/([?&])w=\d+/, \`$1w=\${width}\`)} \${width}w\`)
     .join(', ');
 };
