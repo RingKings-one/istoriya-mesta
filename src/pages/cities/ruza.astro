@@ -1,4 +1,60 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro'; import PageIntro from '../../components/PageIntro.astro'; import {images} from '../../data';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import FeatureCard from '../../components/FeatureCard.astro';
+import { images } from '../../data';
 ---
-<BaseLayout title="Руза — История места"><PageIntro eyebrow="ПЕРВАЯ ГЛАВА" title="Руза" description="Город, который мы будем открывать через места, людей, детали и маршруты." image={images.river}/><section class="section"><h2>Исследуйте город</h2><div class="card-grid"><a class="feature-card" href="/stories/"><img src={images.street} alt=""/><div class="feature-copy"><h2>Городская среда</h2></div></a><a class="feature-card" href="/routes/"><img src={images.map} alt=""/><div class="feature-copy"><h2>Прогулка по городу</h2></div></a></div></section></BaseLayout>
+<BaseLayout
+  title="Руза — История места"
+  description="Первая глава живого атласа «История места». Открываем Рузу через места, детали и маршруты."
+>
+  <PageIntro
+    eyebrow="ПЕРВАЯ ГЛАВА · 01"
+    title="Руза"
+    description="Знакомство с городом без спешки — через его пространство, настроение и истории."
+    image={images.river}
+  />
+  <section class="section intro-grid">
+    <div>
+      <p class="eyebrow">ПОЧУВСТВОВАТЬ МЕСТО</p>
+      <h2>Город раскрывается в деталях.</h2>
+      <p>
+        Мы будем собирать портрет Рузы постепенно: замечать городскую среду,
+        искать истории за привычными фасадами и прокладывать маршруты для
+        внимательных прогулок.
+      </p>
+      <a class="text-link" href="/routes/">Начать с прогулки ↗</a>
+    </div>
+    <img src={images.street} alt="" loading="lazy" />
+  </section>
+  <section class="section">
+    <p class="eyebrow">ИССЛЕДОВАТЬ</p>
+    <h2>Выберите направление.</h2>
+    <div class="card-grid">
+      <FeatureCard
+        image={images.forest}
+        eyebrow="В ДВИЖЕНИИ"
+        title="Маршруты"
+        text="Прогулки, которые помогают увидеть знакомое по-новому."
+        href="/routes/"
+        number="01"
+      />
+      <FeatureCard
+        image={images.archive}
+        eyebrow="В ПАМЯТИ"
+        title="Истории"
+        text="Наблюдения, сюжеты и человеческие детали."
+        href="/stories/"
+        number="02"
+      />
+      <FeatureCard
+        image={images.camera}
+        eyebrow="В ДЕТАЛЯХ"
+        title="Архив"
+        text="Визуальные материалы и следы времени."
+        href="/archive/"
+        number="03"
+      />
+    </div>
+  </section>
+</BaseLayout>
