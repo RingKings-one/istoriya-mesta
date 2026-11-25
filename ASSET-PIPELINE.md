@@ -49,3 +49,8 @@ Before a real image enters the published asset set, record source, creator/credi
 ## Technical implementation
 
 The optimizer uses `sharp` as a development-only build tool. It recursively scans supported raster formats, rejects duplicate generated keys, clears only its own generated output folder, and emits a JSON manifest. Original files under `assets/source/` are never modified or deleted.
+
+
+## Repository visibility
+
+The GitHub repository is public. Files committed under `assets/source/` are therefore visible to repository visitors and remain in Git history, even though Astro does not publish that folder as a site URL. Only commit original photographs when their storage and redistribution in a public repository are permitted. For private or restricted originals, keep the source in private storage and publish only approved derivatives through a controlled process.
