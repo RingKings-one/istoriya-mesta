@@ -13,6 +13,8 @@ Creator attribution and the original capture location have **not** been independ
 | Archive / map / camera / books | [photo-1653491951587-282e99d6c1e5](https://images.unsplash.com/photo-1653491951587-282e99d6c1e5?auto=format&fit=crop&w=1600&q=82) | Browser load verified; travel still life |
 | Forest / walking route | [photo-1635746146715-0cc45dfa3bc2](https://images.unsplash.com/photo-1635746146715-0cc45dfa3bc2?auto=format&fit=crop&w=1600&q=82) | Pending browser verification |
 
+The role-to-page mapping and replacement priority are maintained in `ASSET-MAP.md`. The local AVIF/WebP build process is documented in `ASSET-PIPELINE.md`.
+
 ## Replacement rule
 
 - Never present these images as photographs of Ruza, local landmarks, or the actual cafe.
