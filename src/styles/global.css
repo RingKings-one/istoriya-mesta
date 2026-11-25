@@ -81,6 +81,12 @@ a {
   gap: clamp(16px, 2.2vw, 32px);
 }
 
+.desktop-nav a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+}
+
 .desktop-nav a,
 .site-footer nav a {
   color: #d2c9bc;
@@ -336,9 +342,10 @@ a {
 .text-link {
   display: inline-flex;
   width: fit-content;
+  min-height: 44px;
   align-items: center;
   border-bottom: 1px solid #d7c7b280;
-  padding-bottom: 4px;
+  padding: 8px 0 4px;
   color: var(--stone);
   font-size: 12px;
   transition: border-color .2s ease, color .2s ease;
@@ -381,7 +388,14 @@ a {
 .site-footer nav {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 14px 26px;
+}
+
+.site-footer nav a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
 }
 
 .site-footer p {
@@ -577,6 +591,9 @@ a {
 }
 
 .credits-list li a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   color: var(--stone);
   font-size: 12px;
   text-decoration: underline;
@@ -597,7 +614,9 @@ a {
 .route-feature > *,
 .section-heading > *,
 .card-grid > *,
-.credits-list li > * {
+.credits-list li > *,
+main > section > *,
+.site-footer > * {
   min-width: 0;
 }
 
