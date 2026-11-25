@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import EditorialPath from '../../components/EditorialPath.astro';
+import ArrowMark from '../../components/ArrowMark.astro';
 import { images, imageSrcSet } from '../../data';
 ---
 <BaseLayout
@@ -28,7 +29,7 @@ import { images, imageSrcSet } from '../../data';
       <p class="eyebrow">АТМОСФЕРА</p>
       <h3>Остановиться.<br />Выдохнуть.<br /><em>Продолжить путь.</em></h3>
       <p>Эта страница станет портретом конкретного пространства, когда будут собраны и проверены его реальные детали.</p>
-      <a class="text-link" href="/cities/ruza/">Вернуться к атласу ↗</a>
+      <a class="text-link" href="/cities/ruza/">Вернуться к атласу <ArrowMark direction="forward" /></a>
     </div>
   </section>
   <section class="cafe-details section">
