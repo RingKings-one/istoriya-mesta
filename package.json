@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "check:links": "node scripts/check-internal-links.mjs",
     "images:optimize": "node scripts/optimize-images.mjs",
-    "prebuild": "npm run images:optimize"
+    "prebuild": "npm run images:optimize",
+    "test:images": "node scripts/test-image-pipeline.mjs"
   },
   "dependencies": {
     "astro": "^5.0.0"
