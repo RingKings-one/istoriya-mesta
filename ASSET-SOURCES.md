@@ -21,3 +21,9 @@ The role-to-page mapping and replacement priority are maintained in `ASSET-MAP.m
 - Before production, replace the remote placeholders with selected project photography, optimized and stored locally in `public/images/`.
 - Re-check image focal points separately for desktop and mobile crops.
 - Add verified photographer attribution if the final selected license or source requires it.
+
+## Документальные изображения
+
+| Файл на сайте | Источник и права | Размещение |
+| --- | --- | --- |
+| `/images/ruza-museum-postcard.webp` | [Карточка Wikimedia Commons](https://commons.wikimedia.org/w/index.php?oldid=1242342758), Public Domain Mark 1.0. Музейная коллекция ОФ 5944, фототипия Шереръ, Набгольцъ и Кº, скан Александра Артемёнкова. Совпадающая копия в папке Dropbox, см. ASSET-MAP.md. | Архив, история музея, превью архива на главной и в главе о Рузе. |

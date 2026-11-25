@@ -73,3 +73,11 @@ Contextual next steps are defined centrally in `src/content/index.ts` and render
 ## 7. Current content readiness
 
 The current site is a designed editorial framework. The Ruza chapter, story index, route concept, cafe page and archive are not yet a verified collection of local reporting. The existing copy is intentionally framed as a project introduction or editorial intention. Real local stories, route data, venue information and documentary photographs remain inputs for a later content-production pass.
+
+## Перенос исследования S-008 · 25 ноября 2026
+
+Первые пять историй перенесены в каталог и отдельные страницы. В них вошли городище, регулярный план 1784 года, площадь Партизан, деревянная архитектура, музей, военная память, природа и современный город. Блок об авторах связан со Старой Рузой и Малеевкой, а посещение кофейни связано с обоими маршрутами. Источники привязаны к сюжетам.
+
+Следующий материал из исследования, для которого ещё требуется фактура: три названия одной улицы с архивными ссылками, отдельные точки Покровской и Дмитриевской церквей, интервью с местными жителями и командой кофейни, история бренда, усадьбы и маршруты вне города. В архиве остаётся атрибутировать план XIX века из прежней подборки, фонд Льва Соколова и остальные открытки, проверить собственников прав и отобрать пары «тогда и сейчас». Кандидаты по изображениям перечислены в ASSET-MAP.md.
+
+Два варианта прогулки собраны по адресам и официальным источникам. Длину, время, покрытия, лестницы и доступность входов указывать после полевой проверки. Короткий вариант обходит парк. Карточка кофейни ведёт к актуальным данным о режиме работы.

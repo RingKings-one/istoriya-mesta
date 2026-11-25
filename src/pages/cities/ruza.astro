@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import EditorialPath from '../../components/EditorialPath.astro';
 import { ruzaProfile } from '../../content';
+import { postcard } from '../../content/ruza';
 import FeatureCard from '../../components/FeatureCard.astro';
 import { images, isPlaceholderImage } from '../../data';
 import EditorialImage from '../../components/EditorialImage.astro';
@@ -15,8 +16,8 @@ import EditorialImage from '../../components/EditorialImage.astro';
     edition="АТЛАС · ГЛАВА 01 / РУЗА"
     variant="city"
     eyebrow="ПЕРВАЯ ГЛАВА · 01 / МОСКОВСКАЯ ОБЛАСТЬ"
-    title="Руза"
-    description="Знакомство с городом без спешки — через его пространство, настроение и истории."
+    title="Руза · 1328"
+    description="От валов Городка до старых улиц и кофейни на Федеративной."
     image={images.river}
   />
   <section class="ruza-opening section">
@@ -27,7 +28,7 @@ import EditorialImage from '../../components/EditorialImage.astro';
     <div class="ruza-opening-copy" data-reveal>
       <p>{ruzaProfile.summary}</p>
       <span class="ruza-edition">АТЛАС ЖИВЫХ ИСТОРИЙ <i>—</i> ГЛАВА 01</span>
-      <span class="ruza-status">СТАТУС РЕДАКЦИОННОЙ ГЛАВЫ · {ruzaProfile.status === 'researching' ? 'ИССЛЕДОВАНИЕ ПРОДОЛЖАЕТСЯ' : ruzaProfile.status.toUpperCase()}</span>
+      <a class="text-link" href="/stories/gorod-kotoryy-pomnit/">Откуда начинается история Рузы</a>
     </div>
   </section>
   <section class="ruza-spread">
@@ -36,7 +37,7 @@ import EditorialImage from '../../components/EditorialImage.astro';
       <span class="ruza-side-index">01 / 03</span>
       <p class="eyebrow">ПОЧУВСТВОВАТЬ</p>
       <h3>Увидеть знакомое<br />по-новому.</h3>
-      <p>Не торопиться с выводами. Сначала — пространство, настроение и детали, из которых складывается личное ощущение города.</p>
+      <p>Город удобнее читать от площади Партизан. Здесь соседствуют собор, музей и старые торговые дома. От площади можно продолжить путь к Городку или свернуть на Федеративную за кофе.</p>
     </div>
   </section>
   <section class="section ruza-directions">
@@ -44,7 +45,7 @@ import EditorialImage from '../../components/EditorialImage.astro';
     <div class="card-grid">
       <FeatureCard image={images.forest} eyebrow="В ДВИЖЕНИИ" title="Маршруты" text="Прогулки, которые помогают увидеть знакомое по-новому." href="/routes/" number="01" />
       <FeatureCard image={images.archive} eyebrow="В ПАМЯТИ" title="Истории" text="Наблюдения, сюжеты и человеческие детали." href="/stories/" number="02" />
-      <FeatureCard image={images.camera} eyebrow="В ДЕТАЛЯХ" title="Архив" text="Визуальные материалы и следы времени." href="/archive/" number="03" />
+      <FeatureCard image={postcard.src} eyebrow="В ДЕТАЛЯХ" title="Архив" text="Визуальные материалы и следы времени." href="/archive/" number="03" />
     </div>
   </section>
   <EditorialPath current="ruza" />
@@ -56,7 +57,7 @@ import EditorialImage from '../../components/EditorialImage.astro';
   .ruza-opening-heading h2 em { color:var(--stone); }
   .ruza-opening-copy { max-width:440px; padding-bottom:5px; }
   .ruza-opening-copy > p { color:var(--muted); font-size:14px; }
-  .ruza-status { display:block; margin-top:14px; color:var(--muted); font-size:8px; letter-spacing:.12em; line-height:1.6; }
+  .ruza-opening-copy .text-link { display: inline-flex; margin-top: 16px; }
   .ruza-edition { display:flex; gap:10px; align-items:center; margin-top:28px; color:var(--stone); font-size:9px; letter-spacing:.14em; }
   .ruza-edition i { color:var(--rust); font-style:normal; }
   .ruza-spread { display:grid; grid-template-columns:1.4fr .6fr; gap:clamp(24px,5vw,70px); align-items:center; padding:0 6vw 90px; }

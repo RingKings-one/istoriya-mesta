@@ -2,70 +2,52 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import EditorialPath from '../../components/EditorialPath.astro';
-import ArrowMark from '../../components/ArrowMark.astro';
-import { images, isPlaceholderImage } from '../../data';
 import EditorialImage from '../../components/EditorialImage.astro';
+import { images, hasLocalImage } from '../../data';
+import { ruzaSources } from '../../content/ruza';
+
+const hasInterior = hasLocalImage(images.cafe);
+const hasCoffee = hasLocalImage(images.coffee);
 ---
-<BaseLayout
-  title="Кофейня — История места"
-  description="Кофейное пространство как часть городской атмосферы, встреч и неспешных маршрутов."
->
+<BaseLayout title="Кофейня «История места» в Рузе" description="Кофейня «История места» в Рузе, Федеративная улица, 7. Как добраться и куда пойти после кофе.">
   <PageIntro
-    edition="КОФЕЙНЯ · МЕСТО ПАУЗЫ"
     variant="cafe"
-    eyebrow="КОФЕЙНЫЙ ОПЫТ · МЕСТО ПАУЗЫ"
-    title="Место для паузы."
-    description="Иногда знакомство с городом начинается с чашки кофе и разговора, который не хочется заканчивать."
-    image={images.cafe}
+    edition="ФЕДЕРАТИВНАЯ, 7"
+    eyebrow="КОФЕЙНЯ · РУЗА"
+    title="История места"
+    description="Кофейня на Федеративной улице, 7. Здесь можно встретиться перед прогулкой или остановиться после музея."
+    image={hasInterior ? images.cafe : undefined}
   />
-  <section class="cafe-manifesto section" data-reveal>
-    <p class="eyebrow">НЕ ПРОСТО КОФЕ</p>
-    <h2>Маленькая пауза, которая меняет <em>ритм дня.</em></h2>
-    <p>Кофейня в истории места — пространство встреч, коротких остановок и маленьких ритуалов. Здесь важны свет, материалы, звук и люди вокруг.</p>
-  </section>
-  <section class="cafe-spread section">
-    <figure class="cafe-main-image" data-reveal><EditorialImage src={images.coffee} sizes="(max-width: 680px) 100vw, 62vw" alt="" />{isPlaceholderImage(images.coffee) && <figcaption>ТЕПЛО ПОВСЕДНЕВНОГО РИТУАЛА · ВРЕМЕННЫЙ ВИЗУАЛ</figcaption>}</figure>
-    <div class="cafe-side-note" data-reveal>
-      <p class="eyebrow">АТМОСФЕРА</p>
-      <h3>Остановиться.<br />Выдохнуть.<br /><em>Продолжить путь.</em></h3>
-      <p>Эта страница станет портретом конкретного пространства, когда будут собраны и проверены его реальные детали.</p>
-      <a class="text-link" href="/cities/ruza/">Вернуться к атласу <ArrowMark direction="forward" /></a>
+  <section class:list={['section cafe-visit', { 'has-photo': hasCoffee }]} id="visit">
+    <div>
+      <p class="eyebrow">КАК ЗАЙТИ</p>
+      <h2>Кофе на Федеративной</h2>
+      <address>Московская область, Руза, Федеративная улица, 7</address>
+      <p>Актуальные часы работы и контакты смотрите в карточке кофейни.</p>
+      <div class="cafe-links">
+        <a class="button button-filled" href={ruzaSources.cafe.url}>Открыть Яндекс Карты</a>
+        <a class="text-link" href="/routes/#ruza-za-den">Начать прогулку отсюда</a>
+      </div>
     </div>
-  </section>
-  <section class="cafe-details section" data-reveal>
-    <div><span>01</span><strong>Свет</strong><p>Как пространство встречает утро и провожает вечер.</p></div>
-    <div><span>02</span><strong>Материал</strong><p>Фактуры, предметы и детали, которые хочется рассматривать.</p></div>
-    <div><span>03</span><strong>Люди</strong><p>Разговоры и ритуалы, благодаря которым место становится своим.</p></div>
+    {hasCoffee && (
+      <figure>
+        <EditorialImage src={images.coffee} alt="Две чашки кофе за общим столом" sizes="(max-width: 740px) 100vw, 50vw" />
+        <figcaption>Кофе в «Истории места», Руза.</figcaption>
+      </figure>
+    )}
   </section>
   <EditorialPath current="cafe" />
 </BaseLayout>
 
 <style>
-  .cafe-manifesto { display:grid; grid-template-columns:.55fr 1.15fr .8fr; gap:30px; align-items:start; }
-  .cafe-manifesto h2 { margin:0; font:clamp(32px,4.4vw,60px)/1.02 var(--serif); font-weight:400; }
-  .cafe-manifesto h2 em,.cafe-side-note h3 em { color:var(--stone); }
-  .cafe-manifesto > p:last-child { max-width:320px; margin:5px 0 0; color:var(--muted); }
-  .cafe-spread { display:grid; grid-template-columns:1.35fr .65fr; gap:clamp(26px,5vw,72px); align-items:center; }
-  .cafe-main-image { margin:0; }
-  .cafe-main-image img { width:100%; aspect-ratio:1.5; }
-  .cafe-main-image figcaption { padding-top:10px; color:var(--muted); font-size:9px; letter-spacing:.14em; }
-  .cafe-side-note { position:relative; padding:26px 0 26px 26px; border-left:1px solid #a8664b99; }
-  .cafe-side-note h3 { margin:15px 0; font:clamp(27px,3vw,42px)/1.12 var(--serif); font-weight:400; }
-  .cafe-side-note > p:not(.eyebrow) { color:var(--muted); font-size:11px; }
-  .cafe-side-note .text-link { display:inline-block; margin-top:12px; }
-  .cafe-details { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px; padding-top:32px; border-top:1px solid #d7c7b244; }
-  .cafe-details div { display:grid; gap:8px; }
-  .cafe-details span { color:var(--rust); font:20px var(--serif); }
-  .cafe-details strong { font:24px var(--serif); font-weight:400; }
-  .cafe-details p { max-width:260px; margin:0; color:var(--muted); font-size:11px; }
-  @media(max-width:760px) {
-    .cafe-manifesto { grid-template-columns:1fr; gap:14px; }
-    .cafe-manifesto h2 { max-width:520px; }
-    .cafe-spread { grid-template-columns:1fr; gap:24px; }
-    .cafe-side-note { padding-left:20px; }
-    .cafe-details { grid-template-columns:1fr; gap:22px; }
-    .cafe-details div { grid-template-columns:32px 1fr; gap:4px 12px; }
-    .cafe-details span { grid-row:span 2; }
-    .cafe-details p { max-width:none; }
-  }
+  .cafe-visit { padding-top: 0; }
+  .has-photo { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(24px, 6vw, 84px); align-items: center; }
+  h2 { margin: 12px 0 16px; font: 400 clamp(32px, 4.4vw, 60px)/1.04 var(--serif); }
+  address { color: var(--stone); font-style: normal; }
+  .cafe-visit p:not(.eyebrow), figcaption { color: var(--muted); }
+  .cafe-links { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 22px; }
+  figure { margin: 0; }
+  figure :global(img) { width: 100%; aspect-ratio: 1.5; }
+  figcaption { margin-top: 8px; font-size: .9rem; }
+  @media(max-width: 740px) { .has-photo { grid-template-columns: 1fr; } }
 </style>

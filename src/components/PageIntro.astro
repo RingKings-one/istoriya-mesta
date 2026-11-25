@@ -4,7 +4,7 @@ import { isPlaceholderImage } from '../data';
 const { eyebrow, title, description, image, edition = 'ГЛАВА 01', variant = 'default' } = Astro.props;
 const showPlaceholderNote = image ? isPlaceholderImage(image) : false;
 ---
-<section class={`page-intro page-intro--${variant}`} data-opening aria-labelledby="page-title">
+<section class:list={['page-intro', `page-intro--${variant}`, { 'page-intro--text': !image }]} data-opening aria-labelledby="page-title">
   {image && <EditorialImage src={image} alt="" sizes="100vw" loading="eager" fetchpriority="high" position="var(--intro-image-position, center 55%)" className="page-intro-image" />}
   <div class="page-intro-copy">
     <p class="eyebrow">{eyebrow}</p>
@@ -16,6 +16,11 @@ const showPlaceholderNote = image ? isPlaceholderImage(image) : false;
 </section>
 
 <style>
+  .page-intro.page-intro--text {
+    min-height: auto;
+    padding-block: clamp(58px, 10vw, 142px) clamp(36px, 6vw, 82px);
+  }
+  .page-intro--text::after { display: none; }
   .page-intro > picture > img { object-position: var(--intro-image-position, center 55%); }
   .page-intro-edition {
     margin: -6px 0 18px;

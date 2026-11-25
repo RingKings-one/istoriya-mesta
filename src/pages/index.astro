@@ -4,6 +4,7 @@ import FeatureCard from '../components/FeatureCard.astro';
 import HeroSection from '../components/HeroSection.astro';
 import ArrowMark from '../components/ArrowMark.astro';
 import { images, isPlaceholderImage } from '../data';
+import { postcard } from '../content/ruza';
 import EditorialImage from '../components/EditorialImage.astro';
 ---
 <BaseLayout
@@ -47,8 +48,7 @@ import EditorialImage from '../components/EditorialImage.astro';
       <span class="home-chapter-label">МОСКОВСКАЯ ОБЛАСТЬ</span>
       <h2>Руза</h2>
       <p>
-        Небольшой город с большой историей. Начинаем собирать его живой портрет —
-        через места, людей, память и маршруты.
+        Город на высоком берегу. Начните с кофейни на Федеративной, пройдите по площади Партизан и загляните в музей.
       </p>
       <a class="text-link" href="/cities/ruza/">Исследовать город <ArrowMark direction="forward" /></a>
       <span class="home-city-edition">АТЛАС ЖИВЫХ ИСТОРИЙ <i>—</i> ПЕРВАЯ ГЛАВА</span>
@@ -64,7 +64,7 @@ import EditorialImage from '../components/EditorialImage.astro';
         Выбирайте маршрут, задерживайтесь у деталей и открывайте город в собственном
         темпе. Не список достопримечательностей, а прогулка с ощущением места.
       </p>
-      <a class="text-link" href="/routes/">Найти свой маршрут <ArrowMark direction="forward" /></a>
+      <a class="text-link" href="/routes/">Выбрать прогулку по Рузе <ArrowMark direction="forward" /></a>
     </div>
     <figure class="home-route-image" data-reveal>
       <EditorialImage src={images.forest} sizes="(max-width: 680px) 100vw, 50vw" alt="" />
@@ -99,10 +99,10 @@ import EditorialImage from '../components/EditorialImage.astro';
         number="02"
       />
       <FeatureCard
-        image={images.camera}
+        image={postcard.src}
         eyebrow="ПАМЯТЬ"
         title="Архив"
-        text="Фотографии и визуальные следы времени."
+        text="Открытка 1910-х, старый план и музейные подборки."
         href="/archive/"
         number="03"
       />

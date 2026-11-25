@@ -27,8 +27,8 @@ const webpSrcSet = local?.variants.webp.map((variant) => `${variant.src} ${varia
   <img
     class={className}
     src={src}
-    srcset={!local ? imageSrcSet(src) : undefined}
-    sizes={!local ? sizes : undefined}
+    srcset={asset && !local ? imageSrcSet(src) : undefined}
+    sizes={asset && !local ? sizes : undefined}
     alt={alt}
     loading={loading}
     decoding="async"

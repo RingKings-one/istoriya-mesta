@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EditorialImage from '../../components/EditorialImage.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import EditorialSources from '../../components/EditorialSources.astro';
+import { postcard, ruzaStories } from '../../content/ruza';
+
+export function getStaticPaths() {
+  return ruzaStories.map((story) => ({ params: { slug: story.slug }, props: { story } }));
+}
+
+const { story } = Astro.props;
+const isMuseumStory = story.slug === 'muzey-kotoryy-sobiraet-pamyat';
+---
+<BaseLayout title={`${story.title} — История места`} description={story.dek}>
+  <PageIntro eyebrow="ИСТОРИИ · РУЗА" title={story.title} description={story.dek} />
+  <article class="section story">
+    {isMuseumStory && (
+      <figure>
+        <EditorialImage src={postcard.src} alt={postcard.alt} width={postcard.width} height={postcard.height} />
+        <figcaption>{postcard.title}. {postcard.date}. <a href="/archive/#postcard">Об открытке</a></figcaption>
+      </figure>
+    )}
+    {story.sections.map(({ heading, body }) => (
+      <section class="story-section"><h2>{heading}</h2><p>{body}</p></section>
+    ))}
+    <EditorialSources sources={story.sources} />
+    <nav class="story-navigation" aria-label="Продолжить чтение">
+      <a class="text-link" href={story.related.href}>{story.related.label}</a>
+      <a class="text-link" href="/stories/">Все истории Рузы</a>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .story { max-width: 850px; margin-inline: auto; }
+  .story-section { margin-bottom: clamp(36px, 6vw, 70px); }
+  .story-section h2 { margin: 0 0 16px; font: 400 clamp(29px, 5vw, 48px)/1.04 var(--serif); }
+  .story-section p { max-width: 64ch; color: var(--muted); font-size: 1.05rem; line-height: 1.8; }
+  figure { margin: 0 0 40px; }
+  figure :global(img) { width: 100%; height: auto; }
+  figcaption { margin-top: 10px; color: var(--muted); font-size: .9rem; }
+  figcaption a { text-decoration: underline; }
+  .story-navigation { display: flex; gap: 18px 32px; flex-wrap: wrap; margin-top: 36px; }
+</style>
