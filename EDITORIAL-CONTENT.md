@@ -42,7 +42,7 @@ Every asset has a role, alt text, a status and a provenance trail.
 - `selected` — chosen project image; usage rights, source and location still need review.
 - `verified` — source, rights/credit, subject and intended crop have been checked.
 
-For meaningful images, alt text describes the actual image and its editorial purpose. Decorative images use empty alt text. Do not write a factual caption from an unverified visual. Temporary Unsplash assets remain disclosed and are tracked in `ASSET-SOURCES.md`; replace them with selected project photography before production.
+For meaningful images, alt text describes the actual image and its editorial purpose. Decorative images use empty alt text. Do not write a factual caption from an unverified visual. Temporary Unsplash assets remain disclosed and are tracked in `ASSET-SOURCES.md` and `ASSET-MAP.md`; replace them with user-selected project photography before production. Original project files belong in `assets/source/`; the local AVIF/WebP build pipeline and publishing rules are documented in `ASSET-PIPELINE.md`.
 
 ## 5. Page roles and reading journeys
 
