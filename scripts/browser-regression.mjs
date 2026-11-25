@@ -14,7 +14,7 @@ for(const [name,engine] of Object.entries({chromium,webkit})){
  const page=await browser.newPage({viewport:{width,height:900},reducedMotion:'reduce'});
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  try {
- const response=await page.goto(new URL(route,baseUrl),{waitUntil:'domcontentloaded'});
+ const response=await page.goto(new URL(route,baseUrl).href,{waitUntil:'domcontentloaded'});
  assert(response && response.status()<400,'HTTP failure');
  await page.evaluate(()=>document.fonts.ready);
  const result=await page.evaluate(()=>({width:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth,bodyWidth:document.body.scrollWidth,headings:document.querySelectorAll('h1').length,missingAlt:[...document.images].filter(i=>!i.hasAttribute('alt')).length}));
