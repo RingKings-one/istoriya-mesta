@@ -1,0 +1,32 @@
+---
+interface Props { direction?: 'forward' | 'diagonal'; class?: string; }
+const { direction = 'forward', class: className = '' } = Astro.props;
+---
+<svg class={`arrow-mark arrow-mark--${direction} ${className}`} viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+  {direction === 'diagonal'
+    ? <path d="M4.25 11.75 11.75 4.25M5.25 4.25h6.5v6.5" />
+    : <path d="M3.5 8h8m-3.25-3.25L11.5 8l-3.25 3.25" />}
+</svg>
+<style is:global>
+  .arrow-mark {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
+    overflow: visible;
+    color: currentColor;
+    vertical-align: -0.18em;
+    transition: transform 220ms cubic-bezier(.2,.7,.2,1), color 220ms ease;
+  }
+  .arrow-mark path {
+    stroke: currentColor;
+    stroke-width: 1.35;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  a:hover .arrow-mark--forward,
+  a:focus-visible .arrow-mark--forward { transform: translateX(2px); }
+  a:hover .arrow-mark--diagonal,
+  a:focus-visible .arrow-mark--diagonal { transform: translate(1px,-1px); }
+  @media (prefers-reduced-motion: reduce) { .arrow-mark { transition: none; } }
+</style>

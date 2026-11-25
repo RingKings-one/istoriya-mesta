@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import EditorialPath from '../../components/EditorialPath.astro';
+import ArrowMark from '../../components/ArrowMark.astro';
+import { ruzaMedia as photo } from '../../content/ruza-media';
+import EditorialImage from '../../components/EditorialImage.astro';
+---
+<BaseLayout
+  title="Города — История места"
+  description="Атлас городов, которые раскрываются через атмосферу, людей, детали и истории."
+>
+  <PageIntro
+    edition="АТЛАС · 01 / КОЛЛЕКЦИЯ ГОРОДОВ"
+    variant="atlas"
+    eyebrow="ЖИВОЙ АТЛАС · 01 ГОРОД В РАБОТЕ"
+    title="Места, которые хочется почувствовать."
+    description="У каждого города свой ритм. Мы собираем его из историй, маршрутов и деталей."
+    image={photo.wideCity.src}
+  />
+  <section class="atlas-intro section" data-reveal>
+    <p class="eyebrow">АТЛАС РАСТЁТ ПОСТЕПЕННО</p>
+    <h2>Сначала — один город.<br /><em>Затем — целый мир.</em></h2>
+    <p>Мы не стремимся заполнить карту ради количества. Каждая новая глава должна быть собрана с вниманием к месту, его людям и проверенным историям.</p>
+  </section>
+  <section class="atlas-city">
+    <div class="atlas-city-image" data-reveal><EditorialImage src={photo.square.src} sizes="(max-width: 680px) 100vw, 62vw" alt={photo.square.alt} width={photo.square.width} height={photo.square.height} /></div>
+    <div class="atlas-city-copy" data-reveal>
+      <p class="eyebrow">МОСКОВСКАЯ ОБЛАСТЬ · ПЕРВАЯ ГЛАВА</p>
+      <h2>Руза</h2>
+      <p>Знакомство с городом через места, людей и повседневную атмосферу. Начните с прогулки по центру, загляните в архив и выберите свою первую историю о городе.</p>
+      <a class="text-link" href="/cities/ruza/">Исследовать город <ArrowMark direction="forward" /></a>
+      <span class="atlas-city-index">АТЛАС ЖИВЫХ ИСТОРИЙ <i>·</i> 01 / 01</span>
+    </div>
+  </section>
+  <EditorialPath current="cities" />
+</BaseLayout>
+
+<style>
+  .atlas-intro { display:grid; grid-template-columns:.65fr 1.1fr .85fr; gap:28px; align-items:start; }
+  .atlas-intro h2 { margin:0; font:clamp(32px,4.4vw,60px)/1.02 var(--serif); font-weight:400; }
+  .atlas-intro h2 em { color:var(--stone); }
+  .atlas-intro > p:last-child { max-width:330px; margin:5px 0 0; color:var(--muted); }
+  .atlas-city { display:grid; grid-template-columns:1.2fr .8fr; gap:clamp(30px,6vw,90px); align-items:center; padding:0 6vw 100px; }
+  .atlas-city-image { position:relative; }
+  .atlas-city-image :global(img) { display:block; width:100%; height:auto; }
+  .atlas-city-image > span { position:absolute; top:18px; left:18px; padding:7px 10px; background:#181d1acc; color:var(--stone); font-size:9px; letter-spacing:.14em; }
+  .atlas-city-image > .atlas-city-disclosure { position:absolute; top:auto; right:18px; bottom:18px; left:18px; width:fit-content; max-width:calc(100% - 36px); border:1px solid #e8e1d655; background:#181d1acc; padding:6px 8px; color:#e8e1d6; font-size:8px; line-height:1.4; letter-spacing:.1em; }
+  .atlas-city-copy h2 { margin:12px 0; font:clamp(54px,7vw,94px)/.95 var(--serif); font-weight:400; }
+  .atlas-city-copy > p:not(.eyebrow) { max-width:390px; color:var(--muted); }
+  .atlas-city-copy .text-link { display:inline-block; margin-top:18px; }
+  .atlas-city-index { display:block; margin-top:38px; color:var(--stone); font:10px var(--sans); letter-spacing:.12em; }
+  .atlas-city-index i { color:var(--rust); font-style:normal; }
+  @media(max-width:760px) {
+    .atlas-intro { grid-template-columns:1fr; gap:14px; }
+    .atlas-intro h2 { max-width:500px; }
+    .atlas-city { grid-template-columns:1fr; gap:24px; padding-bottom:64px; }
+    .atlas-city-index { margin-top:26px; }
+  }
+</style>

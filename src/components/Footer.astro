@@ -1,0 +1,18 @@
+---
+import { nav } from '../data';
+
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <a class="brand" href="/" aria-label="История места — главная">
+    <img class="brand-mark" src="/images/brand-seal.webp" alt="" width="50" height="50" decoding="async" />
+    <span>История<br />места</span>
+  </a>
+  <nav aria-label="Навигация в подвале">
+    <a href="/">На главную</a>
+    {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    <a href="/credits/">Источники изображений</a>
+  </nav>
+  <p>Сохраняем истории.<br />Открываем заново.</p>
+  <small>© {year} История места</small>
+</footer>

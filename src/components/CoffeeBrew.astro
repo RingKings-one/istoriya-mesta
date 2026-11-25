@@ -1,0 +1,154 @@
+<section class="section coffee-brew" id="brew" aria-labelledby="brew-title" data-brew>
+  <div class="brew-copy">
+    <p class="eyebrow">ЗА СТОЙКОЙ</p>
+    <h2 id="brew-title">Пока готовится <em>кофе</em></h2>
+    <p>Сначала помол, затем короткая экстракция. Посмотрите, как эспрессо собирается в чашке.</p>
+    <button class="button" type="button" data-brew-play data-coffee-cursor hidden>Приготовить кофе</button>
+  </div>
+  <figure class="brew-figure">
+    <svg class="brew-drawing" viewBox="0 0 420 360" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="brew-metal" x2="0" y2="1">
+          <stop stop-color="#766047" />
+          <stop offset="1" stop-color="#3f382a" />
+        </linearGradient>
+        <linearGradient id="brew-crema" x2="0" y2="1">
+          <stop stop-color="#d8a975" />
+          <stop offset="1" stop-color="#814526" />
+        </linearGradient>
+      </defs>
+      <path class="brew-rule" d="M30 334H390M47 345H373" />
+      <path class="machine-shell" d="M75 98 91 74h236l18 24v51H75z" />
+      <path class="machine-line" d="M76 99h267M97 89h135M98 132h244" />
+      <circle class="machine-dial" cx="306" cy="115" r="11" />
+      <path class="machine-line dial-needle" d="m306 115 4-6" />
+      <circle class="brew-lamp" cx="278" cy="115" r="3" />
+      <path class="machine-line" d="M167 150h88l-9 18h-70z" />
+      <path class="machine-line" d="M190 168v10m38-10v10" />
+      <g class="brew-holder">
+        <path d="M162 158h100l-8 13h-83z" />
+        <path d="M253 157h84l9 5-9 6h-87" />
+      </g>
+      <g class="brew-beans">
+        <path d="M182 58c-8-9 2-23 12-20 10 3 3 25-12 20zm3-3c6-3 6-9 7-14" />
+        <path d="M209 53c-4-11 11-19 17-11 5 7-10 19-17 11zm3 0c7 0 8-7 11-10" />
+        <path d="M235 65c-9-6-3-21 6-20 9 1 6 19-6 20zm2-5c4-3 1-7 3-12" />
+      </g>
+      <g class="brew-pour">
+        <path d="M190 177c-1 28 5 53 8 83m30-83c1 28-4 58-8 83" />
+      </g>
+      <g class="brew-steam">
+        <path d="M196 252c-15-12 15-19 2-33m19 31c13-10-11-20-2-34" />
+      </g>
+      <path class="brew-cup" d="M142 267h136l-9 32c-4 16-20 23-43 23h-35c-21 0-38-8-41-23z" />
+      <path class="brew-cup" d="M277 273h15c24 0 22 29 1 29h-24" />
+      <ellipse class="brew-rim" cx="210" cy="268" rx="67" ry="10" />
+      <ellipse class="brew-liquid" cx="210" cy="269" rx="55" ry="6.5" />
+      <path class="brew-rule" d="M125 329h171l-15 6H140z" />
+    </svg>
+    <figcaption>
+      <span class="brew-step grind">Помол</span>
+      <span class="brew-step extract">Экстракция</span>
+      <span class="brew-step serve">Эспрессо в чашке</span>
+    </figcaption>
+  </figure>
+</section>
+
+<script>
+  const scene = document.querySelector<HTMLElement>('[data-brew]');
+  const play = scene?.querySelector<HTMLButtonElement>('[data-brew-play]');
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  let finish = 0;
+  let observer: IntersectionObserver | undefined;
+
+  function brew() {
+    if (!scene || !play || motion.matches) return;
+    observer?.disconnect();
+    clearTimeout(finish);
+    scene.classList.remove('is-brewing');
+    void scene.offsetWidth;
+    scene.classList.add('is-brewing');
+    play.textContent = 'Повторить приготовление';
+    finish = window.setTimeout(() => scene.classList.remove('is-brewing'), 6200);
+  }
+
+  function syncBrew() {
+    if (!scene || !play) return;
+    play.hidden = motion.matches;
+    if (motion.matches) {
+      observer?.disconnect();
+      clearTimeout(finish);
+      scene.classList.remove('is-brewing');
+    }
+  }
+
+  if (scene && play) {
+    syncBrew();
+    play.addEventListener('click', brew);
+    motion.addEventListener('change', syncBrew);
+    if (!motion.matches && 'IntersectionObserver' in window) {
+      observer = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.intersectionRatio >= .45)) brew();
+      }, { threshold: 0.45 });
+      observer.observe(scene.querySelector('.brew-figure') ?? scene);
+    }
+  }
+</script>
+
+<style>
+  .coffee-brew { display: grid; grid-template-columns: minmax(0,.72fr) minmax(0,1.25fr); align-items: center; gap: clamp(25px, 6vw, 90px); background: #242a21; border-block: 1px solid #d4ba922c; scroll-margin-top: 78px; }
+  .brew-copy h2 { margin: 12px 0 22px; font: 400 clamp(41px, 6vw, 92px)/.93 var(--serif); letter-spacing: -.04em; }
+  .brew-copy h2 em { color: #e2bd96; }
+  .brew-copy p:not(.eyebrow) { max-width: 38ch; color: var(--muted); }
+  .brew-copy button { margin-top: 14px; }
+  .brew-copy button[hidden] { display: none; }
+  .brew-figure { margin: 0; min-width: 0; padding: clamp(13px, 3vw, 45px); border: 1px solid #d8ae7852; background: radial-gradient(ellipse at 51% 57%, #50392560, #27251b 70%); }
+  .brew-drawing { display: block; width: 100%; max-height: 460px; }
+  .machine-shell { fill: url(#brew-metal); stroke: #bf9c70; }
+  .machine-line,.machine-dial { fill: none; stroke: #d7b585; stroke-width: 1.3; }
+  .brew-rule { fill: none; stroke: #9e7c54; opacity: .66; }
+  .brew-lamp { fill: #e1b57c; }
+  .brew-holder { fill: #706048; stroke: #b69264; }
+  .brew-beans { fill: #8f5135; stroke: #d19d71; stroke-width: 1.2; }
+  .brew-pour,.brew-steam { fill: none; stroke-linecap: round; }
+  .brew-pour { stroke: #db9b62; stroke-width: 2.4; opacity: 0; }
+  .brew-steam { stroke: #e6cbb0; stroke-width: 1.2; opacity: .68; }
+  .brew-cup { fill: #c8b69a; stroke: #f2d6ab; }
+  .brew-rim { fill: #3d2920; stroke: #e5caa7; }
+  .brew-liquid { fill: url(#brew-crema); }
+  figcaption { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px 24px; border-top: 1px solid #cdad7944; margin-top: 15px; padding-top: 16px; color: #d7c7b2; font-size: .83rem; }
+  @media(prefers-reduced-motion: no-preference) {
+    .is-brewing .brew-beans { animation: beans-fall 1.55s both; }
+    .is-brewing .brew-holder { animation: holder-seat 1.05s 1.08s both; }
+    .is-brewing .brew-lamp { animation: lamp-lit .4s 2s both; }
+    .is-brewing .brew-pour { animation: espresso-stream 2.25s 2.1s both; }
+    .is-brewing .brew-liquid { animation: crema-settle 4.35s both; transform-box: fill-box; transform-origin: center; }
+    .is-brewing .brew-steam { animation: coffee-steam 1.6s 4.35s both; }
+    .is-brewing .brew-step { animation: brew-label 1.85s both; }
+    .is-brewing .extract { animation-delay: 2.05s; }
+    .is-brewing .serve { animation-delay: 4.15s; }
+  }
+  @keyframes beans-fall {
+    0% { opacity: 0; transform: translateY(-14px); }
+    22%, 47% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(36px); }
+  }
+  @keyframes holder-seat { from { transform: translate(18px, 16px) rotate(-4deg); } to { transform: translate(0, 0); } }
+  @keyframes lamp-lit { from { opacity: .26; } to { opacity: 1; } }
+  @keyframes espresso-stream {
+    0% { opacity: 0; stroke-dasharray: 0 100; }
+    28%, 85% { opacity: 1; stroke-dasharray: 100 0; }
+    100% { opacity: 0; stroke-dasharray: 100 0; }
+  }
+  @keyframes crema-settle {
+    0%, 54% { opacity: 0; transform: scaleX(.15); }
+    100% { opacity: 1; transform: scaleX(1); }
+  }
+  @keyframes coffee-steam {
+    0% { opacity: 0; transform: translateY(9px); }
+    46% { opacity: .83; }
+    100% { opacity: .68; transform: translateY(0); }
+  }
+  @keyframes brew-label { 0%, 100% { color: #d7c7b2; } 38%, 74% { color: #ffe0a6; } }
+  @media(max-width: 760px) { .coffee-brew { grid-template-columns: minmax(0,1fr); } }
+</style>

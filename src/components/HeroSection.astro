@@ -1,0 +1,42 @@
+---
+import { images, hasLocalImage } from '../data';
+import { ruzaMedia } from '../content/ruza-media';
+import EditorialImage from './EditorialImage.astro';
+import ArrowMark from './ArrowMark.astro';
+const projectHero = hasLocalImage(images.hero);
+const heroPhoto = ruzaMedia.cafeInterior;
+---
+<section class="hero hero--atlas" data-opening aria-labelledby="home-title">
+  <EditorialImage className="hero-image" src={projectHero ? images.hero : heroPhoto.src} sizes="100vw" alt="" width={heroPhoto.width} height={heroPhoto.height} loading="eager" fetchpriority="high" position="right center" />
+
+  <div class="hero-content">
+    <p class="eyebrow">КОФЕЙНЯ · ФЕДЕРАТИВНАЯ, 7</p>
+    <p class="hero-chapter"><span class="hero-chapter-rule" aria-hidden="true"></span><span>РУЗА · МОСКОВСКАЯ ОБЛАСТЬ</span></p>
+    <h1 id="home-title">История<br /><em>места.</em></h1>
+    <p class="lead">Встретимся за кофе. А дальше — город, который хочется пройти пешком.</p>
+    <div class="hero-actions">
+      <a class="button button-filled" href="/cafe/" data-coffee-cursor>В кофейню <ArrowMark direction="forward" /></a>
+      <a class="button hero-secondary-link" href="/cities/ruza/">Открыть Рузу <ArrowMark direction="forward" /></a>
+    </div>
+  </div>
+
+  <div class="hero-bottomline">
+    {!projectHero && <p class="hero-asset-note">В КОФЕЙНЕ НА ФЕДЕРАТИВНОЙ</p>}
+    <a class="hero-scroll-cue" href="#atlas-opening">
+      <span>Листать дальше</span>
+      <ArrowMark direction="forward" />
+    </a>
+  </div>
+</section>
+
+<script>
+  const chapterLink = document.querySelector<HTMLAnchorElement>('.hero-scroll-cue');
+  const chapter = document.querySelector<HTMLElement>('#atlas-opening');
+
+  chapterLink?.addEventListener('click', (event) => {
+    if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+
+    // WebKit can scroll to a fragment without transferring keyboard focus.
+    requestAnimationFrame(() => chapter?.focus({ preventScroll: true }));
+  });
+</script>

@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { documentaryCredits, ruzaMedia } from '../content/ruza-media';
+import { literaryNotes, postcard, ruzaSources, ruzaStories } from '../content/ruza';
+
+const archiveVerification = [
+  { photo: ruzaMedia.archiveSnow.caption, url: 'https://pastvu.com/p/158060' },
+  { photo: ruzaMedia.archiveTown.caption, url: 'https://pastvu.com/p/143316' },
+];
+---
+<BaseLayout title="Авторы и материалы — История места" description="Авторы документальных фотографий, музейные карточки и материалы об истории Рузы.">
+  <PageIntro eyebrow="АТЛАС ЖИВЫХ ИСТОРИЙ" title="Авторы и материалы" description="Данные о происхождении фотографий, открыток и текстов атласа." />
+  <section class="section credits">
+    <h2>Документальные фотографии</h2>
+    <p>Фотографии обработаны для сайта: размер и формат приведены к веб-версии, кадрирование зависит от экрана.</p>
+    <ul>
+      {documentaryCredits.map(({ caption, credit }) => (
+        <li><strong>{caption}</strong> {credit.author}. <a href={credit.source}>Оригинал</a> · <a href={credit.licenseUrl}>{credit.license}</a></li>
+      ))}
+    </ul>
+    <h2>Архивная подборка</h2>
+    <p><a href={ruzaSources.rebuilding.url}>{ruzaSources.rebuilding.label}</a> · <a href={ruzaSources.memory.url}>{ruzaSources.memory.label}</a>.</p>
+    <p>{postcard.credit} <a href={ruzaSources.postcard.url}>Открытка</a> · <a href={postcard.rightsUrl}>{postcard.rights}</a>.</p>
+    <ul>
+      {archiveVerification.map(({ photo, url }) => <li>{photo} Автор оригинала неизвестен. <a href={url}>Сверка изображения</a></li>)}
+    </ul>
+    <h2>Кофейня</h2>
+    <p>Съёмка кофейни предоставлена для проекта «История места». Цитаты — из <a href={`${ruzaSources.cafe.url}reviews/`}>отзывов на Яндекс Картах</a>.</p>
+    <h2>Материалы к историям</h2>
+    {ruzaStories.map((story) => (
+      <details>
+        <summary>{story.title}</summary>
+        <ul>{story.sources.map(({ label, url }) => <li><a href={url}>{label}</a></li>)}</ul>
+      </details>
+    ))}
+    <details>
+      <summary>Литературные окрестности</summary>
+      <ul>{literaryNotes.map(({ name, source }) => <li>{name} · <a href={source.url}>{source.label}</a></li>)}</ul>
+    </details>
+  </section>
+</BaseLayout>
+
+<style>
+  .credits { max-width: 940px; margin-inline: auto; padding-top: 0; }
+  h2 { margin-top: 42px; font: 400 clamp(28px, 3.3vw, 42px) var(--serif); }
+  p, li { color: var(--muted); }
+  li { margin-block: 10px; }
+  a { color: var(--stone); text-decoration: underline; text-underline-offset: .2em; }
+  details { padding-block: 12px; border-top: 1px solid #d7c7b244; }
+  summary { color: var(--stone); cursor: pointer; }
+</style>

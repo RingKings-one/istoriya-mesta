@@ -1,0 +1,362 @@
+{
+  "cafeInterior": {
+    "src": "/images/ruza/cafe-interior.webp",
+    "width": 1280,
+    "height": 960,
+    "alt": "Зелёный зал кофейни с большими окнами, столиками и настенным панно",
+    "caption": "Зал кофейни на Федеративной."
+  },
+  "cafeFacade": {
+    "src": "/images/ruza/cafe-facade.webp",
+    "width": 1280,
+    "height": 853,
+    "alt": "Вечерний фасад кофейни с подсвеченной вывеской",
+    "caption": "Вечер на Федеративной, 7."
+  },
+  "cafeWindow": {
+    "src": "/images/ruza/cafe-window.webp",
+    "width": 964,
+    "height": 1280,
+    "alt": "Столики и высокие окна кофейни, освещённые солнцем",
+    "caption": "Места у окна."
+  },
+  "cafeHands": {
+    "src": "/images/ruza/cafe-coffee-table.webp",
+    "width": 1280,
+    "height": 960,
+    "alt": "Две чашки кофе, розовые блюдца и руки гостей за столом",
+    "caption": "Кофе за общим столом."
+  },
+  "cafeMap": {
+    "src": "/images/ruza/cafe-city-map.webp",
+    "width": 913,
+    "height": 1280,
+    "alt": "Настенная карта с надписью «Руза 1328» на кирпичной стене",
+    "caption": "Карта Рузы на стене кофейни."
+  },
+  "cafePastry": {
+    "src": "/images/ruza/cafe-pastry.webp",
+    "width": 1200,
+    "height": 800,
+    "alt": "Выпечка за стеклом витрины",
+    "caption": "Витрина с выпечкой."
+  },
+  "cafeGuide": {
+    "src": "/images/ruza/cafe-guide.webp",
+    "width": 960,
+    "height": 1280,
+    "alt": "Путеводитель по Рузе рядом с чашкой",
+    "caption": "Путеводитель на столике кофейни."
+  },
+  "cafeCup": {
+    "src": "/images/ruza/cafe-cup.webp",
+    "width": 960,
+    "height": 1280,
+    "alt": "Чашка кофе на деревянном столике",
+    "caption": "Чашка кофе в «Истории места»."
+  },
+  "park": {
+    "src": "/images/ruza/gorodok-park.webp",
+    "width": 1200,
+    "height": 675,
+    "alt": "Деревянная беседка в окружении осенних деревьев",
+    "caption": "Парк «Городок» на месте старого укрепления.",
+    "credit": {
+      "author": "Sergey Sebelev",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%A0%D1%83%D0%B7%D0%B0._%D0%9F%D0%B0%D1%80%D0%BA_%D0%93%D0%BE%D1%80%D0%BE%D0%B4%D0%BE%D0%BA_(%D0%A0%D1%83%D0%B7%D1%81%D0%BA%D0%B8%D0%B9_%D0%9A%D1%80%D0%B5%D0%BC%D0%BB%D1%8C)_v2.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "parkView": {
+    "src": "/images/ruza/gorodok-view.webp",
+    "width": 1280,
+    "height": 853,
+    "alt": "Белый Дмитриевский храм виден за деревьями со стороны Городка",
+    "caption": "Вид с Городка на Дмитриевский храм, 2021.",
+    "credit": {
+      "author": "Alexander Artyomenkov / Александр Сергеевич Артёменков",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%92%D0%B8%D0%B4_%D1%81_%D0%93%D0%BE%D1%80%D0%BE%D0%B4%D0%BA%D0%B0_%D0%BD%D0%B0_%D0%94%D0%B8%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B5-%D0%A1%D0%BE%D0%BB%D1%83%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D1%85%D1%80%D0%B0%D0%BC_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B0_%D0%A0%D1%83%D0%B7%D1%8B.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "cathedral": {
+    "src": "/images/ruza/resurrection-cathedral.webp",
+    "width": 1200,
+    "height": 734,
+    "alt": "Воскресенский собор в Рузе на фоне голубого неба",
+    "caption": "Воскресенский собор на площади Партизан, 2020.",
+    "credit": {
+      "author": "Sergey Sebelev",
+      "source": "https://commons.wikimedia.org/wiki/File:Ruza_Voskresenskaya_Church.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "square": {
+    "src": "/images/ruza/partizan-square.webp",
+    "width": 1200,
+    "height": 774,
+    "alt": "Двухэтажные фасады вдоль улицы на площади Партизан",
+    "caption": "Фасады на площади Партизан, 2011.",
+    "credit": {
+      "author": "NVO",
+      "source": "https://commons.wikimedia.org/wiki/File:Ruza_Partizan_Sq_32.JPG",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    }
+  },
+  "street": {
+    "src": "/images/ruza/wooden-house.webp",
+    "width": 1200,
+    "height": 736,
+    "alt": "Деревянный дом с резными наличниками на углу улиц Рузы",
+    "caption": "Деревянный дом на углу Социалистической и Демократического переулка, 2011.",
+    "credit": {
+      "author": "NVO",
+      "source": "https://commons.wikimedia.org/wiki/File:Ruza_Socialisticheskaya_X_Demokratichesky_02.JPG",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    }
+  },
+  "museum": {
+    "src": "/images/ruza/museum-fortress-model.webp",
+    "width": 1200,
+    "height": 795,
+    "alt": "Макет крепости и её земляных валов в музейной экспозиции",
+    "caption": "Макет Рузского городища в краеведческом музее, 2021.",
+    "credit": {
+      "author": "Alina Voznaya",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%9C%D0%B0%D0%BA%D0%B5%D1%82_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%BA%D0%B0_%D0%B2_%D0%A0%D1%83%D0%B7%D1%81%D0%BA%D0%BE%D0%BC_%D0%BA%D1%80%D0%B0%D0%B5%D0%B2%D0%B5%D0%B4%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%BC_%D0%BC%D1%83%D0%B7%D0%B5%D0%B5._%D0%A4%D0%BE%D1%82%D0%BE_15.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "river": {
+    "src": "/images/ruza/ruza-river.webp",
+    "width": 1200,
+    "height": 900,
+    "alt": "Зимний изгиб реки Рузы, откос и деревья на дальнем берегу",
+    "caption": "Река Руза в городской черте, 2008.",
+    "credit": {
+      "author": "vow",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%A0%D0%B5%D0%BA%D0%B0_%D0%A0%D1%83%D0%B7%D0%B0_%D0%B7%D0%B8%D0%BC%D0%BE%D0%B9.jpg",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+    }
+  },
+  "cityToday": {
+    "src": "/images/ruza/city-today.webp",
+    "width": 1200,
+    "height": 675,
+    "alt": "Площадь перед торговым домом и конструкция с надписью «Я люблю Рузу»",
+    "caption": "Городская площадь у торгового дома, 2022.",
+    "credit": {
+      "author": "Sergey Sebelev",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%A0%D1%83%D0%B7%D0%B0._%D0%A2%D0%BE%D1%80%D0%B3%D0%BE%D0%B2%D1%8B%D0%B9_%D0%B4%D0%BE%D0%BC_%D0%A0%D1%83%D0%B7%D0%B0.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "archiveBack": {
+    "src": "/images/ruza/archive-postcard-back.webp",
+    "width": 1200,
+    "height": 751,
+    "alt": "Оборот старой открытки с надписью «Открытое письмо» и музейным штампом",
+    "caption": "Оборот открытки из собрания Рузского краеведческого музея, 1910-е.",
+    "credit": {
+      "author": "Автор оригинала неизвестен. Скан: Alexander Artyominkov (Александр Андреевич Артемёнков)",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%9E%D0%B1%D0%BE%D1%80%D0%BE%D1%82_%D0%9E%D1%82%D0%BA%D1%80%D1%8B%D1%82%D0%BE%D0%B3%D0%BE_%D0%BF%D0%B8%D1%81%D1%8C%D0%BC%D0%B0_1910-%D0%B5.%D0%A0%D1%83%D0%B7%D0%B0_%D0%9C%D1%83%D0%B7%D0%B5%D0%B9.jpg",
+      "license": "Общественное достояние",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
+  },
+  "archiveMap": {
+    "src": "/images/ruza/archive-ruza-plan-1784.webp",
+    "width": 1200,
+    "height": 972,
+    "alt": "Исторический план с прямоугольной сеткой улиц Рузы",
+    "caption": "Проект регулярного плана Рузы, 1784 год.",
+    "credit": {
+      "author": "Личная канцелярия ЕИВ.",
+      "source": "https://commons.wikimedia.org/wiki/File:Ruza_1784.jpeg",
+      "license": "Общественное достояние",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
+  },
+  "archiveTown": {
+    "src": "/images/ruza/archive-ruza-town-view.webp",
+    "width": 850,
+    "height": 579,
+    "alt": "Повозки на улице, дома и Воскресенский собор на холме",
+    "caption": "Вид города с повозками и Воскресенским собором, 1900–1910."
+  },
+  "archiveSnow": {
+    "src": "/images/ruza/archive-winter-cathedral.webp",
+    "width": 1050,
+    "height": 648,
+    "alt": "На старой зимней открытке деревянные дома и колокольня Воскресенского собора",
+    "caption": "Воскресенский собор над заснеженной Рузой, 1910–1914."
+  },
+  "wideCity": {
+    "src": "/images/ruza/ruza-wide.webp",
+    "width": 2240,
+    "height": 1680,
+    "alt": "Дома Рузы среди зелёных склонов речной долины",
+    "caption": "Руза над речной долиной, 2021.",
+    "credit": {
+      "author": "Mark Nakoykher",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%A0%D1%83%D0%B7%D0%B0_%E2%80%94_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4_%D0%B2_%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B9_%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8,_%D1%84%D0%BE%D1%82%D0%BE_%E2%84%96_10.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    "compact": {
+      "src": "/images/ruza/ruza-wide-840.webp",
+      "width": 840
+    }
+  },
+  "museumFacade": {
+    "src": "/images/ruza/museum-facade.webp",
+    "width": 1500,
+    "height": 734,
+    "alt": "Фасады краеведческого музея и соседнего дома на площади Партизан",
+    "caption": "Краеведческий музей и соседний дом на площади Партизан, 2020.",
+    "credit": {
+      "author": "Sergey Sebelev",
+      "source": "https://commons.wikimedia.org/wiki/File:Ruza_Partizan_Square_Houses_14_(museum)_%26_15-16.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "sport": {
+    "src": "/images/ruza/water-sports-palace.webp",
+    "width": 1111,
+    "height": 833,
+    "alt": "Фасад Дворца водных видов спорта «Руза»",
+    "caption": "Дворец водных видов спорта «Руза».",
+    "credit": {
+      "author": "Правительство Волгоградской области",
+      "source": "https://commons.wikimedia.org/wiki/File:Palace_of_water_sports_in_Ruza.jpg",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    }
+  },
+  "reservoir": {
+    "src": "/images/ruza/ruza-reservoir.webp",
+    "width": 1500,
+    "height": 1125,
+    "alt": "Рузское водохранилище, вид с высокого берега",
+    "caption": "Рузское водохранилище, 2021.",
+    "credit": {
+      "author": "Maksimson",
+      "source": "https://commons.wikimedia.org/wiki/File:RUZA221.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "pokrov": {
+    "src": "/images/ruza/intercession-ruza.webp",
+    "width": 1500,
+    "height": 844,
+    "alt": "Покровская церковь в Рузе с колокольней",
+    "caption": "Покровская церковь на Социалистической улице.",
+    "credit": {
+      "author": "Sergey Sebelev",
+      "source": "https://commons.wikimedia.org/wiki/File:Ruza_Pokrovskaya_Church.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "komlevo": {
+    "src": "/images/ruza/komlevo-znamenie.webp",
+    "width": 1500,
+    "height": 844,
+    "alt": "Знаменский храм в Комлеве на зелёном склоне",
+    "caption": "Знаменский храм в Комлеве, 2021.",
+    "credit": {
+      "author": "Anastasia Gavrilova / Анастасия Гаврилова",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%97%D0%BD%D0%B0%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C_%D0%B2_%D0%9A%D0%BE%D0%BC%D0%BB%D0%B5%D0%B2%D0%BE_%D0%92%D0%B8%D0%BA%D0%B8-%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D1%8F_%D0%A0%D1%83%D0%B7%D0%B0_%D0%B7%D0%B0%D0%BF%D0%BE%D0%B2%D0%B5%D0%B4%D0%BD%D0%B0%D1%8F.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "gorbovo": {
+    "src": "/images/ruza/gorbovo-kazan.webp",
+    "width": 1500,
+    "height": 844,
+    "alt": "Фасад Казанской церкви в Горбове",
+    "caption": "Казанская церковь в Горбове, 2021.",
+    "credit": {
+      "author": "Anastasia Gavrilova / Анастасия Гаврилова",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%A6%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C_%D0%9A%D0%B0%D0%B7%D0%B0%D0%BD%D1%81%D0%BA%D0%BE%D0%B9_%D0%B8%D0%BA%D0%BE%D0%BD%D1%8B_%D0%91%D0%BE%D0%B6%D0%B8%D0%B5%D0%B9_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8_%D0%B2_%D0%93%D0%BE%D1%80%D0%B1%D0%BE%D0%B2%D0%BE_%D0%92%D0%B8%D0%BA%D0%B8-%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D1%8F_%D0%A0%D1%83%D0%B7%D0%B0_%D0%B7%D0%B0%D0%BF%D0%BE%D0%B2%D0%B5%D0%B4%D0%BD%D0%B0%D1%8F_01.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "zoyaMuseum": {
+    "src": "/images/ruza/petrishchevo-museum.webp",
+    "width": 1500,
+    "height": 1125,
+    "alt": "Новый музей «Зоя» в Петрищеве",
+    "caption": "Музей «Зоя» в Петрищеве, снимок 2023 года.",
+    "credit": {
+      "author": "Palbn",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%97%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5_%D0%9C%D1%83%D0%B7%D0%B5%D1%8F_%D0%97%D0%BE%D1%8F_(%D0%BF%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D0%BE_%D0%B2_2020_%D0%B3%D0%BE%D0%B4%D1%83).jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "zoyaHall": {
+    "src": "/images/ruza/petrishchevo-hall.webp",
+    "width": 1500,
+    "height": 1000,
+    "alt": "Экспозиция музея о героях битвы под Москвой",
+    "caption": "Зал героев битвы под Москвой в музее «Зоя».",
+    "credit": {
+      "author": "Alexander Artyominkov / Александр Андреевич Артемёнков",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%97%D0%B0%D0%BB_%D0%B3%D0%B5%D1%80%D0%BE%D0%B5%D0%B2_%D0%A1%D0%BE%D0%B2%D0%B5%D1%82%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%A1%D0%BE%D1%8E%D0%B7%D0%B0_%D0%B1%D0%B8%D1%82%D0%B2%D1%8B_%D0%BF%D0%BE%D0%B4_%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%BE%D0%B9_%D0%B2_%D0%9C%D1%83%D0%B7%D0%B5%D0%B9%D0%BD%D0%BE%D0%BC_%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81%D0%B5_%C2%AB%D0%97%D0%BE%D1%8F%C2%BB.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "zoyaGrave": {
+    "src": "/images/ruza/petrishchevo-first-burial.webp",
+    "width": 1500,
+    "height": 1125,
+    "alt": "Ограждённое место первого захоронения в Петрищеве",
+    "caption": "Место первого захоронения Зои Космодемьянской, снимок 2023 года.",
+    "credit": {
+      "author": "Palbn",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%9C%D0%B5%D1%81%D1%82%D0%BE_%D0%BF%D0%B5%D1%80%D0%B2%D0%BE%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE_%D0%B7%D0%B0%D1%85%D0%BE%D1%80%D0%BE%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F_%D0%97.%D0%90._%D0%9A%D0%BE%D1%81%D0%BC%D0%BE%D0%B4%D0%B5%D0%BC%D1%8C%D1%8F%D0%BD%D1%81%D0%BA%D0%BE%D0%B9.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  },
+  "zoyaMemorial": {
+    "src": "/images/ruza/petrishchevo-memorial-1950s.webp",
+    "width": 1500,
+    "height": 2222,
+    "alt": "Чёрно-белая фотография памятника Зое Космодемьянской с венками",
+    "caption": "Памятник в Петрищеве. 1950-е годы, Главархив Москвы.",
+    "credit": {
+      "author": "Главархив Москвы",
+      "source": "https://commons.wikimedia.org/wiki/File:History_of_memory_to_Zoya_Kosmodemyanskaya_04.jpg",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+    }
+  },
+  "museumCannon": {
+    "src": "/images/ruza/ruza-museum-cannon.webp",
+    "width": 1500,
+    "height": 844,
+    "alt": "Старинный пушечный ствол на музейной подставке",
+    "caption": "Пушечный ствол XVII века. Снимок экспоната Рузского музея, 2021.",
+    "credit": {
+      "author": "Niklitov",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%9F%D1%83%D1%88%D0%B5%D1%87%D0%BD%D1%8B%D0%B9_%D1%81%D1%82%D0%B2%D0%BE%D0%BB._%D0%A0%D1%83%D0%B7%D1%81%D0%BA%D0%B8%D0%B9_%D0%BA%D1%80%D0%B0%D0%B5%D0%B2%D0%B5%D0%B4%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D1%83%D0%B7%D0%B5%D0%B9.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  }
+}

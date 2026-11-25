@@ -1,0 +1,22 @@
+---
+import type { SourceReference } from '../content/model';
+
+interface Props {
+  sources: SourceReference[];
+}
+const { sources } = Astro.props;
+---
+<section class="sources">
+  <h2>Источники</h2>
+  <ul>
+    {sources.map(({ label, url }) => <li><a href={url}>{label}</a></li>)}
+  </ul>
+</section>
+
+<style>
+  .sources { padding-top: 24px; border-top: 1px solid #d7c7b244; }
+  h2 { margin: 0 0 12px; font: 400 28px var(--serif); }
+  ul { padding-inline-start: 20px; color: var(--muted); }
+  li + li { margin-top: 8px; }
+  a { color: var(--stone); text-decoration: underline; text-underline-offset: .22em; }
+</style>

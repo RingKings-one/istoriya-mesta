@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ArrowMark from '../components/ArrowMark.astro';
+import { ruzaMedia as photo } from '../content/ruza-media';
+import { postcard } from '../content/ruza';
+import EditorialImage from '../components/EditorialImage.astro';
+---
+<BaseLayout
+  title="История места — кофейня и атлас Рузы"
+  description="Кофейня «История места» в Рузе на Федеративной, 7. От чашки кофе — к прогулкам, городским историям и архиву."
+  sharePhoto={photo.cafeInterior}
+>
+  <HeroSection />
+
+  <section class="section home-intro" id="atlas-opening" tabindex="-1">
+    <div class="home-intro-meta">
+      <p class="eyebrow">ИСТОРИЯ МЕСТА · КОФЕЙНЯ</p>
+      <span class="home-folio">ФЕДЕРАТИВНАЯ, 7 · РУЗА</span>
+    </div>
+    <div class="home-intro-copy" data-reveal>
+      <h2>Всё начинается с <em>чашки кофе.</em></h2>
+      <p>
+        В кофейне на Федеративной можно сесть у окна, взять путеводитель и выбрать, куда идти дальше. Отсюда начинаются наши прогулки по Рузе.
+      </p>
+      <a class="text-link" href="/cafe/">Заглянуть в кофейню <ArrowMark direction="forward" /></a>
+    </div>
+    <figure class="home-intro-image" data-reveal>
+      <EditorialImage src={photo.cafeHands.src} sizes="(max-width: 680px) 100vw, 54vw" alt={photo.cafeHands.alt} width={photo.cafeHands.width} height={photo.cafeHands.height} />
+      <figcaption>{photo.cafeHands.caption}</figcaption>
+    </figure>
+  </section>
+
+  <section class="home-principle" data-reveal aria-label="Принцип проекта">
+    <span class="home-principle-index">ПРИНЦИП / 01</span>
+    <p>От первого кофе —<br /><em>к первой прогулке.</em></p>
+  </section>
+
+  <section class="city-feature home-city-feature">
+    <div class="home-city-image">
+      <EditorialImage src={photo.museumFacade.src} sizes="(max-width: 680px) 100vw, 52vw" alt={photo.museumFacade.alt} width={photo.museumFacade.width} height={photo.museumFacade.height} />
+      <span class="home-image-index">ГЛАВА 01 <i>·</i> РУЗА</span>
+
+    </div>
+    <div class="feature-copy home-city-copy" data-reveal>
+      <p class="eyebrow">ПЕРВАЯ ГЛАВА · 01</p>
+      <span class="home-chapter-label">МОСКОВСКАЯ ОБЛАСТЬ</span>
+      <h2>Руза</h2>
+      <p>
+        Город на высоком берегу. Начните с кофейни на Федеративной, пройдите по площади Партизан и загляните в музей.
+      </p>
+      <a class="text-link" href="/cities/ruza/">Исследовать город <ArrowMark direction="forward" /></a>
+      <span class="home-city-edition">АТЛАС ЖИВЫХ ИСТОРИЙ <i>—</i> ПЕРВАЯ ГЛАВА</span>
+    </div>
+  </section>
+
+  <section class="section route-feature home-route-feature">
+    <div class="route-feature-copy" data-reveal>
+      <p class="eyebrow">МЕДЛЕННОЕ ПУТЕШЕСТВИЕ</p>
+      <span class="home-folio">02 <i>—</i> ДВИЖЕНИЕ И НАБЛЮДЕНИЕ</span>
+      <h2>Иногда главное — свернуть с привычного пути.</h2>
+      <p>
+        Выбирайте маршрут, задерживайтесь у деталей и открывайте город в собственном
+        темпе. Не список достопримечательностей, а прогулка с ощущением места.
+      </p>
+      <a class="text-link" href="/routes/">Выбрать прогулку по Рузе <ArrowMark direction="forward" /></a>
+    </div>
+    <figure class="home-route-image" data-reveal>
+      <EditorialImage src={photo.park.src} sizes="(max-width: 680px) 100vw, 50vw" alt={photo.park.alt} width={photo.park.width} height={photo.park.height} />
+      <figcaption>{photo.park.caption}</figcaption>
+    </figure>
+  </section>
+
+  <section class="section discovery-section">
+    <div class="section-heading" data-reveal>
+      <div>
+        <p class="eyebrow">ОТКРЫВАЙТЕ СВОЁ</p>
+        <span class="home-folio">03 <i>—</i> НАПРАВЛЕНИЯ ИССЛЕДОВАНИЯ</span>
+        <h2>У каждого пути — своя история.</h2>
+      </div>
+      <p>Выберите, с чего начнётся ваше знакомство.</p>
+    </div>
+    <div class="card-grid">
+      <FeatureCard
+        image={photo.cathedral.src}
+        eyebrow="АТЛАС"
+        title="Города"
+        text="Открывайте места и их характер."
+        href="/cities/"
+      />
+      <FeatureCard
+        image={photo.cafeInterior.src}
+        eyebrow="АТМОСФЕРА"
+        title="Кофейня"
+        text="Пространство встреч, вкуса и впечатлений."
+        href="/cafe/"
+      />
+      <FeatureCard
+        image={postcard.src}
+        eyebrow="ПАМЯТЬ"
+        title="Архив"
+        text="Открытка 1910-х, старый план и музейные подборки."
+        href="/archive/"
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .home-intro {
+    display: grid;
+    grid-template-columns: .58fr 1fr 1.12fr;
+    gap: clamp(24px, 4vw, 62px);
+    align-items: start;
+  }
+  .home-intro-meta { display: grid; gap: 22px; }
+  .home-folio {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--stone);
+    font-size: 9px;
+    letter-spacing: .14em;
+  }
+  .home-folio i { color: var(--rust); font-style: normal; }
+  .home-intro-copy h2 {
+    margin: 0 0 20px;
+    font: 400 clamp(34px, 4.1vw, 58px)/1.03 var(--serif);
+    letter-spacing: -.025em;
+  }
+  .home-intro-copy h2 em { color: var(--stone); font-weight: 400; }
+  .home-intro-copy > p { max-width: 420px; margin: 0 0 22px; color: var(--muted); }
+  .home-intro-image,.home-route-image { min-width: 0; margin: 0; }
+  .home-intro-image { padding-top: 38px; }
+  .home-intro-image :global(img) { display:block; width:100%; height:auto; filter: saturate(.92) contrast(1.035); }
+  .home-intro-image figcaption,.home-route-image figcaption {
+    display: flex; justify-content: space-between; gap: 12px;
+    padding-top: 11px; color: var(--muted); font-size: 8px; letter-spacing: .12em;
+  }
+  .home-principle {
+    position: relative; display: grid; grid-template-columns: .58fr 2.12fr;
+    align-items: center; gap: 24px; padding: 34px 7vw;
+    border-top: 1px solid #d7c7b233; border-bottom: 1px solid #d7c7b233;
+    background: #202720;
+  }
+  .home-principle-index { color: var(--rust); font-size: 9px; letter-spacing: .16em; }
+  .home-principle > p {
+    margin: 0; color: var(--light); font: clamp(23px, 3vw, 38px)/1.15 var(--serif);
+  }
+  .home-principle > p em { color: var(--stone); font-weight: 400; }
+  .home-city-feature { grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr); }
+  .home-city-image { position: relative; align-self: center; min-width: 0; }
+  .home-city-image :global(img) { display:block; width:100%; height:auto; }
+  .home-image-index,.home-image-disclosure {
+    position: absolute; z-index: 1; left: 24px; color: #f1e9dd;
+    font-size: 8px; letter-spacing: .15em; text-shadow: 0 1px 12px #0009;
+  }
+  .home-image-index { top: 24px; }
+  .home-image-index i,.home-city-edition i { color: var(--rust); font-style: normal; }
+  .home-image-disclosure { bottom: 22px; opacity: .78; font-size: 7px; }
+  .home-city-copy { position: relative; align-self: center; padding: clamp(36px, 6vw, 88px); }
+  .home-chapter-label { display: block; margin: 30px 0 8px; color: var(--muted); font-size: 8px; letter-spacing: .17em; }
+  .home-city-copy h2 { margin-bottom: 16px; font-size: clamp(64px, 8vw, 108px); line-height: .9; }
+  .home-city-copy > p:not(.eyebrow) { max-width: 390px; }
+  .home-city-edition { display: block; margin-top: 42px; color: var(--stone); font-size: 8px; letter-spacing: .14em; }
+  .home-route-feature { grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); }
+  .home-route-feature .home-folio { margin-bottom: 24px; }
+  .home-route-feature h2 { max-width: 620px; }
+  .home-route-image :global(img) { display:block; width:100%; height:auto; }
+  .discovery-section .home-folio { margin-bottom: 18px; }
+  .discovery-section .section-heading h2 { margin-top: 12px; }
+  @media(max-width: 900px) {
+    .home-intro { grid-template-columns: .45fr 1fr; }
+    .home-intro-image { grid-column: 2; padding-top: 0; }
+    .home-city-copy { padding: 36px; }
+  }
+  @media(max-width: 680px) {
+    .home-intro { grid-template-columns: 1fr; gap: 18px; }
+    .home-intro-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+    .home-intro-image { grid-column: auto; }
+    .home-intro-image figcaption,.home-route-image figcaption { font-size: 7px; }
+    .home-principle { grid-template-columns: 1fr; gap: 10px; padding: 26px 22px; }
+    .home-principle-index { grid-column: 1 / -1; }
+    .home-principle > p { font-size: clamp(23px, 6vw, 31px); }
+    .home-city-feature { grid-template-columns: 1fr; gap: 0; }
+    .home-city-copy { padding: 34px 22px 54px; }
+    .home-chapter-label { margin-top: 22px; }
+    .home-city-edition { margin-top: 28px; }
+    .home-route-feature { grid-template-columns: 1fr; gap: 24px; }
+    .home-route-feature .home-folio { margin-bottom: 18px; }
+    .discovery-section .home-folio { margin-bottom: 14px; }
+  }
+  @media(max-width: 360px) {
+    .home-image-index,.home-image-disclosure { left: 16px; }
+  }
+  @media(prefers-reduced-motion:reduce) {
+    .home-intro-image img,.home-route-image img { transition: none; }
+  }
+</style>

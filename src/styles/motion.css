@@ -1,0 +1,96 @@
+@media (prefers-reduced-motion: no-preference) {
+  [data-opening] > picture {
+    animation: opening-image 1.45s var(--ease-editorial);
+  }
+
+  [data-opening] :is(h1, .lead) {
+    animation: editorial-enter 680ms var(--ease-editorial);
+  }
+
+  [data-opening] .lead {
+    animation-duration: 840ms;
+  }
+
+  [data-reveal].has-entered:not(:focus-within) {
+    animation: content-rise 720ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) both;
+  }
+
+  [data-reveal="image"].has-entered:not(:focus-within),
+  figure.has-entered:not(:focus-within),
+  .photo-frame.has-entered:not(:focus-within) {
+    animation: photo-arrive 900ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) both;
+  }
+
+  [data-reveal="card"].has-entered:not(:focus-within),
+  .feature-card.has-entered:not(:focus-within),
+  .archive-tile.has-entered:not(:focus-within),
+  .epoch.has-entered:not(:focus-within),
+  .trail-stop.has-entered:not(:focus-within),
+  .editorial-path-link.has-entered:not(:focus-within) {
+    animation: card-arrive 720ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) both;
+  }
+
+  .photo-frame.has-entered:not(:focus-within) > picture {
+    animation: documentary-frame 900ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) both;
+  }
+
+  .cafe-opening[data-opening] .cafe-hero-media > picture {
+    animation: opening-image 1.55s var(--ease-editorial);
+  }
+
+  .archive-back[open] > .photo-frame {
+    animation: content-rise 520ms var(--ease-editorial);
+  }
+}
+
+@keyframes content-rise {
+  from { opacity: 0; transform: translate3d(0, 16px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes card-arrive {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes photo-arrive {
+  from { opacity: .25; transform: translate3d(0, 20px, 0) scale(1.018); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes opening-image {
+  from { scale: 1.035; }
+}
+
+@keyframes editorial-enter {
+  from { opacity: .62; translate: 0 18px; }
+}
+
+@keyframes documentary-frame {
+  from { opacity: .35; transform: scale(1.025); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 680px) and (prefers-reduced-motion: no-preference) {
+  [data-reveal].has-entered:not(:focus-within) { animation-duration: 620ms; }
+  [data-reveal="image"].has-entered:not(:focus-within),
+  figure.has-entered:not(:focus-within),
+  .photo-frame.has-entered:not(:focus-within) { animation-duration: 760ms; }
+  [data-reveal="card"].has-entered:not(:focus-within),
+  .feature-card.has-entered:not(:focus-within),
+  .archive-tile.has-entered:not(:focus-within),
+  .epoch.has-entered:not(:focus-within),
+  .trail-stop.has-entered:not(:focus-within),
+  .editorial-path-link.has-entered:not(:focus-within) { animation-duration: 620ms; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal].has-entered:not(:focus-within) {
+    animation: low-motion-fade 260ms ease-out both;
+  }
+}
+
+@keyframes low-motion-fade {
+  from { opacity: .25; }
+  to { opacity: 1; }
+}

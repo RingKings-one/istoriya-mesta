@@ -1,0 +1,97 @@
+---
+import EditorialImage from './EditorialImage.astro';
+import { isPlaceholderImage } from '../data';
+const { eyebrow, title, description, image, edition = 'ГЛАВА 01', variant = 'default' } = Astro.props;
+const showPlaceholderNote = image ? isPlaceholderImage(image) : false;
+---
+<section class:list={['page-intro', `page-intro--${variant}`, { 'page-intro--text': !image }]} data-opening aria-labelledby="page-title">
+  {image && <EditorialImage src={image} alt="" sizes="100vw" loading="eager" fetchpriority="high" position="var(--intro-image-position, center 55%)" className="page-intro-image" />}
+  <div class="page-intro-copy">
+    <a class="page-home-return" href="/">
+      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="m2.5 7 5.5-4.5L13.5 7v6.25h-4v-4h-3v4h-4V7Z" /></svg>
+      <span>На главную</span>
+    </a>
+    <p class="eyebrow">{eyebrow}</p>
+    {image && <p class="page-intro-edition">{edition}</p>}
+    <h1 id="page-title">{title}</h1>
+    <p class="lead">{description}</p>
+    {showPlaceholderNote && <p class="page-intro-note">ВРЕМЕННОЕ ИЗОБРАЖЕНИЕ ДЛЯ НАСТРОЕНИЯ · НЕ ФОТОГРАФИЯ КОНКРЕТНОГО МЕСТА</p>}
+  </div>
+</section>
+
+<style>
+  .page-home-return {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 22px;
+    border: 1px solid #e8e1d681;
+    border-radius: 999px;
+    padding: 8px 15px;
+    background: #181d1a82;
+    color: var(--light);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .025em;
+    transition: background .22s ease, border-color .22s ease, transform .22s ease;
+  }
+  .page-home-return svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.25; }
+  .page-home-return:hover { border-color: var(--stone); background: #334d40d9; transform: translateY(-1px); }
+  .page-home-return:focus-visible { outline: 2px solid var(--stone); outline-offset: 4px; }
+
+  .page-intro.page-intro--text {
+    min-height: auto;
+    padding-block: clamp(104px, 10vw, 142px) clamp(36px, 6vw, 82px);
+  }
+  .page-intro--text::after { display: none; }
+  .page-intro > picture > img { object-position: var(--intro-image-position, center 55%); }
+  .page-intro-edition {
+    margin: -6px 0 18px;
+    color: var(--stone);
+    font-size: .68rem;
+    letter-spacing: .14em;
+  }
+  .page-intro--journal { --intro-image-position: 64% center; }
+  .page-intro--archive { --intro-image-position: center 42%; }
+  .page-intro--route { --intro-image-position: 56% center; }
+  .page-intro--cafe { --intro-image-position: 68% center; }
+  .page-intro--city { --intro-image-position: 58% center; }
+  .page-intro--atlas { --intro-image-position: center 48%; }
+  .page-intro--journal::after {
+    background: linear-gradient(90deg,#0d110ee8 0%,#0d110e76 55%,#0d110e25 100%),linear-gradient(0deg,#0d110eaa 0%,transparent 75%);
+  }
+  .page-intro--cafe::after {
+    background: linear-gradient(90deg,#17130fe8 0%,#17130e75 58%,#17130e20 100%),linear-gradient(0deg,#17130eaa 0%,transparent 75%);
+  }
+  .page-intro--city .page-intro-copy { max-width: 650px; }
+  .page-intro--city h1 { font: italic 400 clamp(90px, 13vw, 176px)/.84 var(--editorial-serif); }
+  @media(max-width:680px) {
+    .page-home-return { min-height: 40px; margin-bottom: 18px; }
+    .page-intro:not(.page-intro--text) {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      min-height: unset;
+      padding: 72px 0 30px;
+    }
+    .page-intro:not(.page-intro--text)::after { display: none; }
+    .page-intro:not(.page-intro--text) > :global(picture) {
+      position: relative;
+      inset: auto;
+      z-index: 0;
+      width: 100%;
+      height: auto;
+    }
+    .page-intro:not(.page-intro--text) > :global(picture img) {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 55svh;
+      object-fit: contain;
+    }
+    .page-intro:not(.page-intro--text) .page-intro-copy { padding: 30px 6vw 0; }
+    .page-intro--city h1 { font-size: clamp(64px, 18vw, 92px); }
+  }
+  @media(prefers-reduced-motion:reduce) { .page-home-return { transition: none; } }
+</style>
