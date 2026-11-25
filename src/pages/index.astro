@@ -1,23 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FeatureCard from '../components/FeatureCard.astro';
+import HeroSection from '../components/HeroSection.astro';
 import { images, imageSrcSet } from '../data';
 ---
 <BaseLayout
   title="История места — Атлас живых историй"
   description="Открываем характер городов через места, людей, детали и маршруты. Первая глава — Руза."
 >
-  <section class="hero">
-    <img src={images.hero} srcset={imageSrcSet(images.hero)} sizes="100vw" alt="" fetchpriority="high" />
-    <div class="hero-content">
-      <p class="eyebrow">АТЛАС ЖИВЫХ ИСТОРИЙ</p>
-      <h1>У каждого<br />места есть<br /><em>история.</em></h1>
-      <p class="lead">Мы помогаем её почувствовать.</p>
-      <a class="button button-filled" href="/cities/">Открыть атлас ↗</a>
-      <p class="hero-asset-note">ВРЕМЕННОЕ ИЗОБРАЖЕНИЕ ДЛЯ НАСТРОЕНИЯ · НЕ ДОКУМЕНТАЛЬНОЕ ФОТО</p>
-    </div>
-    <span class="hero-index" aria-hidden="true">01 — 06</span>
-  </section>
+  <HeroSection />
 
   <section class="section intro-grid">
     <div>
