@@ -1,3 +1,5 @@
+import manifest from './generated/image-manifest.json';
+
 // Temporary editorial imagery. These are mood references, not documentary photographs of Ruza.
 // Keep these stable IDs/roles when replacing mood visuals with user-selected project photography.
 export const imageAssets = {
@@ -8,6 +10,11 @@ export const imageAssets = {
   archiveDesk: { id: 'mood-archive-desk', src: 'https://images.unsplash.com/photo-1653491951587-282e99d6c1e5?auto=format&fit=crop&w=1600&q=82', status: 'placeholder', roles: ['archive', 'museum'], maxWidth: 1600, localKey: 'archive--archive-desk-detail', focalPoint: 'center 42%' },
   forestPath: { id: 'mood-forest-path', src: 'https://images.unsplash.com/photo-1635746146715-0cc45dfa3bc2?auto=format&fit=crop&w=1600&q=82', status: 'placeholder', roles: ['map', 'forest', 'gazebo', 'route-atmosphere'], maxWidth: 1600, localKey: 'ruza--ruza-forest-path', focalPoint: '56% center' },
 } as const;
+
+export const isPlaceholderImage = (src: string) => {
+  const asset = Object.values(imageAssets).find((candidate) => candidate.src === src);
+  return asset ? asset.status === 'placeholder' || !manifest.assets[asset.localKey] : false;
+};
 
 export const nav = [
   { label: 'Города', href: '/cities/' },
