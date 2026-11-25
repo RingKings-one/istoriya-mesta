@@ -1,4 +1,52 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro'; import PageIntro from '../../components/PageIntro.astro'; import {images} from '../../data';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import FeatureCard from '../../components/FeatureCard.astro';
+import { images } from '../../data';
 ---
-<BaseLayout title="Истории — История места"><PageIntro eyebrow="РЕДАКЦИОННЫЙ ЖУРНАЛ" title="Истории мест" description="Люди, события и маленькие открытия, из которых складывается характер места." image={images.archive}/><section class="section"><h2>Истории в деталях</h2><a class="feature-card" href="/archive/"><img src={images.camera} alt=""/><div class="feature-copy"><h2>Память в деталях</h2></div></a></section></BaseLayout>
+<BaseLayout
+  title="Истории — История места"
+  description="Редакционный журнал о людях, событиях и деталях, которые создают характер места."
+>
+  <PageIntro
+    eyebrow="РЕДАКЦИОННЫЙ ЖУРНАЛ"
+    title="Истории, из которых складывается место."
+    description="Большие события и тихие наблюдения. Человеческие голоса и детали повседневности."
+    image={images.archive}
+  />
+  <section class="section">
+    <p class="eyebrow">СМОТРЕТЬ БЛИЖЕ</p>
+    <h2>У истории всегда есть несколько слоёв.</h2>
+    <p>
+      Мы будем публиковать материалы по мере исследования города: от визуальных
+      заметок и локальных сюжетов до разговоров с людьми, которые знают это место
+      изнутри.
+    </p>
+    <div class="card-grid">
+      <FeatureCard
+        image={images.street}
+        eyebrow="ГОРОДСКАЯ СРЕДА"
+        title="Следы времени"
+        text="Как пространство хранит память о разных эпохах."
+        href="/archive/"
+        number="01"
+      />
+      <FeatureCard
+        image={images.coffee}
+        eyebrow="ПОВСЕДНЕВНОСТЬ"
+        title="Маленькие ритуалы"
+        text="Места встреч и привычки, которые создают атмосферу."
+        href="/cafe/"
+        number="02"
+      />
+      <FeatureCard
+        image={images.forest}
+        eyebrow="НАБЛЮДЕНИЯ"
+        title="Медленный маршрут"
+        text="Что можно заметить, если никуда не торопиться."
+        href="/routes/"
+        number="03"
+      />
+    </div>
+  </section>
+</BaseLayout>
