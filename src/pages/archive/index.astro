@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import EditorialPath from '../../components/EditorialPath.astro';
+import ArrowMark from '../../components/ArrowMark.astro';
 import { images, imageSrcSet } from '../../data';
 ---
 <BaseLayout
@@ -29,21 +30,21 @@ import { images, imageSrcSet } from '../../data';
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">01</span>
         <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>
-        <span class="archive-tile-copy"><small>КАДРЫ И НАБЛЮДЕНИЯ</small><strong>Фотографическая память</strong><em>Перейти к историям ↗</em></span>
+        <span class="archive-tile-copy"><small>КАДРЫ И НАБЛЮДЕНИЯ</small><strong>Фотографическая память</strong><em>Перейти к историям <ArrowMark direction="forward" /></em></span>
       </a>
       <a class="archive-tile" href="/routes/">
         <img src={images.map} srcset={imageSrcSet(images.map)} sizes="(max-width: 680px) 100vw, 42vw" alt="" loading="lazy" />
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">02</span>
         <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>
-        <span class="archive-tile-copy"><small>СХЕМЫ И ПРОСТРАНСТВО</small><strong>Карты и маршруты</strong><em>Исследовать ↗</em></span>
+        <span class="archive-tile-copy"><small>СХЕМЫ И ПРОСТРАНСТВО</small><strong>Карты и маршруты</strong><em>Исследовать <ArrowMark direction="forward" /></em></span>
       </a>
       <a class="archive-tile" href="/cities/ruza/">
         <img src={images.books} srcset={imageSrcSet(images.books)} sizes="(max-width: 680px) 100vw, 42vw" alt="" loading="lazy" />
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">03</span>
         <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>
-        <span class="archive-tile-copy"><small>ИСТОЧНИКИ И СВИДЕТЕЛЬСТВА</small><strong>Материалы места</strong><em>Открыть главу ↗</em></span>
+        <span class="archive-tile-copy"><small>ИСТОЧНИКИ И СВИДЕТЕЛЬСТВА</small><strong>Материалы места</strong><em>Открыть главу <ArrowMark direction="forward" /></em></span>
       </a>
     </div>
   </section>
