@@ -17,11 +17,11 @@ const broken = [];
 
 for (const file of htmlFiles) {
   const html = await readFile(file, 'utf8');
-  const anchors = html.matchAll(/<a\\b[^>]*\\bhref=["']([^"']+)["'][^>]*>/gi);
+  const anchors = html.matchAll(/<a\b[^>]*\bhref=["']([^"']+)["'][^>]*>/gi);
 
   for (const match of anchors) {
     const href = match[1].trim();
-    if (!href || href.startsWith('#') || /^(?:[a-z][a-z0-9+.-]*:|\\/\\/)/i.test(href)) continue;
+    if (!href || href.startsWith('#') || /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(href)) continue;
 
     let pathname;
     try {
@@ -31,7 +31,7 @@ for (const file of htmlFiles) {
       continue;
     }
 
-    const relative = pathname.replace(/^\\/+/, '');
+    const relative = pathname.replace(/^\/+/, '');
     const candidates = pathname.endsWith('/')
       ? [path.join(outputDir, relative, 'index.html')]
       : [path.join(outputDir, relative), path.join(outputDir, relative, 'index.html')];
