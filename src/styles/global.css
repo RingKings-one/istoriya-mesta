@@ -588,6 +588,30 @@ a {
     padding: 72px 22px;
   }
 
+  .route-feature {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .route-feature > img {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .section-heading {
+    display: block;
+  }
+
+  .section-heading > p {
+    margin: 16px 0 0;
+  }
+
+  .hero-index {
+    right: 24px;
+    bottom: 20px;
+    font-size: 9px;
+  }
+
   .intro-grid,
   .city-feature,
   .split-section {
