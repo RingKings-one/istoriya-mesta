@@ -10,7 +10,8 @@
     "images:optimize": "node scripts/optimize-images.mjs",
     "prebuild": "npm run images:optimize",
     "test:images": "node scripts/test-image-pipeline.mjs",
-    "audit:report": "node scripts/report-npm-audit.mjs"
+    "audit:report": "node scripts/report-npm-audit.mjs",
+    "test:local-images": "node scripts/test-local-image-render.mjs"
   },
   "dependencies": {
     "astro": "^5.0.0"
