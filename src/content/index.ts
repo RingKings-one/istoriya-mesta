@@ -12,8 +12,9 @@ export const ruzaProfile: CityProfile = {
 };
 
 /**
- * Contextual reading paths. Each destination answers the question:
- * "Where can I go next to understand this place from another angle?"
+ * Contextual reading paths. Each page lists destinations that are not already
+ * the primary links in its main content, so the footer path adds a real next step
+ * instead of repeating the same cards or index rows.
  */
 export const pageJourneys: Record<EditorialPageKey, Array<{
   href: string;
@@ -21,31 +22,28 @@ export const pageJourneys: Record<EditorialPageKey, Array<{
   note: string;
 }>> = {
   cities: [
-    { href: '/cities/ruza/', title: 'Руза', note: 'Первая глава атласа и отправная точка исследования' },
+    { href: '/stories/', title: 'Истории', note: 'Увидеть город через сюжеты и человеческие детали' },
+    { href: '/archive/', title: 'Архив', note: 'Познакомиться с материалами и источниками проекта' },
   ],
   ruza: [
-    { href: '/stories/', title: 'Истории', note: 'Люди, память и детали повседневной жизни' },
-    { href: '/routes/', title: 'Маршруты', note: 'Увидеть пространство в движении' },
-    { href: '/archive/', title: 'Архив', note: 'Материалы и источники, из которых складывается портрет' },
+    { href: '/cafe/', title: 'Кофейня', note: 'Открыть тему повседневных встреч и городских ритуалов' },
+    { href: '/cities/', title: 'Атлас городов', note: 'Вернуться к карте проекта и его будущим главам' },
   ],
   stories: [
     { href: '/cities/ruza/', title: 'Глава о Рузе', note: 'Вернуться к общему портрету места' },
-    { href: '/archive/', title: 'Архив', note: 'Посмотреть на свидетельства и визуальные материалы' },
-    { href: '/routes/', title: 'Маршруты', note: 'Продолжить знакомство с городом через прогулку' },
+    { href: '/cities/', title: 'Атлас городов', note: 'Посмотреть, как первая глава станет частью общего атласа' },
   ],
   routes: [
-    { href: '/cities/ruza/', title: 'Глава о Рузе', note: 'Понять контекст места перед прогулкой' },
     { href: '/stories/', title: 'Истории', note: 'Узнать, какие сюжеты скрываются за деталями' },
     { href: '/archive/', title: 'Архив', note: 'Исследовать материалы и визуальные следы' },
+    { href: '/cafe/', title: 'Кофейня', note: 'Предусмотреть паузу в неспешном знакомстве с местом' },
   ],
   cafe: [
-    { href: '/cities/ruza/', title: 'Глава о Рузе', note: 'Кофейное пространство как часть портрета города' },
     { href: '/stories/', title: 'Истории', note: 'Люди, встречи и повседневные ритуалы' },
-    { href: '/routes/', title: 'Маршруты', note: 'Встроить паузу в неспешное знакомство с местом' },
+    { href: '/routes/', title: 'Маршруты', note: 'Продолжить знакомство с местом в движении' },
   ],
   archive: [
-    { href: '/cities/ruza/', title: 'Глава о Рузе', note: 'Собрать материалы в общий контекст города' },
-    { href: '/stories/', title: 'Истории', note: 'Увидеть человеческий смысл за источниками' },
-    { href: '/routes/', title: 'Маршруты', note: 'Связать пространство и его свидетельства' },
+    { href: '/cafe/', title: 'Кофейня', note: 'Посмотреть на повседневную жизнь через пространство встреч' },
+    { href: '/cities/', title: 'Атлас городов', note: 'Собрать отдельные материалы в контекст города' },
   ],
 };
