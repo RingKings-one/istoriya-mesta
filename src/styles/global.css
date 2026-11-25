@@ -861,6 +861,11 @@ a {
     scroll-behavior: auto;
   }
 
+  .feature-card:hover,
+  .feature-card:hover img {
+    transform: none;
+  }
+
   *,
   *::before,
   *::after {
