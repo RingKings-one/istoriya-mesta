@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
+import EditorialPath from '../../components/EditorialPath.astro';
+import { ruzaProfile } from '../../content';
 import FeatureCard from '../../components/FeatureCard.astro';
 import { images, imageSrcSet } from '../../data';
 ---
@@ -22,8 +24,9 @@ import { images, imageSrcSet } from '../../data';
       <h2>Город раскрывается<br /><em>не сразу.</em></h2>
     </div>
     <div class="ruza-opening-copy">
-      <p>Мы будем собирать портрет Рузы постепенно: замечать городскую среду, искать истории за привычными фасадами и прокладывать маршруты для внимательных прогулок.</p>
+      <p>{ruzaProfile.summary}</p>
       <span class="ruza-edition">АТЛАС ЖИВЫХ ИСТОРИЙ <i>—</i> ГЛАВА 01</span>
+      <span class="ruza-status">СТАТУС РЕДАКЦИОННОЙ ГЛАВЫ · {ruzaProfile.status}</span>
     </div>
   </section>
   <section class="ruza-spread">
@@ -43,6 +46,7 @@ import { images, imageSrcSet } from '../../data';
       <FeatureCard image={images.camera} eyebrow="В ДЕТАЛЯХ" title="Архив" text="Визуальные материалы и следы времени." href="/archive/" number="03" />
     </div>
   </section>
+  <EditorialPath current="ruza" />
 </BaseLayout>
 
 <style>
@@ -51,6 +55,7 @@ import { images, imageSrcSet } from '../../data';
   .ruza-opening-heading h2 em { color:var(--stone); }
   .ruza-opening-copy { max-width:440px; padding-bottom:5px; }
   .ruza-opening-copy > p { color:var(--muted); font-size:14px; }
+  .ruza-status { display:block; margin-top:14px; color:var(--muted); font-size:8px; letter-spacing:.12em; line-height:1.6; }
   .ruza-edition { display:flex; gap:10px; align-items:center; margin-top:28px; color:var(--stone); font-size:9px; letter-spacing:.14em; }
   .ruza-edition i { color:var(--rust); font-style:normal; }
   .ruza-spread { display:grid; grid-template-columns:1.4fr .6fr; gap:clamp(24px,5vw,70px); align-items:center; padding:0 6vw 90px; }
