@@ -1,0 +1,4 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'; import PageIntro from '../../components/PageIntro.astro'; import {images} from '../../data';
+---
+<BaseLayout title="Маршруты — История места"><PageIntro eyebrow="ПУТЕШЕСТВИЯ" title="Маршруты и открытия" description="Пути, которые помогают увидеть город внимательнее." image={images.map}/><section class="section"><h2>Первая прогулка</h2><a class="feature-card" href="/cities/ruza/"><img src={images.dock} alt=""/><div class="feature-copy"><h2>Историческая прогулка по Рузе</h2></div></a></section></BaseLayout>

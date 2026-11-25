@@ -1,0 +1,4 @@
+---
+const {eyebrow,title,description,image}=Astro.props;
+---
+<section class="page-intro">{image&&<img src={image} alt="" fetchpriority="high"/>}<div class="page-intro-copy"><p class="eyebrow">{eyebrow}</p><h1>{title}</h1><p class="lead">{description}</p></div></section>

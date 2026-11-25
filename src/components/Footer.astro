@@ -1,0 +1,4 @@
+---
+import {nav} from '../data'; const year=new Date().getFullYear();
+---
+<footer class="site-footer"><a class="brand" href="/"><span class="brand-mark">⌂</span><span>История<br/>места</span></a><nav aria-label="Навигация в подвале">{nav.map(item=><a href={item.href}>{item.label}</a>)}</nav><p>Сохраняем истории.<br/>Открываем заново.</p><small>© {year} История места</small></footer>

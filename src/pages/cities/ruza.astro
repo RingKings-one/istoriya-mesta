@@ -1,0 +1,4 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'; import PageIntro from '../../components/PageIntro.astro'; import {images} from '../../data';
+---
+<BaseLayout title="Руза — История места"><PageIntro eyebrow="ПЕРВАЯ ГЛАВА" title="Руза" description="Город, который мы будем открывать через места, людей, детали и маршруты." image={images.river}/><section class="section"><h2>Исследуйте город</h2><div class="card-grid"><a class="feature-card" href="/stories/"><img src={images.street} alt=""/><div class="feature-copy"><h2>Городская среда</h2></div></a><a class="feature-card" href="/routes/"><img src={images.map} alt=""/><div class="feature-copy"><h2>Прогулка по городу</h2></div></a></div></section></BaseLayout>

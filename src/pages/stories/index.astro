@@ -1,0 +1,4 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'; import PageIntro from '../../components/PageIntro.astro'; import {images} from '../../data';
+---
+<BaseLayout title="Истории — История места"><PageIntro eyebrow="РЕДАКЦИОННЫЙ ЖУРНАЛ" title="Истории мест" description="Люди, события и маленькие открытия, из которых складывается характер места." image={images.archive}/><section class="section"><h2>Истории в деталях</h2><a class="feature-card" href="/archive/"><img src={images.camera} alt=""/><div class="feature-copy"><h2>Память в деталях</h2></div></a></section></BaseLayout>

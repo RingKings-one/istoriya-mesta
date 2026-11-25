@@ -1,0 +1,4 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'; import PageIntro from '../../components/PageIntro.astro'; import {images} from '../../data';
+---
+<BaseLayout title="Города — История места"><PageIntro eyebrow="АТЛАС" title="Места, где история оживает" description="У каждого города свой характер. Начнём с первой главы." image={images.river}/><section class="section"><h2>Первая глава</h2><a class="feature-card" href="/cities/ruza/"><img src={images.river} alt=""/><div class="feature-copy"><h2>Руза</h2><p>Город, с которого начинается наш атлас.</p></div></a></section></BaseLayout>
