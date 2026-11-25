@@ -1,9 +1,9 @@
 ---
-import { imageSrcSet } from '../data';
+import EditorialImage from './EditorialImage.astro';
 const { eyebrow, title, description, image, edition = 'ГЛАВА 01', variant = 'default' } = Astro.props;
 ---
 <section class={`page-intro page-intro--${variant}`} aria-labelledby="page-title">
-  {image && <img src={image} srcset={imageSrcSet(image)} sizes="100vw" alt="" fetchpriority="high" decoding="async" />}
+  {image && <EditorialImage src={image} alt="" sizes="100vw" loading="eager" fetchpriority="high" position="var(--intro-image-position, center 55%)" className="page-intro-image" />}
   <span class="page-intro-edition" aria-hidden="true">{edition}</span>
   <div class="page-intro-copy">
     <p class="eyebrow">{eyebrow}</p>
@@ -14,7 +14,7 @@ const { eyebrow, title, description, image, edition = 'ГЛАВА 01', variant =
 </section>
 
 <style>
-  .page-intro > img { object-position: var(--intro-image-position, center 55%); }
+  .page-intro > picture > img { object-position: var(--intro-image-position, center 55%); }
   .page-intro-edition {
     position: absolute;
     z-index: 2;
