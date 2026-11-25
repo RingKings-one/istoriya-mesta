@@ -291,3 +291,67 @@
     transition: none;
   }
 }
+
+
+/* Hero finish: stronger editorial hierarchy without adding scroll control. */
+.hero--atlas h1 {
+  text-wrap: balance;
+  text-shadow: 0 3px 32px #080b0940;
+}
+
+.hero--atlas .lead {
+  text-wrap: pretty;
+}
+
+.hero--atlas .hero-chapter {
+  text-shadow: 0 1px 14px #0008;
+}
+
+.hero--atlas .hero-content {
+  max-width: 850px;
+}
+
+.hero--atlas .button-filled {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero--atlas .button-filled::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 25%, #ffffff42 50%, transparent 75%);
+  content: '';
+  transform: translateX(-120%);
+  transition: transform .75s cubic-bezier(.2, .7, .2, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero--atlas .button-filled:hover::after {
+    transform: translateX(120%);
+  }
+}
+
+@media (max-width: 680px) {
+  .hero--atlas .hero-content {
+    width: 100%;
+  }
+
+  .hero--atlas h1 {
+    max-width: 9ch;
+    font-size: clamp(52px, 13.2vw, 78px);
+  }
+
+  .hero--atlas .lead {
+    max-width: 26ch;
+  }
+
+  .hero--atlas .hero-bottomline {
+    align-items: flex-end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--atlas .button-filled::after {
+    display: none;
+  }
+}
