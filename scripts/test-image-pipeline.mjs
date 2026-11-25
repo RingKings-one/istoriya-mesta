@@ -25,7 +25,7 @@ try {
   if (asset.width !== 1600 || asset.height !== 900) throw new Error('Manifest dimensions do not match the source image.');
   if (asset.variants.avif.length !== 4 || asset.variants.webp.length !== 4) throw new Error('Expected four responsive AVIF and WebP variants.');
   for (const variant of [...asset.variants.avif, ...asset.variants.webp]) {
-    const output = path.join(root, 'public', variant.src.replace(/^\\//, ''));
+    const output = path.join(root, 'public', variant.src.slice(1));
     const metadata = await sharp(output).metadata();
     if (!metadata.width || !metadata.height || !metadata.format) throw new Error(`Invalid generated image: ${variant.src}`);
   }
