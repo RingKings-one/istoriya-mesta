@@ -2,29 +2,40 @@
   <div class="opening-stamp">
     <div class="opening-ring"></div>
     <div class="opening-mark">
+      <span class="opening-steam"></span>
       <span class="opening-cup"></span>
-      <span>История места</span>
+      <span class="opening-title">История места</span>
     </div>
   </div>
 </div>
 <script is:inline>
   (() => {
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    if (motion.matches) return;
     try {
-      if (sessionStorage.getItem('istoriya-opening-seen')) return;
-      sessionStorage.setItem('istoriya-opening-seen', 'yes');
+      if (sessionStorage.getItem('istoriya-opening-stamp')) return;
+      sessionStorage.setItem('istoriya-opening-stamp', 'yes');
     } catch {
       return;
     }
     const stamp = document.getElementById('site-opening');
-    stamp?.classList.add('is-playing');
-    const closeOpening = () => stamp?.classList.remove('is-playing');
-    stamp?.addEventListener('animationend', (event) => {
+    if (!stamp) return;
+
+    const listeners = new AbortController();
+    const closeOpening = () => {
+      stamp.classList.remove('is-playing');
+      listeners.abort();
+      clearTimeout(fallback);
+    };
+    const fallback = window.setTimeout(closeOpening, 2650);
+    stamp.addEventListener('animationend', (event) => {
       if (event.target === stamp) closeOpening();
-    });
-    window.setTimeout(closeOpening, 1060);
-    window.addEventListener('keydown', closeOpening, { once: true });
-    window.addEventListener('pointerdown', closeOpening, { once: true });
+    }, { signal: listeners.signal });
+    window.addEventListener('keydown', closeOpening, { signal: listeners.signal });
+    window.addEventListener('pointerdown', closeOpening, { signal: listeners.signal });
+    window.addEventListener('scroll', closeOpening, { passive: true, signal: listeners.signal });
+    motion.addEventListener('change', closeOpening, { signal: listeners.signal });
+    stamp.classList.add('is-playing');
   })();
 </script>
 <style>
@@ -36,19 +47,18 @@
       inset: 0;
       z-index: 100;
       place-items: center;
-      background: #171c18;
+      background: radial-gradient(ellipse at center,#302a20,#171c18 67%);
       pointer-events: none;
-      animation: opening-paper 950ms both;
+      animation: opening-paper 2450ms both;
     }
     .opening-stamp {
       position: relative;
       display: grid;
       place-items: center;
-      width: clamp(154px, 30vw, 210px);
+      width: clamp(172px, 34vw, 246px);
       aspect-ratio: 1;
       color: #e4c5a5;
       transform: rotate(-5deg);
-      animation: opening-press 630ms cubic-bezier(.2,.72,.25,1) both;
     }
     .opening-ring {
       position: absolute;
@@ -57,12 +67,24 @@
       border-radius: 47% 54% 49% 52%;
       box-shadow: 0 0 0 2px #8f533834, inset 0 0 0 7px #8f533821;
       mask-image: conic-gradient(#000 8deg,#0008 70deg,#000 149deg,#000b 260deg,#000 360deg);
+      animation: opening-trace 1.36s .36s both;
     }
-    .opening-mark { display: grid; gap: 14px; justify-items: center; font: italic 400 clamp(18px,4vw,25px)/1 var(--editorial-serif); }
-    .opening-cup { position: relative; display: block; width: 33px; height: 22px; border: 1px solid; border-radius: 0 0 40% 40%; }
+    .opening-mark { position: relative; display: grid; gap: 24px; justify-items: center; font: italic 400 clamp(20px,4vw,30px)/1 var(--editorial-serif); }
+    .opening-cup { position: relative; display: block; width: 33px; height: 22px; border: 1px solid; border-radius: 0 0 40% 40%; animation: opening-ink .55s both; }
     .opening-cup::after { position: absolute; top: 3px; left: 100%; width: 9px; height: 10px; border: 1px solid; border-inline-start: 0; border-radius: 0 65% 65% 0; content: ''; }
     .opening-cup::before { position: absolute; top: 27px; left: -5px; width: 43px; border-top: 1px solid; content: ''; }
+    .opening-steam { position: absolute; top: -26px; left: calc(50% - 5px); width: 10px; height: 16px; border: solid #d2ac7e; border-width: 0 1px 0 0; border-radius: 40%; transform: rotate(14deg); animation: opening-steam 1.4s .18s both; }
+    .opening-title { animation: opening-ink .58s .83s both; }
   }
-  @keyframes opening-paper { 0%, 65% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes opening-press { from { opacity: 0; transform: rotate(-11deg) scale(1.15); } to { opacity: 1; transform: rotate(-5deg) scale(1); } }
+  @keyframes opening-paper { 0%, 76% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes opening-ink { from { opacity: 0; translate: 0 5px; } to { opacity: 1; translate: 0 0; } }
+  @keyframes opening-trace {
+    from { clip-path: inset(100% -5% -5% -5%); transform: rotate(-12deg) scale(1.06); }
+    to { clip-path: inset(-5%); transform: rotate(0) scale(1); }
+  }
+  @keyframes opening-steam {
+    0% { opacity: 0; translate: 0 8px; }
+    35%, 65% { opacity: .85; }
+    100% { opacity: .42; translate: 0 -4px; }
+  }
 </style>

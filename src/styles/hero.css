@@ -50,12 +50,6 @@
   letter-spacing: .2em;
 }
 
-.hero-chapter > span:first-child {
-  color: #c49a70;
-  font: 22px/1 var(--serif);
-  letter-spacing: 0;
-}
-
 .hero-chapter-rule {
   width: 36px;
   height: 1px;

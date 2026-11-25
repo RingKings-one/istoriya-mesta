@@ -22,9 +22,9 @@ export const isPlaceholderImage = (src: string) => Object.values(imageAssets).so
 ) && !hasLocalImage(src);
 
 export const nav = [
+  { label: 'Кофейня', href: '/cafe/' },
   { label: 'Города', href: '/cities/' },
   { label: 'Истории', href: '/stories/' },
-  { label: 'Кофейня', href: '/cafe/' },
   { label: 'Маршруты', href: '/routes/' },
   { label: 'Архив', href: '/archive/' },
 ];

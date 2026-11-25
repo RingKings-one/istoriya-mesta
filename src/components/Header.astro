@@ -26,7 +26,7 @@ const currentPath = Astro.url.pathname;
     })}
   </nav>
 
-  <a class="header-cta" href="/cities/">Открыть атлас <ArrowMark direction="forward" /></a>
+  <a class="header-cta" href={currentPath.startsWith('/cafe/') ? '/cafe/#visit' : '/cafe/'} data-coffee-cursor>{currentPath.startsWith('/cafe/') ? 'Как добраться' : 'В кофейню'} <ArrowMark direction="forward" /></a>
   <button
     class="menu-toggle"
     type="button"

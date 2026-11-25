@@ -1542,3 +1542,7 @@ p {
     transition: none;
   }
 }
+
+@media (hover: hover) and (pointer: fine) {
+  [data-coffee-cursor] { cursor: url('/coffee-bean-cursor.svg') 12 12, pointer; }
+}
