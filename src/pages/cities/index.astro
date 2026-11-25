@@ -3,7 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import EditorialPath from '../../components/EditorialPath.astro';
 import ArrowMark from '../../components/ArrowMark.astro';
-import { images, imageSrcSet } from '../../data';
+import { images } from '../../data';
+import EditorialImage from '../../components/EditorialImage.astro';
 ---
 <BaseLayout
   title="Города — История места"
@@ -23,7 +24,7 @@ import { images, imageSrcSet } from '../../data';
     <p>Мы не стремимся заполнить карту ради количества. Каждая новая глава должна быть собрана с вниманием к месту, его людям и проверенным историям.</p>
   </section>
   <section class="atlas-city">
-    <div class="atlas-city-image"><img src={images.street} srcset={imageSrcSet(images.street)} sizes="(max-width: 680px) 100vw, 62vw" alt="" loading="lazy" /><span>ГЛАВА 01</span><small class="atlas-city-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ · НЕ ФОТОГРАФИЯ РУЗЫ</small></div>
+    <div class="atlas-city-image"><EditorialImage src={images.street} sizes="(max-width: 680px) 100vw, 62vw" alt="" /><span>ГЛАВА 01</span><small class="atlas-city-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ · НЕ ФОТОГРАФИЯ РУЗЫ</small></div>
     <div class="atlas-city-copy">
       <p class="eyebrow">МОСКОВСКАЯ ОБЛАСТЬ · ПЕРВАЯ ГЛАВА</p>
       <h2>Руза</h2>
