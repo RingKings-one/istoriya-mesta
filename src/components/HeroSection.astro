@@ -1,5 +1,6 @@
 ---
 import { images, imageSrcSet } from '../data';
+import ArrowMark from './ArrowMark.astro';
 ---
 <section class="hero hero--atlas" aria-labelledby="home-title">
   <img
@@ -18,8 +19,8 @@ import { images, imageSrcSet } from '../data';
     <h1 id="home-title">У каждого<br />места есть<br /><em>история.</em></h1>
     <p class="lead">Мы помогаем её почувствовать.</p>
     <div class="hero-actions">
-      <a class="button button-filled" href="/cities/">Открыть атлас <span aria-hidden="true">↗︎</span></a>
-      <a class="hero-secondary-link" href="/cities/ruza/">Начать с Рузы <span aria-hidden="true">→</span></a>
+      <a class="button button-filled" href="/cities/">Открыть атлас <ArrowMark direction="forward" /></a>
+      <a class="hero-secondary-link" href="/cities/ruza/">Начать с Рузы <ArrowMark direction="forward" /></a>
     </div>
   </div>
 
