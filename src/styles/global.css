@@ -875,3 +875,72 @@ a {
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Cinematic motion: restrained entrance on load and scroll, with a no-JS fallback. */
+@keyframes hero-copy-enter {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes hero-image-enter {
+  from { transform: scale(1.045); }
+  to { transform: scale(1); }
+}
+
+.hero-content,
+.page-intro-copy {
+  animation: hero-copy-enter 900ms cubic-bezier(.2, .7, .2, 1) both;
+}
+
+.hero-index {
+  animation: hero-copy-enter 900ms 180ms cubic-bezier(.2, .7, .2, 1) both;
+}
+
+.hero > img,
+.page-intro > img {
+  animation: hero-image-enter 1500ms cubic-bezier(.2, .7, .2, 1) both;
+}
+
+.reveal-ready {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity 760ms cubic-bezier(.2, .7, .2, 1),
+    transform 760ms cubic-bezier(.2, .7, .2, 1);
+}
+
+.reveal-ready.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.card-grid > .feature-card.reveal-ready:nth-child(2) {
+  transition-delay: 90ms;
+}
+
+.card-grid > .feature-card.reveal-ready:nth-child(3) {
+  transition-delay: 180ms;
+}
+
+@media (max-width: 680px) {
+  .reveal-ready {
+    transform: translate3d(0, 16px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content,
+  .page-intro-copy,
+  .hero-index,
+  .hero > img,
+  .page-intro > img {
+    animation: none;
+  }
+
+  .reveal-ready {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
