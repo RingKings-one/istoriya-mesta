@@ -4,7 +4,8 @@ import PageIntro from '../../components/PageIntro.astro';
 import EditorialPath from '../../components/EditorialPath.astro';
 import { ruzaProfile } from '../../content';
 import FeatureCard from '../../components/FeatureCard.astro';
-import { images, imageSrcSet } from '../../data';
+import { images } from '../../data';
+import EditorialImage from '../../components/EditorialImage.astro';
 ---
 <BaseLayout
   title="Руза — История места"
@@ -30,7 +31,7 @@ import { images, imageSrcSet } from '../../data';
     </div>
   </section>
   <section class="ruza-spread">
-    <figure class="ruza-spread-image"><img src={images.street} srcset={imageSrcSet(images.street)} sizes="(max-width: 680px) 100vw, 68vw" alt="" loading="lazy" /><figcaption>ВИЗУАЛЬНЫЙ ОБРАЗ ГОРОДСКОЙ СРЕДЫ · ВРЕМЕННОЕ ИЗОБРАЖЕНИЕ</figcaption></figure>
+    <figure class="ruza-spread-image"><EditorialImage src={images.street} sizes="(max-width: 680px) 100vw, 68vw" alt="" /><figcaption>ВИЗУАЛЬНЫЙ ОБРАЗ ГОРОДСКОЙ СРЕДЫ · ВРЕМЕННОЕ ИЗОБРАЖЕНИЕ</figcaption></figure>
     <div class="ruza-spread-note">
       <span class="ruza-side-index">01 / 03</span>
       <p class="eyebrow">ПОЧУВСТВОВАТЬ</p>
