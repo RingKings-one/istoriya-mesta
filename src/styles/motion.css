@@ -12,60 +12,28 @@
   }
 
   [data-reveal].has-entered:not(:focus-within) {
-    animation: editorial-enter 720ms var(--ease-editorial) var(--reveal-delay, 0ms) both;
-  }
-
-  [data-reveal="image"].has-entered:not(:focus-within) {
-    animation: editorial-image-enter 900ms var(--ease-editorial) var(--reveal-delay, 0ms) both;
-  }
-
-  [data-reveal]:has(> picture).has-entered:not(:focus-within) > picture,
-  [data-reveal]:has(> img).has-entered:not(:focus-within) > img {
-    animation: documentary-image-enter 850ms var(--ease-editorial) var(--reveal-delay, 0ms) both;
-  }
-}
-
-@keyframes editorial-enter {
-  from { opacity: .62; translate: 0 18px; }
-}
-
-@keyframes editorial-image-enter {
-  from { opacity: .55; clip-path: inset(3% 0 3% 0); scale: 1.018; }
-  to { opacity: 1; clip-path: inset(0); scale: 1; }
-}
-
-@keyframes documentary-image-enter {
-  from { opacity: .7; scale: 1.018; }
-  to { opacity: 1; scale: 1; }
-}
-
-@keyframes opening-image {
-  from { scale: 1.035; }
-}
-
-@media (max-width: 680px) and (prefers-reduced-motion: no-preference) {
-  [data-opening] > picture {
-    animation-duration: 950ms;
-  }
-
-  [data-reveal].has-entered:not(:focus-within) {
-    animation-duration: 480ms;
+    animation: content-rise 860ms cubic-bezier(.16, 1, .3, 1) var(--reveal-delay, 0ms) both;
+    will-change: transform, opacity;
   }
 
   [data-reveal="image"].has-entered:not(:focus-within),
-  [data-reveal]:has(> picture).has-entered:not(:focus-within) > picture,
-  [data-reveal]:has(> img).has-entered:not(:focus-within) > img {
-    animation-duration: 620ms;
+  figure.has-entered:not(:focus-within),
+  .photo-frame.has-entered:not(:focus-within) {
+    animation: photo-arrive 1050ms cubic-bezier(.16, 1, .3, 1) var(--reveal-delay, 0ms) both;
   }
 
-  @keyframes editorial-enter {
-    from { opacity: .84; translate: 0 7px; }
+  [data-reveal="card"].has-entered:not(:focus-within),
+  .feature-card.has-entered:not(:focus-within),
+  .archive-tile.has-entered:not(:focus-within),
+  .epoch.has-entered:not(:focus-within),
+  .trail-stop.has-entered:not(:focus-within),
+  .editorial-path-link.has-entered:not(:focus-within) {
+    animation: card-arrive 900ms cubic-bezier(.16, 1, .3, 1) var(--reveal-delay, 0ms) both;
+    will-change: transform, opacity;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
   .photo-frame.has-entered:not(:focus-within) > picture {
-    animation: documentary-frame 740ms var(--ease-editorial);
+    animation: documentary-frame 1050ms cubic-bezier(.16, 1, .3, 1) var(--reveal-delay, 0ms) both;
   }
 
   .cafe-opening[data-opening] .cafe-hero-media > picture {
@@ -73,18 +41,58 @@
   }
 
   .archive-back[open] > .photo-frame {
-    animation: editorial-enter 420ms var(--ease-editorial);
+    animation: content-rise 520ms var(--ease-editorial);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal].has-entered,
-  [data-reveal="image"].has-entered,
-  [data-reveal].has-entered > picture,
-  [data-reveal].has-entered > img { animation: none !important; }
+@keyframes content-rise {
+  from { opacity: .05; transform: translate3d(0, 48px, 0) scale(.985); filter: blur(3px); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+}
+
+@keyframes card-arrive {
+  from { opacity: .04; transform: translate3d(0, 56px, 0) scale(.97); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes photo-arrive {
+  from { opacity: .05; clip-path: inset(0 0 88% 0); transform: translate3d(0, 48px, 0) scale(1.055); }
+  to { opacity: 1; clip-path: inset(0); transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes opening-image {
+  from { scale: 1.035; }
+}
+
+@keyframes editorial-enter {
+  from { opacity: .62; translate: 0 18px; }
 }
 
 @keyframes documentary-frame {
-  from { clip-path: inset(4% 0 4% 0); }
-  to { clip-path: inset(0 0 0 0); }
+  from { clip-path: inset(0 0 88% 0); transform: scale(1.055); }
+  to { clip-path: inset(0); transform: scale(1); }
+}
+
+@media (max-width: 680px) and (prefers-reduced-motion: no-preference) {
+  [data-reveal].has-entered:not(:focus-within) { animation-duration: 680ms; }
+  [data-reveal="image"].has-entered:not(:focus-within),
+  figure.has-entered:not(:focus-within),
+  .photo-frame.has-entered:not(:focus-within) { animation-duration: 820ms; }
+  [data-reveal="card"].has-entered:not(:focus-within),
+  .feature-card.has-entered:not(:focus-within),
+  .archive-tile.has-entered:not(:focus-within),
+  .epoch.has-entered:not(:focus-within),
+  .trail-stop.has-entered:not(:focus-within),
+  .editorial-path-link.has-entered:not(:focus-within) { animation-duration: 720ms; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal].has-entered:not(:focus-within) {
+    animation: low-motion-fade 260ms ease-out both;
+  }
+}
+
+@keyframes low-motion-fade {
+  from { opacity: .25; }
+  to { opacity: 1; }
 }
