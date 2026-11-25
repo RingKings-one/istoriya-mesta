@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
+import EditorialPath from '../../components/EditorialPath.astro';
 import { images, imageSrcSet } from '../../data';
 ---
 <BaseLayout
@@ -30,6 +31,7 @@ import { images, imageSrcSet } from '../../data';
       <span class="atlas-city-index">АТЛАС ЖИВЫХ ИСТОРИЙ <i>·</i> 01 / 01</span>
     </div>
   </section>
+  <EditorialPath current="cities" />
 </BaseLayout>
 
 <style>
