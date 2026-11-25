@@ -9,14 +9,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: 22
-      - run: npm install
+          node-version: '22.23.5'
+      - run: npm install --package-lock-only --ignore-scripts
+      - run: npm ci
+      - run: npm ls --all --json > dependency-tree.json
       - run: npm run test:images
       - run: npm run test:local-images
       - run: npm audit --json > /tmp/npm-audit.json || true
-      - run: npm run audit:report -- /tmp/npm-audit.json
+      - run: npm run audit:report -- /tmp/npm-audit.json --gate
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dependency-evidence
+          path: |
+            package-lock.json
+            dependency-tree.json
+            /tmp/npm-audit.json
+          if-no-files-found: error
       - run: npm run build
       - run: npm run check:links
