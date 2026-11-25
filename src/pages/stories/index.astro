@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import EditorialPath from '../../components/EditorialPath.astro';
 import ArrowMark from '../../components/ArrowMark.astro';
-import { images } from '../../data';
+import { images, isPlaceholderImage } from '../../data';
 import EditorialImage from '../../components/EditorialImage.astro';
 ---
 <BaseLayout
@@ -27,7 +27,7 @@ import EditorialImage from '../../components/EditorialImage.astro';
     </div>
     <figure class="journal-image">
       <EditorialImage src={images.street} sizes="(max-width: 680px) 100vw, 58vw" alt="" />
-      <figcaption><span>ПОЛЕВЫЕ ЗАМЕТКИ</span><span>ВРЕМЕННЫЙ ВИЗУАЛ · НЕ ДОКУМЕНТАЛЬНОЕ ФОТО</span></figcaption>
+      <figcaption><span>ПОЛЕВЫЕ ЗАМЕТКИ</span>{isPlaceholderImage(images.street) && <span>ВРЕМЕННЫЙ ВИЗУАЛ · НЕ ДОКУМЕНТАЛЬНОЕ ФОТО</span>}</figcaption>
     </figure>
   </section>
   <section class="journal-index section">
