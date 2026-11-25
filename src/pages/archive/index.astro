@@ -69,7 +69,7 @@ import { images, imageSrcSet } from '../../data';
   .archive-tile-copy { position:absolute; right:22px; bottom:22px; left:22px; display:grid; gap:7px; }
   .archive-tile-copy small { color:#e8e1d6c9; font-size:9px; letter-spacing:.16em; }
   .archive-tile-copy strong { max-width:420px; font:clamp(22px,3vw,36px)/1.05 var(--serif); font-weight:400; }
-  .archive-tile-copy em { margin-top:5px; color:var(--stone); font-size:10px; font-style:normal; }
+  .archive-tile-copy em { display:inline-flex; width:fit-content; align-items:center; gap:8px; margin-top:5px; color:var(--stone); font-size:10px; font-style:normal; }
   .archive-tile:hover img { transform:scale(1.035); }
   @media(max-width:760px) {
     .archive-intro { grid-template-columns:1fr; gap:14px; }
