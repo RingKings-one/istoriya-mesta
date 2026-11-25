@@ -27,18 +27,21 @@ import { images, imageSrcSet } from '../../data';
         <img src={images.camera} srcset={imageSrcSet(images.camera)} sizes="(max-width: 680px) 100vw, 58vw" alt="" loading="lazy" />
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">01</span>
+        <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>
         <span class="archive-tile-copy"><small>КАДРЫ И НАБЛЮДЕНИЯ</small><strong>Фотографическая память</strong><em>Перейти к историям ↗</em></span>
       </a>
       <a class="archive-tile" href="/routes/">
         <img src={images.map} srcset={imageSrcSet(images.map)} sizes="(max-width: 680px) 100vw, 42vw" alt="" loading="lazy" />
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">02</span>
+        <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>
         <span class="archive-tile-copy"><small>СХЕМЫ И ПРОСТРАНСТВО</small><strong>Карты и маршруты</strong><em>Исследовать ↗</em></span>
       </a>
       <a class="archive-tile" href="/cities/ruza/">
         <img src={images.books} srcset={imageSrcSet(images.books)} sizes="(max-width: 680px) 100vw, 42vw" alt="" loading="lazy" />
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">03</span>
+        <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>
         <span class="archive-tile-copy"><small>ИСТОЧНИКИ И СВИДЕТЕЛЬСТВА</small><strong>Материалы места</strong><em>Открыть главу ↗</em></span>
       </a>
     </div>
@@ -59,6 +62,7 @@ import { images, imageSrcSet } from '../../data';
   .archive-tile img { transition:transform .7s cubic-bezier(.2,.7,.2,1); }
   .archive-tile-overlay { background:linear-gradient(180deg,#11171312 15%,#111713d9 100%); }
   .archive-tile-number { position:absolute; top:18px; left:20px; color:#fff; font:22px var(--serif); }
+  .archive-tile-disclosure { position:absolute; top:20px; right:20px; border:1px solid #e8e1d655; background:#181d1acc; padding:5px 7px; color:#e8e1d6; font-size:7px; letter-spacing:.1em; }
   .archive-tile-copy { position:absolute; right:22px; bottom:22px; left:22px; display:grid; gap:7px; }
   .archive-tile-copy small { color:#e8e1d6c9; font-size:9px; letter-spacing:.16em; }
   .archive-tile-copy strong { max-width:420px; font:clamp(22px,3vw,36px)/1.05 var(--serif); font-weight:400; }
