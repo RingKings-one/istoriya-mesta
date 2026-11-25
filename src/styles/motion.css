@@ -12,14 +12,13 @@
   }
 
   [data-reveal].has-entered:not(:focus-within) {
-    animation: content-rise 860ms cubic-bezier(.16, 1, .3, 1) var(--reveal-delay, 0ms) both;
-    will-change: transform, opacity;
+    animation: content-rise 720ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) both;
   }
 
   [data-reveal="image"].has-entered:not(:focus-within),
   figure.has-entered:not(:focus-within),
   .photo-frame.has-entered:not(:focus-within) {
-    animation: photo-arrive 1050ms cubic-bezier(.16, 1, .3, 1) var(--reveal-delay, 0ms) both;
+    animation: photo-arrive 900ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) both;
   }
 
   [data-reveal="card"].has-entered:not(:focus-within),
@@ -28,12 +27,11 @@
   .epoch.has-entered:not(:focus-within),
   .trail-stop.has-entered:not(:focus-within),
   .editorial-path-link.has-entered:not(:focus-within) {
-    animation: card-arrive 900ms cubic-bezier(.16, 1, .3, 1) var(--reveal-delay, 0ms) both;
-    will-change: transform, opacity;
+    animation: card-arrive 720ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) both;
   }
 
   .photo-frame.has-entered:not(:focus-within) > picture {
-    animation: documentary-frame 1050ms cubic-bezier(.16, 1, .3, 1) var(--reveal-delay, 0ms) both;
+    animation: documentary-frame 900ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) both;
   }
 
   .cafe-opening[data-opening] .cafe-hero-media > picture {
@@ -46,18 +44,18 @@
 }
 
 @keyframes content-rise {
-  from { opacity: .05; transform: translate3d(0, 48px, 0) scale(.985); filter: blur(3px); }
-  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+  from { opacity: 0; transform: translate3d(0, 16px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 @keyframes card-arrive {
-  from { opacity: .04; transform: translate3d(0, 56px, 0) scale(.97); }
-  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 @keyframes photo-arrive {
-  from { opacity: .05; clip-path: inset(0 0 88% 0); transform: translate3d(0, 48px, 0) scale(1.055); }
-  to { opacity: 1; clip-path: inset(0); transform: translate3d(0, 0, 0) scale(1); }
+  from { opacity: .25; transform: translate3d(0, 20px, 0) scale(1.018); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
 }
 
 @keyframes opening-image {
@@ -69,21 +67,21 @@
 }
 
 @keyframes documentary-frame {
-  from { clip-path: inset(0 0 88% 0); transform: scale(1.055); }
-  to { clip-path: inset(0); transform: scale(1); }
+  from { opacity: .35; transform: scale(1.025); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 @media (max-width: 680px) and (prefers-reduced-motion: no-preference) {
-  [data-reveal].has-entered:not(:focus-within) { animation-duration: 680ms; }
+  [data-reveal].has-entered:not(:focus-within) { animation-duration: 620ms; }
   [data-reveal="image"].has-entered:not(:focus-within),
   figure.has-entered:not(:focus-within),
-  .photo-frame.has-entered:not(:focus-within) { animation-duration: 820ms; }
+  .photo-frame.has-entered:not(:focus-within) { animation-duration: 760ms; }
   [data-reveal="card"].has-entered:not(:focus-within),
   .feature-card.has-entered:not(:focus-within),
   .archive-tile.has-entered:not(:focus-within),
   .epoch.has-entered:not(:focus-within),
   .trail-stop.has-entered:not(:focus-within),
-  .editorial-path-link.has-entered:not(:focus-within) { animation-duration: 720ms; }
+  .editorial-path-link.has-entered:not(:focus-within) { animation-duration: 620ms; }
 }
 
 @media (prefers-reduced-motion: reduce) {

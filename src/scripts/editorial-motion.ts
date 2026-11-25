@@ -4,7 +4,7 @@ if ('IntersectionObserver' in window) {
 
   groups.forEach((group) => {
     Array.from(group.children).forEach((child, index) => {
-      (child as HTMLElement).style.setProperty('--reveal-delay', `${Math.min(index * 120, 360)}ms`);
+      (child as HTMLElement).style.setProperty('--reveal-delay', `${Math.min(index * 70, 210)}ms`);
     });
   });
 
