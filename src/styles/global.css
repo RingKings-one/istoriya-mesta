@@ -42,6 +42,11 @@ img {
   object-fit: cover;
 }
 
+.editorial-picture {
+  display: block;
+  width: 100%;
+}
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;
