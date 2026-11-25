@@ -42,6 +42,6 @@ export const imageSrcSet = (url: string) => {
   widths.push(maxWidth);
 
   return widths
-    .map((width) => \`\${url.replace(/([?&])w=\d+/, \`$1w=\${width}\`)} \${width}w\`)
+    .map((width) => `${url.replace(/([?&])w=\d+/, `$1w=${width}`)} ${width}w`)
     .join(', ');
 };
