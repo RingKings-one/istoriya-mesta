@@ -12,12 +12,13 @@ const currentPath = Astro.url.pathname;
 
   <nav class="desktop-nav" id="primary-navigation" aria-label="Основная навигация">
     {nav.map((item) => {
-      const isCurrent = currentPath.startsWith(item.href);
+      const isCurrent = currentPath === item.href;
+      const isInSection = currentPath.startsWith(item.href);
       return (
         <a
-          class:list={{ active: isCurrent }}
+          class:list={{ active: isInSection }}
           href={item.href}
-          aria-current={isCurrent ? 'page' : undefined}
+          aria-current={isCurrent ? 'page' : isInSection ? 'location' : undefined}
         >
           {item.label}
         </a>
