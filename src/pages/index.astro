@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import HeroSection from '../components/HeroSection.astro';
+import ArrowMark from '../components/ArrowMark.astro';
 import { images, imageSrcSet } from '../data';
 ---
 <BaseLayout
@@ -21,7 +22,7 @@ import { images, imageSrcSet } from '../data';
         У каждого города есть свой ритм. Он звучит в знакомых улицах, старых фасадах,
         разговорах за чашкой кофе и деталях, мимо которых легко пройти.
       </p>
-      <a class="text-link" href="/stories/">Почувствовать атмосферу ↗︎</a>
+      <a class="text-link" href="/stories/">Почувствовать атмосферу <ArrowMark direction="forward" /></a>
     </div>
     <figure class="home-intro-image">
       <img src={images.street} srcset={imageSrcSet(images.street)} sizes="(max-width: 680px) 100vw, 54vw" alt="" loading="lazy" decoding="async" />
@@ -49,7 +50,7 @@ import { images, imageSrcSet } from '../data';
         Небольшой город с большой историей. Начинаем собирать его живой портрет —
         через места, людей, память и маршруты.
       </p>
-      <a class="text-link" href="/cities/ruza/">Исследовать город ↗︎</a>
+      <a class="text-link" href="/cities/ruza/">Исследовать город <ArrowMark direction="forward" /></a>
       <span class="home-city-edition">АТЛАС ЖИВЫХ ИСТОРИЙ <i>—</i> ПЕРВАЯ ГЛАВА</span>
     </div>
   </section>
@@ -63,7 +64,7 @@ import { images, imageSrcSet } from '../data';
         Выбирайте маршрут, задерживайтесь у деталей и открывайте город в собственном
         темпе. Не список достопримечательностей, а прогулка с ощущением места.
       </p>
-      <a class="text-link" href="/routes/">Найти свой маршрут ↗︎</a>
+      <a class="text-link" href="/routes/">Найти свой маршрут <ArrowMark direction="forward" /></a>
     </div>
     <figure class="home-route-image">
       <img src={images.forest} srcset={imageSrcSet(images.forest)} sizes="(max-width: 680px) 100vw, 50vw" alt="" loading="lazy" decoding="async" />
