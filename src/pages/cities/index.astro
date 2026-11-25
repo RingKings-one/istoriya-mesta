@@ -1,4 +1,32 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro'; import PageIntro from '../../components/PageIntro.astro'; import {images} from '../../data';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import FeatureCard from '../../components/FeatureCard.astro';
+import { images } from '../../data';
 ---
-<BaseLayout title="Города — История места"><PageIntro eyebrow="АТЛАС" title="Места, где история оживает" description="У каждого города свой характер. Начнём с первой главы." image={images.river}/><section class="section"><h2>Первая глава</h2><a class="feature-card" href="/cities/ruza/"><img src={images.river} alt=""/><div class="feature-copy"><h2>Руза</h2><p>Город, с которого начинается наш атлас.</p></div></a></section></BaseLayout>
+<BaseLayout
+  title="Города — История места"
+  description="Атлас городов, которые раскрываются через атмосферу, людей, детали и истории."
+>
+  <PageIntro
+    eyebrow="ЖИВОЙ АТЛАС"
+    title="Места, которые хочется почувствовать."
+    description="У каждого города свой ритм. Мы собираем его из историй, маршрутов и деталей."
+    image={images.river}
+  />
+  <section class="section">
+    <p class="eyebrow">ПЕРВАЯ ГЛАВА</p>
+    <h2>Начнём с одного города.</h2>
+    <p>Атлас будет расти постепенно — с вниманием к характеру каждого места, а не к количеству точек на карте.</p>
+    <div class="card-grid">
+      <FeatureCard
+        image={images.street}
+        eyebrow="МОСКОВСКАЯ ОБЛАСТЬ"
+        title="Руза"
+        text="Первая глава проекта. Знакомство с городом через места, людей и повседневную атмосферу."
+        href="/cities/ruza/"
+        number="01"
+      />
+    </div>
+  </section>
+</BaseLayout>
