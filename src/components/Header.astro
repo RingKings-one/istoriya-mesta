@@ -1,5 +1,6 @@
 ---
 import { nav } from '../data';
+import ArrowMark from './ArrowMark.astro';
 
 const currentPath = Astro.url.pathname;
 ---
@@ -24,7 +25,7 @@ const currentPath = Astro.url.pathname;
     })}
   </nav>
 
-  <a class="header-cta" href="/cities/">Открыть атлас ↗︎</a>
+  <a class="header-cta" href="/cities/">Открыть атлас <ArrowMark direction="forward" /></a>
   <button
     class="menu-toggle"
     type="button"
