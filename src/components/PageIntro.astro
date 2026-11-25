@@ -1,6 +1,8 @@
 ---
 import EditorialImage from './EditorialImage.astro';
+import { isPlaceholderImage } from '../data';
 const { eyebrow, title, description, image, edition = 'ГЛАВА 01', variant = 'default' } = Astro.props;
+const showPlaceholderNote = image ? isPlaceholderImage(image) : false;
 ---
 <section class={`page-intro page-intro--${variant}`} aria-labelledby="page-title">
   {image && <EditorialImage src={image} alt="" sizes="100vw" loading="eager" fetchpriority="high" position="var(--intro-image-position, center 55%)" className="page-intro-image" />}
@@ -9,7 +11,7 @@ const { eyebrow, title, description, image, edition = 'ГЛАВА 01', variant =
     <p class="eyebrow">{eyebrow}</p>
     <h1 id="page-title">{title}</h1>
     <p class="lead">{description}</p>
-    <p class="page-intro-note">ВРЕМЕННОЕ ИЗОБРАЖЕНИЕ ДЛЯ НАСТРОЕНИЯ · НЕ ФОТОГРАФИЯ КОНКРЕТНОГО МЕСТА</p>
+    {showPlaceholderNote && <p class="page-intro-note">ВРЕМЕННОЕ ИЗОБРАЖЕНИЕ ДЛЯ НАСТРОЕНИЯ · НЕ ФОТОГРАФИЯ КОНКРЕТНОГО МЕСТА</p>}
   </div>
 </section>
 
