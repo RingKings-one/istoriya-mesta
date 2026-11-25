@@ -1,52 +1,80 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
-import FeatureCard from '../../components/FeatureCard.astro';
-import { images } from '../../data';
+import { images, imageSrcSet } from '../../data';
 ---
 <BaseLayout
   title="Истории — История места"
   description="Редакционный журнал о людях, событиях и деталях, которые создают характер места."
 >
   <PageIntro
-    eyebrow="РЕДАКЦИОННЫЙ ЖУРНАЛ"
+    eyebrow="РЕДАКЦИОННЫЙ ЖУРНАЛ · 01"
     title="Истории, из которых складывается место."
     description="Большие события и тихие наблюдения. Человеческие голоса и детали повседневности."
     image={images.archive}
   />
-  <section class="section">
-    <p class="eyebrow">СМОТРЕТЬ БЛИЖЕ</p>
-    <h2>У истории всегда есть несколько слоёв.</h2>
-    <p>
-      Мы будем публиковать материалы по мере исследования города: от визуальных
-      заметок и локальных сюжетов до разговоров с людьми, которые знают это место
-      изнутри.
-    </p>
-    <div class="card-grid">
-      <FeatureCard
-        image={images.street}
-        eyebrow="ГОРОДСКАЯ СРЕДА"
-        title="Следы времени"
-        text="Как пространство хранит память о разных эпохах."
-        href="/archive/"
-        number="01"
-      />
-      <FeatureCard
-        image={images.coffee}
-        eyebrow="ПОВСЕДНЕВНОСТЬ"
-        title="Маленькие ритуалы"
-        text="Места встреч и привычки, которые создают атмосферу."
-        href="/cafe/"
-        number="02"
-      />
-      <FeatureCard
-        image={images.forest}
-        eyebrow="НАБЛЮДЕНИЯ"
-        title="Медленный маршрут"
-        text="Что можно заметить, если никуда не торопиться."
-        href="/routes/"
-        number="03"
-      />
+  <section class="journal-lead section">
+    <div class="journal-lead-copy">
+      <p class="eyebrow">ЗАМЕТКИ РЕДАКЦИИ</p>
+      <h2>У истории всегда есть несколько слоёв.</h2>
+      <p>Мы собираем не каталог дат, а живой портрет места: через наблюдения, разговоры и детали, которые заслуживают внимания.</p>
+      <span class="journal-status">ЖУРНАЛ ПОПОЛНЯЕТСЯ</span>
     </div>
+    <figure class="journal-image">
+      <img src={images.street} srcset={imageSrcSet(images.street)} sizes="(max-width: 680px) 100vw, 58vw" alt="" loading="lazy" />
+      <figcaption><span>ПОЛЕВЫЕ ЗАМЕТКИ</span><span>РУЗА · ПЕРВАЯ ГЛАВА</span></figcaption>
+    </figure>
+  </section>
+  <section class="journal-index section">
+    <div class="journal-index-heading">
+      <p class="eyebrow">СОДЕРЖАНИЕ</p>
+      <p>Три направления будущего журнала</p>
+    </div>
+    <a class="journal-row" href="/archive/">
+      <span class="journal-number">01</span>
+      <span class="journal-row-main"><strong>Следы времени</strong><small>Городская среда и память пространства</small></span>
+      <span class="journal-row-tag">СРЕДА</span><span class="journal-arrow">↗</span>
+    </a>
+    <a class="journal-row" href="/cafe/">
+      <span class="journal-number">02</span>
+      <span class="journal-row-main"><strong>Маленькие ритуалы</strong><small>Места встреч и повседневные привычки</small></span>
+      <span class="journal-row-tag">ЛЮДИ</span><span class="journal-arrow">↗</span>
+    </a>
+    <a class="journal-row" href="/routes/">
+      <span class="journal-number">03</span>
+      <span class="journal-row-main"><strong>Медленный маршрут</strong><small>Наблюдения в движении</small></span>
+      <span class="journal-row-tag">ПУТЬ</span><span class="journal-arrow">↗</span>
+    </a>
   </section>
 </BaseLayout>
+
+<style>
+  .journal-lead { display:grid; grid-template-columns:minmax(220px,.72fr) minmax(0,1.28fr); gap:clamp(28px,6vw,92px); align-items:center; }
+  .journal-lead-copy h2 { max-width:440px; margin:18px 0; font:clamp(34px,4.5vw,64px)/1.02 var(--serif); font-weight:400; }
+  .journal-lead-copy > p:not(.eyebrow) { max-width:390px; color:var(--muted); }
+  .journal-status { display:inline-flex; margin-top:26px; border:1px solid #d7c7b255; border-radius:99px; padding:7px 12px; color:var(--stone); font-size:9px; letter-spacing:.15em; }
+  .journal-image { margin:0; }
+  .journal-image img { width:100%; aspect-ratio:1.45; }
+  .journal-image figcaption { display:flex; justify-content:space-between; gap:12px; padding-top:12px; color:var(--muted); font-size:9px; letter-spacing:.12em; }
+  .journal-index { padding-top:40px; }
+  .journal-index-heading { display:flex; align-items:baseline; justify-content:space-between; gap:20px; padding-bottom:18px; border-bottom:1px solid #d7c7b244; }
+  .journal-index-heading > p:last-child { color:var(--muted); font-size:11px; }
+  .journal-row { display:grid; grid-template-columns:54px minmax(0,1fr) auto 24px; gap:18px; align-items:center; padding:22px 0; border-bottom:1px solid #d7c7b233; transition:padding .25s ease,color .25s ease; }
+  .journal-row:hover { padding-left:8px; color:var(--stone); }
+  .journal-number { color:var(--rust); font:24px var(--serif); }
+  .journal-row-main { display:grid; gap:4px; }
+  .journal-row-main strong { font:clamp(19px,2vw,26px) var(--serif); font-weight:400; }
+  .journal-row-main small,.journal-row-tag { color:var(--muted); font-size:10px; }
+  .journal-row-tag { letter-spacing:.12em; }
+  .journal-arrow { color:var(--stone); font-size:18px; }
+  @media(max-width:680px) {
+    .journal-lead { grid-template-columns:1fr; gap:24px; }
+    .journal-lead-copy h2 { max-width:340px; }
+    .journal-image img { aspect-ratio:1.2; }
+    .journal-index-heading { align-items:flex-start; flex-direction:column; gap:4px; }
+    .journal-row { grid-template-columns:34px minmax(0,1fr) 18px; gap:10px; padding:18px 0; }
+    .journal-row-tag { display:none; }
+    .journal-row-main small { font-size:9px; }
+  }
+  @media(prefers-reduced-motion:reduce) { .journal-row { transition:none; } }
+</style>
