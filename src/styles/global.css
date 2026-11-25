@@ -405,6 +405,55 @@ a {
   outline-offset: 4px;
 }
 
+
+.hero-index {
+  position: absolute;
+  right: 8vw;
+  bottom: 42px;
+  z-index: 1;
+  border-left: 1px solid #e8e1d680;
+  padding-left: 12px;
+  color: #d2c9bc;
+  font-size: 10px;
+  letter-spacing: .16em;
+}
+
+.route-feature {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 76px);
+}
+
+.route-feature-copy {
+  max-width: 620px;
+}
+
+.route-feature > img {
+  width: 100%;
+  min-height: 460px;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.section-heading > div {
+  max-width: 760px;
+}
+
+.section-heading > p {
+  max-width: 260px;
+  margin: 0 0 26px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
 @media (max-width: 900px) {
   .site-header {
     min-height: 76px;
