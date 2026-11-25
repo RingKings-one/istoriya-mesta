@@ -25,3 +25,15 @@ import ArrowMark from './ArrowMark.astro';
     </a>
   </div>
 </section>
+
+<script>
+  const chapterLink = document.querySelector<HTMLAnchorElement>('.hero-scroll-cue');
+  const chapter = document.querySelector<HTMLElement>('#atlas-opening');
+
+  chapterLink?.addEventListener('click', (event) => {
+    if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+
+    // WebKit can scroll to a fragment without transferring keyboard focus.
+    requestAnimationFrame(() => chapter?.focus({ preventScroll: true }));
+  });
+</script>

@@ -4,6 +4,7 @@ import fs from 'node:fs/promises';
 const routes=['/','/cities/','/cities/ruza/','/stories/','/routes/','/cafe/','/archive/','/credits/','/404.html'];
 const failures=[];
 const cases=[];
+const interactions=[];
 const baseUrl=process.env.BROWSER_QA_URL || 'http://127.0.0.1:4173';
 await fs.mkdir('browser-evidence',{recursive:true});
 for(const [name,engine] of Object.entries({chromium,webkit})){
@@ -27,7 +28,40 @@ for(const [name,engine] of Object.entries({chromium,webkit})){
  assert.equal(errors.length,0,'Page errors');
  }catch(e){failures.push({name,width,route,error:e.message});}finally{await page.close();}
  }
+ const page = await browser.newPage({
+   viewport: { width: 320, height: 620 },
+   hasTouch: true,
+   reducedMotion: 'no-preference',
+ });
+ try {
+   await page.goto(new URL('/', baseUrl).href, { waitUntil: 'domcontentloaded' });
+   const toggle = page.locator('.menu-toggle');
+   await toggle.focus();
+   await page.keyboard.press('Enter');
+   assert.equal(await toggle.getAttribute('aria-expanded'), 'true');
+   assert.equal(await page.evaluate(() => document.activeElement?.closest('nav')?.id), 'primary-navigation');
+
+   await page.keyboard.press('Escape');
+   assert.equal(await toggle.getAttribute('aria-expanded'), 'false');
+   assert.equal(await toggle.evaluate((element) => element === document.activeElement), true);
+
+   await page.locator('.hero-scroll-cue').press('Enter');
+   await page.waitForFunction(() => location.hash === '#atlas-opening' &&
+     scrollY > 300 && document.activeElement?.id === 'atlas-opening');
+
+   const city = page.locator('.home-city-copy');
+   await city.evaluate((element) => element.scrollIntoView({ behavior: 'instant', block: 'center' }));
+   await page.waitForFunction(() => document.querySelector('.home-city-copy.has-entered'));
+   await page.emulateMedia({ reducedMotion: 'reduce' });
+   assert.equal(await city.evaluate((element) => getComputedStyle(element).animationName), 'none');
+   assert.equal(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior), 'auto');
+   interactions.push({ name, scenario: 'mobile keyboard navigation and reduced motion', status: 'passed' });
+ } catch (error) {
+   failures.push({ name, width: 320, route: '/', scenario: 'mobile keyboard navigation and reduced motion', error: error.message });
+ } finally {
+   await page.close();
+ }
  }finally{await browser.close();}
 }
-await fs.writeFile('browser-evidence/results.json',JSON.stringify({cases,failures},null,2));
+await fs.writeFile('browser-evidence/results.json',JSON.stringify({cases,interactions,failures},null,2));
 assert.equal(failures.length,0,JSON.stringify(failures));
