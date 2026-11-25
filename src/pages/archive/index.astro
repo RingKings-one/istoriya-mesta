@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import EditorialPath from '../../components/EditorialPath.astro';
 import ArrowMark from '../../components/ArrowMark.astro';
-import { images } from '../../data';
+import { images, isPlaceholderImage } from '../../data';
 import EditorialImage from '../../components/EditorialImage.astro';
 ---
 <BaseLayout
@@ -30,7 +30,7 @@ import EditorialImage from '../../components/EditorialImage.astro';
         <EditorialImage src={images.camera} sizes="(max-width: 680px) 100vw, 58vw" alt="" />
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">01</span>
-        <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>
+        {isPlaceholderImage(images.camera) && {isPlaceholderImage(images.map) && {isPlaceholderImage(images.books) && <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>}}}
         <span class="archive-tile-copy"><small>КАДРЫ И НАБЛЮДЕНИЯ</small><strong>Фотографическая память</strong><em>Перейти к историям <ArrowMark direction="forward" /></em></span>
       </a>
       <a class="archive-tile" href="/routes/">
