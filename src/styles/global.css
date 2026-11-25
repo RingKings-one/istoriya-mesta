@@ -157,11 +157,17 @@ a {
   pointer-events: none;
 }
 
-.hero > img,
-.page-intro > img {
+.hero > picture,
+.page-intro > picture {
   position: absolute;
   z-index: -1;
   inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero > picture > img,
+.page-intro > picture > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -760,7 +766,7 @@ main > section > *,
       linear-gradient(90deg, #0d110e55, transparent);
   }
 
-  .hero > img {
+  .hero > picture {
     object-position: 58% center;
   }
 
@@ -856,7 +862,7 @@ main > section > *,
     padding: 132px 24px 58px;
   }
 
-  .page-intro > img {
+  .page-intro > picture {
     object-position: 58% center;
   }
 
@@ -964,7 +970,7 @@ main > section > *,
   animation: hero-copy-enter 900ms 180ms cubic-bezier(.2, .7, .2, 1) both;
 }
 
-.hero > img,
+.hero > picture,
 .page-intro > img {
   animation: hero-image-enter 1500ms cubic-bezier(.2, .7, .2, 1) both;
 }
@@ -1000,7 +1006,7 @@ main > section > *,
   .hero-content,
   .page-intro-copy,
   .hero-index,
-  .hero > img,
+  .hero > picture,
   .page-intro > img {
     animation: none;
   }
