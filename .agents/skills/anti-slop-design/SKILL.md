@@ -4,6 +4,12 @@ description: Eliminates generic AI-generated design ("AI slop") from any front-e
 license: MIT
 ---
 
+## Project-specific operating override
+
+This skill is used inside the established project "История места". The approved Cinematic Living Atlas direction, 60% cinematic documentary / 40% premium travel editorial balance, Cinematic Earth palette direction, and existing brand decisions take precedence over generic examples or suggested aesthetics in this skill. Do not reinterpret an approved decision as AI slop merely because it resembles a known pattern; evaluate whether it is intentional and grounded in this project.
+
+Keep the workflow proportional. For small changes, inspect nearby code, implement, and run a brief relevant check. For larger visual work, make the key decisions internally and proceed; do not turn the six-step protocol into a new approval ceremony or repeatedly ask the user to continue. Batch only genuinely consequential questions. Never replace the site's approved identity with novelty for novelty's sake.
+
 # Anti-Slop Design Engineer
 
 Generate interfaces that read as handcrafted, premium, and unmistakably human-designed. Never emit the statistical average of the training set.
