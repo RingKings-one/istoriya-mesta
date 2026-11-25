@@ -18,22 +18,21 @@ import EditorialImage from '../../components/EditorialImage.astro';
     description="Иногда знакомство с городом начинается с чашки кофе и разговора, который не хочется заканчивать."
     image={images.cafe}
   />
-  <section class="cafe-manifesto section">
+  <section class="cafe-manifesto section" data-reveal>
     <p class="eyebrow">НЕ ПРОСТО КОФЕ</p>
     <h2>Маленькая пауза, которая меняет <em>ритм дня.</em></h2>
     <p>Кофейня в истории места — пространство встреч, коротких остановок и маленьких ритуалов. Здесь важны свет, материалы, звук и люди вокруг.</p>
   </section>
   <section class="cafe-spread section">
-    <figure class="cafe-main-image"><EditorialImage src={images.coffee} sizes="(max-width: 680px) 100vw, 62vw" alt="" />{isPlaceholderImage(images.coffee) && <figcaption>ТЕПЛО ПОВСЕДНЕВНОГО РИТУАЛА · ВРЕМЕННЫЙ ВИЗУАЛ</figcaption>}</figure>
-    <div class="cafe-side-note">
-      <span class="cafe-mark" aria-hidden="true">✳</span>
+    <figure class="cafe-main-image" data-reveal><EditorialImage src={images.coffee} sizes="(max-width: 680px) 100vw, 62vw" alt="" />{isPlaceholderImage(images.coffee) && <figcaption>ТЕПЛО ПОВСЕДНЕВНОГО РИТУАЛА · ВРЕМЕННЫЙ ВИЗУАЛ</figcaption>}</figure>
+    <div class="cafe-side-note" data-reveal>
       <p class="eyebrow">АТМОСФЕРА</p>
       <h3>Остановиться.<br />Выдохнуть.<br /><em>Продолжить путь.</em></h3>
       <p>Эта страница станет портретом конкретного пространства, когда будут собраны и проверены его реальные детали.</p>
       <a class="text-link" href="/cities/ruza/">Вернуться к атласу <ArrowMark direction="forward" /></a>
     </div>
   </section>
-  <section class="cafe-details section">
+  <section class="cafe-details section" data-reveal>
     <div><span>01</span><strong>Свет</strong><p>Как пространство встречает утро и провожает вечер.</p></div>
     <div><span>02</span><strong>Материал</strong><p>Фактуры, предметы и детали, которые хочется рассматривать.</p></div>
     <div><span>03</span><strong>Люди</strong><p>Разговоры и ритуалы, благодаря которым место становится своим.</p></div>
@@ -51,7 +50,6 @@ import EditorialImage from '../../components/EditorialImage.astro';
   .cafe-main-image img { width:100%; aspect-ratio:1.5; }
   .cafe-main-image figcaption { padding-top:10px; color:var(--muted); font-size:9px; letter-spacing:.14em; }
   .cafe-side-note { position:relative; padding:26px 0 26px 26px; border-left:1px solid #a8664b99; }
-  .cafe-mark { display:block; margin-bottom:24px; color:var(--rust); font-size:24px; }
   .cafe-side-note h3 { margin:15px 0; font:clamp(27px,3vw,42px)/1.12 var(--serif); font-weight:400; }
   .cafe-side-note > p:not(.eyebrow) { color:var(--muted); font-size:11px; }
   .cafe-side-note .text-link { display:inline-block; margin-top:12px; }

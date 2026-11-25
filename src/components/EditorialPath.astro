@@ -7,13 +7,13 @@ const destinations = pageJourneys[current] ?? [];
 ---
 {destinations.length > 0 && (
   <nav class="editorial-path section" aria-label="Продолжить исследование">
-    <div class="editorial-path-heading">
+    <div class="editorial-path-heading" data-reveal>
       <p class="eyebrow">СЛЕДУЮЩИЙ ШАГ</p>
       <h2>Продолжить исследование.</h2>
     </div>
     <div class="editorial-path-links">
       {destinations.map((destination, index) => (
-        <a class="editorial-path-link" href={destination.href}>
+        <a class="editorial-path-link" data-reveal href={destination.href}>
           <span class="editorial-path-number">{String(index + 1).padStart(2, '0')}</span>
           <span class="editorial-path-copy">
             <strong>{destination.title}</strong>
@@ -49,10 +49,10 @@ const destinations = pageJourneys[current] ?? [];
     min-width: 0;
     padding: 15px 0;
     border-bottom: 1px solid #d7c7b233;
-    transition: padding .22s ease, color .22s ease;
+    transition: background-color .22s ease, color .22s ease;
   }
   .editorial-path-link:first-child { border-top: 1px solid #d7c7b233; }
-  .editorial-path-link:hover { padding-left: 7px; color: var(--stone); }
+  .editorial-path-link:is(:hover, :focus-visible) { background: #334d402e; color: var(--stone); }
   .editorial-path-number { color: var(--rust); font: 19px var(--serif); }
   .editorial-path-copy { display: grid; gap: 4px; min-width: 0; }
   .editorial-path-copy strong { font: 400 clamp(18px, 2vw, 24px)/1.15 var(--serif); }

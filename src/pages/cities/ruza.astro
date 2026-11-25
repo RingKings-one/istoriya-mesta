@@ -20,19 +20,19 @@ import EditorialImage from '../../components/EditorialImage.astro';
     image={images.river}
   />
   <section class="ruza-opening section">
-    <div class="ruza-opening-heading">
+    <div class="ruza-opening-heading" data-reveal>
       <p class="eyebrow">ПОРТРЕТ МЕСТА</p>
       <h2>Город раскрывается<br /><em>не сразу.</em></h2>
     </div>
-    <div class="ruza-opening-copy">
+    <div class="ruza-opening-copy" data-reveal>
       <p>{ruzaProfile.summary}</p>
       <span class="ruza-edition">АТЛАС ЖИВЫХ ИСТОРИЙ <i>—</i> ГЛАВА 01</span>
       <span class="ruza-status">СТАТУС РЕДАКЦИОННОЙ ГЛАВЫ · {ruzaProfile.status === 'researching' ? 'ИССЛЕДОВАНИЕ ПРОДОЛЖАЕТСЯ' : ruzaProfile.status.toUpperCase()}</span>
     </div>
   </section>
   <section class="ruza-spread">
-    <figure class="ruza-spread-image"><EditorialImage src={images.street} sizes="(max-width: 680px) 100vw, 68vw" alt="" />{isPlaceholderImage(images.street) && <figcaption>ВИЗУАЛЬНЫЙ ОБРАЗ ГОРОДСКОЙ СРЕДЫ · ВРЕМЕННОЕ ИЗОБРАЖЕНИЕ</figcaption>}</figure>
-    <div class="ruza-spread-note">
+    <figure class="ruza-spread-image" data-reveal><EditorialImage src={images.street} sizes="(max-width: 680px) 100vw, 68vw" alt="" />{isPlaceholderImage(images.street) && <figcaption>ВИЗУАЛЬНЫЙ ОБРАЗ ГОРОДСКОЙ СРЕДЫ · ВРЕМЕННОЕ ИЗОБРАЖЕНИЕ</figcaption>}</figure>
+    <div class="ruza-spread-note" data-reveal>
       <span class="ruza-side-index">01 / 03</span>
       <p class="eyebrow">ПОЧУВСТВОВАТЬ</p>
       <h3>Увидеть знакомое<br />по-новому.</h3>
@@ -40,7 +40,7 @@ import EditorialImage from '../../components/EditorialImage.astro';
     </div>
   </section>
   <section class="section ruza-directions">
-    <div class="ruza-directions-heading"><div><p class="eyebrow">КАРТА ИССЛЕДОВАНИЯ</p><h2>Выберите направление.</h2></div><p>Три способа приблизиться к характеру места</p></div>
+    <div class="ruza-directions-heading" data-reveal><div><p class="eyebrow">КАРТА ИССЛЕДОВАНИЯ</p><h2>Выберите направление.</h2></div><p>Три способа приблизиться к характеру места</p></div>
     <div class="card-grid">
       <FeatureCard image={images.forest} eyebrow="В ДВИЖЕНИИ" title="Маршруты" text="Прогулки, которые помогают увидеть знакомое по-новому." href="/routes/" number="01" />
       <FeatureCard image={images.archive} eyebrow="В ПАМЯТИ" title="Истории" text="Наблюдения, сюжеты и человеческие детали." href="/stories/" number="02" />

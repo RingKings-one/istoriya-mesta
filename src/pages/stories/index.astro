@@ -19,33 +19,33 @@ import EditorialImage from '../../components/EditorialImage.astro';
     image={images.archive}
   />
   <section class="journal-lead section">
-    <div class="journal-lead-copy">
+    <div class="journal-lead-copy" data-reveal>
       <p class="eyebrow">ЗАМЕТКИ РЕДАКЦИИ</p>
       <h2>У истории всегда есть несколько слоёв.</h2>
       <p>Мы собираем не каталог дат, а живой портрет места: через наблюдения, разговоры и детали, которые заслуживают внимания.</p>
       <span class="journal-status">ЖУРНАЛ ПОПОЛНЯЕТСЯ</span>
     </div>
-    <figure class="journal-image">
+    <figure class="journal-image" data-reveal>
       <EditorialImage src={images.street} sizes="(max-width: 680px) 100vw, 58vw" alt="" />
       <figcaption><span>ПОЛЕВЫЕ ЗАМЕТКИ</span>{isPlaceholderImage(images.street) && <span>ВРЕМЕННЫЙ ВИЗУАЛ · НЕ ДОКУМЕНТАЛЬНОЕ ФОТО</span>}</figcaption>
     </figure>
   </section>
   <section class="journal-index section">
-    <div class="journal-index-heading">
+    <div class="journal-index-heading" data-reveal>
       <p class="eyebrow">СОДЕРЖАНИЕ</p>
       <p>Три направления будущего журнала</p>
     </div>
-    <a class="journal-row" href="/archive/">
+    <a class="journal-row" data-reveal href="/archive/">
       <span class="journal-number">01</span>
       <span class="journal-row-main"><strong>Следы времени</strong><small>Городская среда и память пространства</small></span>
       <span class="journal-row-tag">СРЕДА</span><ArrowMark direction="forward" class="journal-arrow" />
     </a>
-    <a class="journal-row" href="/cafe/">
+    <a class="journal-row" data-reveal href="/cafe/">
       <span class="journal-number">02</span>
       <span class="journal-row-main"><strong>Маленькие ритуалы</strong><small>Места встреч и повседневные привычки</small></span>
       <span class="journal-row-tag">ЛЮДИ</span><ArrowMark direction="forward" class="journal-arrow" />
     </a>
-    <a class="journal-row" href="/routes/">
+    <a class="journal-row" data-reveal href="/routes/">
       <span class="journal-number">03</span>
       <span class="journal-row-main"><strong>Медленный маршрут</strong><small>Наблюдения в движении</small></span>
       <span class="journal-row-tag">ПУТЬ</span><ArrowMark direction="forward" class="journal-arrow" />
@@ -65,8 +65,8 @@ import EditorialImage from '../../components/EditorialImage.astro';
   .journal-index { padding-top:40px; }
   .journal-index-heading { display:flex; align-items:baseline; justify-content:space-between; gap:20px; padding-bottom:18px; border-bottom:1px solid #d7c7b244; }
   .journal-index-heading > p:last-child { color:var(--muted); font-size:11px; }
-  .journal-row { display:grid; grid-template-columns:54px minmax(0,1fr) auto 24px; gap:18px; align-items:center; padding:22px 0; border-bottom:1px solid #d7c7b233; transition:padding .25s ease,color .25s ease; }
-  .journal-row:hover { padding-left:8px; color:var(--stone); }
+  .journal-row { display:grid; grid-template-columns:54px minmax(0,1fr) auto 24px; gap:18px; align-items:center; padding:22px 0; border-bottom:1px solid #d7c7b233; transition:color .25s ease; }
+  .journal-row:is(:hover, :focus-visible) { color:var(--stone); }
   .journal-number { color:var(--rust); font:24px var(--serif); }
   .journal-row-main { display:grid; gap:4px; }
   .journal-row-main strong { font:clamp(19px,2vw,26px) var(--serif); font-weight:400; }

@@ -6,10 +6,15 @@ import ArrowMark from '../components/ArrowMark.astro';
   title="Страница не найдена — История места"
   description="Кажется, мы свернули не туда. Вернитесь на главную и продолжите исследование."
 >
-  <section class="not-found section">
+  <section class="not-found section" data-opening>
     <p class="eyebrow">ОШИБКА 404</p>
     <h1>Кажется, мы свернули не туда.</h1>
     <p>Этой страницы пока нет. Но история продолжается — вернитесь к началу и выберите направление.</p>
     <a class="button button-filled" href="/">На главную <ArrowMark direction="forward" /></a>
   </section>
 </BaseLayout>
+
+<style>
+  .not-found { padding-block-start: clamp(120px, 19svh, 188px); }
+  .not-found h1 { max-width: 15ch; text-wrap: balance; }
+</style>

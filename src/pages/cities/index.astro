@@ -18,14 +18,14 @@ import EditorialImage from '../../components/EditorialImage.astro';
     description="У каждого города свой ритм. Мы собираем его из историй, маршрутов и деталей."
     image={images.river}
   />
-  <section class="atlas-intro section">
+  <section class="atlas-intro section" data-reveal>
     <p class="eyebrow">АТЛАС РАСТЁТ ПОСТЕПЕННО</p>
     <h2>Сначала — один город.<br /><em>Затем — целый мир.</em></h2>
     <p>Мы не стремимся заполнить карту ради количества. Каждая новая глава должна быть собрана с вниманием к месту, его людям и проверенным историям.</p>
   </section>
   <section class="atlas-city">
-    <div class="atlas-city-image"><EditorialImage src={images.street} sizes="(max-width: 680px) 100vw, 62vw" alt="" /><span>ГЛАВА 01</span>{isPlaceholderImage(images.street) && <small class="atlas-city-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ · НЕ ФОТОГРАФИЯ РУЗЫ</small>}</div>
-    <div class="atlas-city-copy">
+    <div class="atlas-city-image" data-reveal><EditorialImage src={images.street} sizes="(max-width: 680px) 100vw, 62vw" alt="" /><span>ГЛАВА 01</span>{isPlaceholderImage(images.street) && <small class="atlas-city-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ · НЕ ФОТОГРАФИЯ РУЗЫ</small>}</div>
+    <div class="atlas-city-copy" data-reveal>
       <p class="eyebrow">МОСКОВСКАЯ ОБЛАСТЬ · ПЕРВАЯ ГЛАВА</p>
       <h2>Руза</h2>
       <p>Знакомство с городом через места, людей и повседневную атмосферу. Первая глава атласа — начало исследования, которое будет пополняться проверенными историями и фотографиями.</p>

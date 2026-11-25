@@ -13,7 +13,7 @@ const {
 } = Astro.props;
 const showPlaceholderDisclosure = isPlaceholderImage(image);
 ---
-<a class="feature-card" href={href}>
+<a class="feature-card" data-reveal href={href}>
   <div class="feature-image">
     <EditorialImage src={image} alt={imageAlt} sizes="(max-width: 420px) 100vw, (max-width: 680px) 50vw, 33vw" />
     {showPlaceholderDisclosure && <span class="feature-image-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ · НЕ ДОКУМЕНТАЛЬНОЕ ФОТО</span>}

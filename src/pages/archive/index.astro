@@ -18,29 +18,29 @@ import EditorialImage from '../../components/EditorialImage.astro';
     description="Фотографии, документы, карты и предметы помогают увидеть место с разных сторон."
     image={images.archive}
   />
-  <section class="archive-intro section">
+  <section class="archive-intro section" data-reveal>
     <p class="eyebrow">ПРИНЦИП АРХИВА</p>
     <h2>Не просто хранить — <em>сопоставлять.</em></h2>
     <p>Каждый материал должен иметь понятное происхождение и контекст. Коллекция будет пополняться проверенными фотографиями и источниками; временные редакционные изображения не являются историческими документами.</p>
   </section>
   <section class="archive-collection section">
-    <div class="archive-heading"><p class="eyebrow">РАЗДЕЛЫ КОЛЛЕКЦИИ</p><span>01 / 03</span></div>
+    <div class="archive-heading" data-reveal><p class="eyebrow">РАЗДЕЛЫ КОЛЛЕКЦИИ</p><span>01 / 03</span></div>
     <div class="archive-grid">
-      <a class="archive-tile archive-tile-large" href="/stories/">
+      <a class="archive-tile archive-tile-large" data-reveal href="/stories/">
         <EditorialImage src={images.camera} sizes="(max-width: 680px) 100vw, 58vw" alt="" />
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">01</span>
         {isPlaceholderImage(images.camera) && <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>}
         <span class="archive-tile-copy"><small>КАДРЫ И НАБЛЮДЕНИЯ</small><strong>Фотографическая память</strong><em>Перейти к историям <ArrowMark direction="forward" /></em></span>
       </a>
-      <a class="archive-tile" href="/routes/">
+      <a class="archive-tile" data-reveal href="/routes/">
         <EditorialImage src={images.map} sizes="(max-width: 680px) 100vw, 42vw" alt="" />
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">02</span>
         {isPlaceholderImage(images.map) && <span class="archive-tile-disclosure">ВРЕМЕННЫЙ ВИЗУАЛ</span>}
         <span class="archive-tile-copy"><small>СХЕМЫ И ПРОСТРАНСТВО</small><strong>Карты и маршруты</strong><em>Исследовать <ArrowMark direction="forward" /></em></span>
       </a>
-      <a class="archive-tile" href="/cities/ruza/">
+      <a class="archive-tile" data-reveal href="/cities/ruza/">
         <EditorialImage src={images.books} sizes="(max-width: 680px) 100vw, 42vw" alt="" />
         <span class="archive-tile-overlay"></span>
         <span class="archive-tile-number">03</span>
