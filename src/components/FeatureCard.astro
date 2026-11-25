@@ -1,4 +1,23 @@
 ---
-const {image,eyebrow,title,text,href='/cities/',number}=Astro.props;
+const {
+  image,
+  imageAlt = '',
+  eyebrow,
+  title,
+  text,
+  href = '/cities/',
+  number,
+} = Astro.props;
 ---
-<a class="feature-card" href={href}><div class="feature-image"><img src={image} alt="" loading="lazy"/>{number&&<span class="feature-number">{number}</span>}</div><div class="feature-copy"><p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{text}</p><span class="text-link">Открыть материал ↗</span></div></a>
+<a class="feature-card" href={href}>
+  <div class="feature-image">
+    <img src={image} alt={imageAlt} loading="lazy" decoding="async" />
+    {number && <span class="feature-number" aria-hidden="true">{number}</span>}
+  </div>
+  <div class="feature-copy">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2>{title}</h2>
+    <p>{text}</p>
+    <span class="text-link">Открыть материал ↗</span>
+  </div>
+</a>
