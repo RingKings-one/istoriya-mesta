@@ -573,27 +573,6 @@ a {
   margin-top: 36px;
 }
 
-@media (min-width: 681px) and (max-width: 780px) {
-  .site-header {
-    gap: 14px;
-    padding-inline: 22px;
-  }
-
-  .desktop-nav {
-    gap: 10px;
-  }
-
-  .desktop-nav a {
-    font-size: 9px;
-  }
-
-  .header-cta {
-    min-height: 40px;
-    padding-inline: 11px;
-    font-size: 9px;
-  }
-}
-
 @media (max-width: 900px) {
   .site-header {
     min-height: 76px;
@@ -644,6 +623,27 @@ a {
 
   .site-footer p {
     text-align: right;
+  }
+}
+
+@media (min-width: 681px) and (max-width: 780px) {
+  .site-header {
+    gap: 14px;
+    padding-inline: 22px;
+  }
+
+  .desktop-nav {
+    gap: 10px;
+  }
+
+  .desktop-nav a {
+    font-size: 9px;
+  }
+
+  .header-cta {
+    min-height: 40px;
+    padding-inline: 11px;
+    font-size: 9px;
   }
 }
 
