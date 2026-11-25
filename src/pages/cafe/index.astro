@@ -8,31 +8,60 @@ import { images, imageSrcSet } from '../../data';
   description="Кофейное пространство как часть городской атмосферы, встреч и неспешных маршрутов."
 >
   <PageIntro
-    eyebrow="КОФЕЙНЫЙ ОПЫТ"
+    eyebrow="КОФЕЙНЫЙ ОПЫТ · МЕСТО ПАУЗЫ"
     title="Место для паузы."
     description="Иногда знакомство с городом начинается с чашки кофе и разговора, который не хочется заканчивать."
     image={images.cafe}
   />
-  <section class="section intro-grid">
-    <div>
+  <section class="cafe-manifesto section">
+    <p class="eyebrow">НЕ ПРОСТО КОФЕ</p>
+    <h2>Маленькая пауза, которая меняет <em>ритм дня.</em></h2>
+    <p>Кофейня в истории места — пространство встреч, коротких остановок и маленьких ритуалов. Здесь важны свет, материалы, звук и люди вокруг.</p>
+  </section>
+  <section class="cafe-spread section">
+    <figure class="cafe-main-image"><img src={images.coffee} srcset={imageSrcSet(images.coffee)} sizes="(max-width: 680px) 100vw, 62vw" alt="" loading="lazy" /><figcaption>ТЕПЛО ПОВСЕДНЕВНОГО РИТУАЛА</figcaption></figure>
+    <div class="cafe-side-note">
+      <span class="cafe-mark" aria-hidden="true">✳</span>
       <p class="eyebrow">АТМОСФЕРА</p>
-      <h2>Больше, чем кофе.</h2>
-      <p>
-        Кофейня в истории места — не просто точка на маршруте. Это пространство
-        встреч, коротких остановок и маленьких ритуалов, из которых складывается
-        ощущение города.
-      </p>
+      <h3>Остановиться.<br />Выдохнуть.<br /><em>Продолжить путь.</em></h3>
+      <p>Эта страница станет портретом конкретного пространства, когда будут собраны и проверены его реальные детали.</p>
       <a class="text-link" href="/cities/ruza/">Вернуться к атласу ↗</a>
     </div>
-    <img src={images.coffee} srcset={imageSrcSet(images.coffee)} sizes="(max-width: 680px) 100vw, 50vw" alt="" loading="lazy" />
   </section>
-  <section class="section cafe-note">
-    <p class="eyebrow">МЕСТО ВСТРЕЧИ</p>
-    <h2>Остановиться. Выдохнуть. Продолжить путь.</h2>
-    <p>
-      Здесь важны не только напитки, но и настроение пространства — свет,
-      материалы, звук и люди вокруг. Детали кофейной истории будут дополняться
-      по мере работы над проектом.
-    </p>
+  <section class="cafe-details section">
+    <div><span>01</span><strong>Свет</strong><p>Как пространство встречает утро и провожает вечер.</p></div>
+    <div><span>02</span><strong>Материал</strong><p>Фактуры, предметы и детали, которые хочется рассматривать.</p></div>
+    <div><span>03</span><strong>Люди</strong><p>Разговоры и ритуалы, благодаря которым место становится своим.</p></div>
   </section>
 </BaseLayout>
+
+<style>
+  .cafe-manifesto { display:grid; grid-template-columns:.55fr 1.15fr .8fr; gap:30px; align-items:start; }
+  .cafe-manifesto h2 { margin:0; font:clamp(32px,4.4vw,60px)/1.02 var(--serif); font-weight:400; }
+  .cafe-manifesto h2 em,.cafe-side-note h3 em { color:var(--stone); }
+  .cafe-manifesto > p:last-child { max-width:320px; margin:5px 0 0; color:var(--muted); }
+  .cafe-spread { display:grid; grid-template-columns:1.35fr .65fr; gap:clamp(26px,5vw,72px); align-items:center; }
+  .cafe-main-image { margin:0; }
+  .cafe-main-image img { width:100%; aspect-ratio:1.5; }
+  .cafe-main-image figcaption { padding-top:10px; color:var(--muted); font-size:9px; letter-spacing:.14em; }
+  .cafe-side-note { position:relative; padding:26px 0 26px 26px; border-left:1px solid #a8664b99; }
+  .cafe-mark { display:block; margin-bottom:24px; color:var(--rust); font-size:24px; }
+  .cafe-side-note h3 { margin:15px 0; font:clamp(27px,3vw,42px)/1.12 var(--serif); font-weight:400; }
+  .cafe-side-note > p:not(.eyebrow) { color:var(--muted); font-size:11px; }
+  .cafe-side-note .text-link { display:inline-block; margin-top:12px; }
+  .cafe-details { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px; padding-top:32px; border-top:1px solid #d7c7b244; }
+  .cafe-details div { display:grid; gap:8px; }
+  .cafe-details span { color:var(--rust); font:20px var(--serif); }
+  .cafe-details strong { font:24px var(--serif); font-weight:400; }
+  .cafe-details p { max-width:260px; margin:0; color:var(--muted); font-size:11px; }
+  @media(max-width:760px) {
+    .cafe-manifesto { grid-template-columns:1fr; gap:14px; }
+    .cafe-manifesto h2 { max-width:520px; }
+    .cafe-spread { grid-template-columns:1fr; gap:24px; }
+    .cafe-side-note { padding-left:20px; }
+    .cafe-details { grid-template-columns:1fr; gap:22px; }
+    .cafe-details div { grid-template-columns:32px 1fr; gap:4px 12px; }
+    .cafe-details span { grid-row:span 2; }
+    .cafe-details p { max-width:none; }
+  }
+</style>
