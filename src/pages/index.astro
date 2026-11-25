@@ -1,14 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FeatureCard from '../components/FeatureCard.astro';
-import { images } from '../data';
+import { images, imageSrcSet } from '../data';
 ---
 <BaseLayout
   title="История места — Атлас живых историй"
   description="Открываем характер городов через места, людей, детали и маршруты. Первая глава — Руза."
 >
   <section class="hero">
-    <img src={images.hero} alt="" fetchpriority="high" />
+    <img src={images.hero} srcset={imageSrcSet(images.hero)} sizes="100vw" alt="" fetchpriority="high" />
     <div class="hero-content">
       <p class="eyebrow">АТЛАС ЖИВЫХ ИСТОРИЙ</p>
       <h1>У каждого<br />места есть<br /><em>история.</em></h1>
@@ -28,11 +28,11 @@ import { images } from '../data';
       </p>
       <a class="text-link" href="/stories/">Почувствовать атмосферу ↗</a>
     </div>
-    <img src={images.street} alt="" loading="lazy" />
+    <img src={images.street} srcset={imageSrcSet(images.street)} sizes="(max-width: 680px) 100vw, 50vw" alt="" loading="lazy" />
   </section>
 
   <section class="city-feature">
-    <img src={images.river} alt="" loading="lazy" />
+    <img src={images.river} srcset={imageSrcSet(images.river)} sizes="(max-width: 680px) 100vw, 50vw" alt="" loading="lazy" />
     <div class="feature-copy">
       <p class="eyebrow">ПЕРВАЯ ГЛАВА · 01</p>
       <h2>Руза</h2>
@@ -54,7 +54,7 @@ import { images } from '../data';
       </p>
       <a class="text-link" href="/routes/">Найти свой маршрут ↗</a>
     </div>
-    <img src={images.forest} alt="" loading="lazy" />
+    <img src={images.forest} srcset={imageSrcSet(images.forest)} sizes="(max-width: 680px) 100vw, 50vw" alt="" loading="lazy" />
   </section>
 
   <section class="section discovery-section">
