@@ -3,47 +3,53 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout
   title="Источники изображений — История места"
-  description="Авторы и источники временных редакционных изображений, используемых в макете сайта."
+  description="Источники временных редакционных изображений, используемых в макете сайта."
 >
   <section class="page-intro">
     <div class="page-intro-copy">
       <p class="eyebrow">ПРОЗРАЧНОСТЬ И ИСТОЧНИКИ</p>
-      <h1 id="page-title">Изображения и авторы.</h1>
+      <h1 id="page-title">Изображения и источники.</h1>
       <p class="lead">Временные визуалы для настройки композиции. Они не являются фотографиями Рузы или реальных объектов проекта.</p>
     </div>
   </section>
   <section class="section credits-list">
     <p class="eyebrow">ВРЕМЕННЫЕ РЕДАКЦИОННЫЕ ИЗОБРАЖЕНИЯ</p>
-    <h2>Спасибо авторам.</h2>
+    <h2>Временная визуальная подборка.</h2>
+    <p class="credits-intro">
+      Изображения загружаются с Unsplash CDN. Имена авторов и места съёмки для
+      этих конкретных файлов пока не подтверждены, поэтому мы не указываем
+      неподтверждённые кредиты и географию.
+    </p>
     <ul>
       <li>
-        <div><h3>Речной город</h3><p>Временный атмосферный образ, не Руза.</p></div>
-        <span><a href="https://www.worldonabudget.de/" target="_blank" rel="noreferrer">Marie Volkert / Reiseblog Worldonabudget ↗</a><br /><a href="https://unsplash.com/photos/a-river-running-through-a-small-town-surrounded-by-mountains-2re291-BjaU" target="_blank" rel="noreferrer">Фото на Unsplash ↗</a></span>
+        <div><h3>Hero и речной пейзаж</h3><p>Главная, атлас и первая глава о Рузе.</p></div>
+        <a href="https://images.unsplash.com/photo-1738679468457-79fd4636d996?auto=format&fit=crop&w=2200&q=82" target="_blank" rel="noreferrer">Открыть изображение ↗</a>
       </li>
       <li>
-        <div><h3>Интерьер кофейни</h3><p>Снято в Анкаре, Türkiye.</p></div>
-        <a href="https://unsplash.com/photos/interior-of-a-cafe-with-graffiti-and-bookshelves--oOkWRitZb0" target="_blank" rel="noreferrer">Mavi Atlas ↗</a>
+        <div><h3>Интерьер</h3><p>Временная атмосфера кофейного пространства.</p></div>
+        <a href="https://images.unsplash.com/photo-1770515927749-33442eabf462?auto=format&fit=crop&w=1800&q=82" target="_blank" rel="noreferrer">Открыть изображение ↗</a>
       </li>
       <li>
-        <div><h3>Старая улица</h3><p>Снято в Штайре, Австрия.</p></div>
-        <a href="https://unsplash.com/photos/a-narrow-cobblestone-street-in-an-old-european-city-SDVBWRK0nLs" target="_blank" rel="noreferrer">Franz Michael Schneeberger ↗</a>
+        <div><h3>Старая улица</h3><p>Редакционный визуал для городских страниц.</p></div>
+        <a href="https://images.unsplash.com/photo-1624793412356-927326a6d9a9?auto=format&fit=crop&w=1800&q=82" target="_blank" rel="noreferrer">Открыть изображение ↗</a>
       </li>
       <li>
-        <div><h3>Кофе и книга</h3><p>Снято в Стамбуле, Türkiye.</p></div>
-        <a href="https://unsplash.com/photos/coffee-snacks-and-a-book-create-a-cozy-cafe-scene-rvToqALnyiM" target="_blank" rel="noreferrer">Esra Afşar ↗</a>
+        <div><h3>Кофе и книга</h3><p>Временный визуал для кофейного раздела.</p></div>
+        <a href="https://images.unsplash.com/photo/1504812036248-733753e0d165?auto=format&fit=crop&w=1400&q=82" target="_blank" rel="noreferrer">Открыть изображение ↗</a>
       </li>
       <li>
-        <div><h3>Карта и камера</h3><p>Редакционный натюрморт.</p></div>
-        <a href="https://unsplash.com/photos/a-map-camera-notebook-and-other-items-on-a-table-7DuSUrYyXNs" target="_blank" rel="noreferrer">Anirudh ↗</a>
+        <div><h3>Архивный натюрморт</h3><p>Визуальный материал для архива и историй.</p></div>
+        <a href="https://images.unsplash.com/photo-1653491951587-282e99d6c1e5?auto=format&fit=crop&w=1600&q=82" target="_blank" rel="noreferrer">Открыть изображение ↗</a>
       </li>
       <li>
         <div><h3>Лесная тропа</h3><p>Атмосферный визуал для раздела маршрутов.</p></div>
-        <a href="https://unsplash.com/pt-br/fotografias/uma-trilha-na-floresta-com-o-sol-brilhando-atraves-das-arvores-EltEl0XJyWM" target="_blank" rel="noreferrer">Adrian Newell ↗</a>
+        <a href="https://images.unsplash.com/photo-1635746146715-0cc45dfa3bc2?auto=format&fit=crop&w=1600&q=82" target="_blank" rel="noreferrer">Открыть изображение ↗</a>
       </li>
     </ul>
     <p class="credits-note">
-      Перед production эти изображения будут заменены отобранными фотографиями проекта.
-      Источники и техническая карта также сохранены в репозитории: ASSET-SOURCES.md.
+      Перед production эти изображения будут заменены отобранными фотографиями
+      проекта. Точные CDN-идентификаторы и статусы проверки сохранены в
+      ASSET-SOURCES.md.
     </p>
   </section>
 </BaseLayout>
