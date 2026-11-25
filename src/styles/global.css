@@ -874,8 +874,33 @@ main > section > *,
 }
 
 @media (max-width: 420px) {
+  /* Keep the primary atlas action available even on the narrowest phones. */
+  .site-header {
+    gap: 8px;
+    padding-inline: 16px;
+  }
+
+  .brand {
+    gap: 6px;
+    font-size: 16px;
+  }
+
+  .brand-mark {
+    font-size: 25px;
+  }
+
   .header-cta {
-    display: none;
+    display: inline-flex;
+    min-height: 44px;
+    padding-inline: 8px;
+    font-size: 8px;
+    letter-spacing: .02em;
+    white-space: nowrap;
+  }
+
+  .menu-toggle {
+    min-width: 40px;
+    min-height: 44px;
   }
 
   .card-grid {
@@ -1117,5 +1142,36 @@ main > section > *,
     max-width: 300px;
     font-size: 7px;
     letter-spacing: .1em;
+  }
+}
+
+
+/* Touchscreens should not retain hover-only movement after a tap. */
+@media (hover: none) {
+  .feature-card:hover {
+    transform: none;
+  }
+
+  .feature-card:hover img,
+  .archive-tile:hover img {
+    transform: none;
+  }
+
+  .text-link:hover {
+    letter-spacing: normal;
+  }
+
+  .hero-secondary-link:hover {
+    gap: 12px;
+  }
+}
+
+/* Keep small editorial disclosures readable on compact screens. */
+@media (max-width: 680px) {
+  .feature-image-disclosure,
+  .home-image-disclosure,
+  .page-intro-note,
+  .hero-asset-note {
+    font-size: 8px;
   }
 }
