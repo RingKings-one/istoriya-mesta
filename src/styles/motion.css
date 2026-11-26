@@ -1,27 +1,32 @@
 @media (prefers-reduced-motion: no-preference) {
   .hero--atlas[data-opening] > picture,
   [data-opening] > picture {
-    animation: opening-frame 1.8s cubic-bezier(.22, 1, .36, 1) both;
+    animation: opening-frame 1.75s cubic-bezier(.22, 1, .36, 1) both;
+    will-change: clip-path, transform;
+  }
+
+  .hero--atlas[data-opening] > picture > img {
+    animation: ken-burns 8s ease-out both;
   }
 
   .hero--atlas[data-opening] h1 .line-inner {
     display: block;
     transform: translateY(110%);
-    animation: line-rise 0.9s cubic-bezier(.22, 1, .36, 1) forwards;
+    animation: line-rise 0.95s cubic-bezier(.22, 1, .36, 1) forwards;
   }
 
-  .hero--atlas[data-opening] h1 .line-inner:nth-child(1) { animation-delay: 0.45s; }
-  .hero--atlas[data-opening] h1 .line-inner:nth-child(2) { animation-delay: 0.6s; }
+  .hero--atlas[data-opening] h1 .line-inner:nth-child(1) { animation-delay: 0.5s; }
+  .hero--atlas[data-opening] h1 .line-inner:nth-child(2) { animation-delay: 0.72s; }
 
   [data-opening] :is(.eyebrow, .hero-chapter, .lead, .hero-actions) {
     opacity: 0;
-    animation: fade-up 0.8s cubic-bezier(.22, 1, .36, 1) forwards;
+    animation: fade-up 0.85s cubic-bezier(.22, 1, .36, 1) forwards;
   }
 
-  [data-opening] .eyebrow { animation-delay: 1.05s; }
-  [data-opening] .hero-chapter { animation-delay: 1.15s; }
-  [data-opening] .lead { animation-delay: 1.3s; }
-  [data-opening] .hero-actions { animation-delay: 1.45s; }
+  [data-opening] .eyebrow { animation-delay: 1.15s; }
+  [data-opening] .hero-chapter { animation-delay: 1.28s; }
+  [data-opening] .lead { animation-delay: 1.45s; }
+  [data-opening] .hero-actions { animation-delay: 1.6s; }
 
   [data-reveal].has-entered:not(:focus-within) {
     animation: content-rise 720ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) both;
@@ -47,7 +52,7 @@
   }
 
   .cafe-opening[data-opening] .cafe-hero-media > picture {
-    animation: opening-frame 1.55s cubic-bezier(.22, 1, .36, 1) both;
+    animation: opening-frame 1.6s cubic-bezier(.22, 1, .36, 1) both;
   }
 
   .archive-back[open] > .photo-frame {
@@ -59,7 +64,7 @@
 
 @keyframes opening-frame {
   from {
-    clip-path: inset(16% 18% 16% 18%);
+    clip-path: inset(18% 22% 18% 22%);
     transform: scale(1.08);
   }
   to {
@@ -68,12 +73,17 @@
   }
 }
 
+@keyframes ken-burns {
+  from { transform: scale(1.04) translate(0, 0); }
+  to { transform: scale(1.08) translate(-1.2%, -0.6%); }
+}
+
 @keyframes line-rise {
   to { transform: translateY(0); }
 }
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(18px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -111,8 +121,8 @@
 
   @keyframes opening-frame {
     from {
-      clip-path: inset(10% 8% 10% 8%);
-      transform: scale(1.04);
+      clip-path: inset(12% 10% 12% 10%);
+      transform: scale(1.05);
     }
     to {
       clip-path: inset(0);
@@ -127,7 +137,8 @@
   }
 
   [data-opening] > picture,
-  .hero--atlas[data-opening] > picture {
+  .hero--atlas[data-opening] > picture,
+  .hero--atlas[data-opening] > picture > img {
     animation: none;
     clip-path: none;
     transform: none;
