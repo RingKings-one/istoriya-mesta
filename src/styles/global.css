@@ -71,7 +71,7 @@ a {
   flex: 0 0 auto;
   align-items: center;
   gap: 12px;
-  font: 20px/.9 var(--serif);
+  font: 20px/1.08 var(--serif);
   letter-spacing: -.02em;
 }
 
@@ -222,8 +222,8 @@ a {
 .hero h1,
 .page-intro h1 {
   margin: 0;
-  font: 400 clamp(58px, 8.2vw, 116px)/.91 var(--serif);
-  letter-spacing: -.045em;
+  font: 400 clamp(52px, 6.8vw, 100px)/1.05 var(--serif);
+  letter-spacing: -.03em;
 }
 
 .hero h1 em {

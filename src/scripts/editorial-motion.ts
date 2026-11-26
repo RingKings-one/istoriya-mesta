@@ -1,63 +1,93 @@
-if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  // Hero title lines
-  document.querySelectorAll('.hero--atlas h1').forEach((h1) => {
-    const parts = h1.innerHTML.split(/<br\s*\/?>/i);
-    h1.innerHTML = parts
-      .map((p) => `<span class="line-mask"><span class="line-inner">${p.trim()}</span></span>`)
-      .join('');
-  });
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Section headings (h2) line masks
-  document.querySelectorAll('main h2').forEach((h2) => {
-    if (h2.closest('.hero')) return;
-    const html = h2.innerHTML;
-    if (html.includes('<br')) {
-      const parts = html.split(/<br\s*\/?>/i);
-      h2.innerHTML = parts
-        .map((p) => `<span class="line-mask"><span class="line-inner">${p.trim()}</span></span>`)
-        .join('');
-    } else {
-      h2.innerHTML = `<span class="line-mask"><span class="line-inner">${html}</span></span>`;
-    }
-  });
+function splitLines(el: Element) {
+  if (el.querySelector('.line-inner')) return;
+  const html = el.innerHTML.trim();
+  if (!html) return;
+  const parts = html.split(/<br\s*\/?>/i).map((part) => part.trim()).filter(Boolean);
+  if (!parts.length) return;
+  el.innerHTML = parts
+    .map((part) => `<span class="line-mask"><span class="line-inner">${part}</span></span>`)
+    .join('');
 }
 
-if ('IntersectionObserver' in window) {
-  const revealGroups = '.card-grid, .archive-grid, .epoch-list, .editorial-path-links';
-  document.querySelectorAll(revealGroups).forEach((group) => {
-    Array.from(group.children).forEach((child, index) => {
-      (child as HTMLElement).style.setProperty('--reveal-delay', `${Math.min(index * 90, 270)}ms`);
-    });
+try {
+  document.querySelectorAll('main h1, main h2, [data-split]').forEach((el) => {
+    if (el.closest('.feature-card')) return;
+    splitLines(el);
   });
 
-  const candidates = document.querySelectorAll(
-    'main > section:not([data-opening]) > *, main .card-grid > *, main .archive-grid > *, main .epoch, main .trail-stop, main .editorial-path-link, main figure, main .photo-frame, main .home-city-image, main .home-intro-image, main .home-route-image',
-  );
+  if (reduce) {
+    document.documentElement.classList.remove('motion');
+  } else if ('IntersectionObserver' in window) {
+    const hosts = new Set<HTMLElement>();
 
-  for (const target of candidates) {
-    if (target.matches('script, style, [data-opening], .hero')) continue;
-    if (target.parentElement?.closest('main [data-reveal]')) continue;
+    const addHost = (el: Element | null) => {
+      if (!(el instanceof HTMLElement)) return;
+      if (el.closest('[data-opening]')) return;
+      hosts.add(el);
+    };
 
-    if (!target.hasAttribute('data-reveal')) {
-      let kind = 'text';
-      if (target.matches('figure, .photo-frame, .home-city-image, .home-intro-image, .home-route-image')) {
-        kind = 'image';
-      } else if (target.matches('.feature-card, .archive-tile, .epoch, .trail-stop, .editorial-path-link')) {
-        kind = 'card';
-      } else if (target.matches('h2, .section-heading, .home-intro-copy, .feature-copy, .route-feature-copy')) {
-        kind = 'heading';
+    document.querySelectorAll('main [data-reveal]').forEach(addHost);
+    document.querySelectorAll('main h2').forEach((heading) => {
+      if (heading.closest('.feature-card, [data-opening]')) return;
+      addHost(heading.closest('[data-reveal], .cafe-chapter, .trail-copy, .epochs-heading, .ruza-opening-heading, .ruza-directions-heading') || heading);
+    });
+    document.querySelectorAll('[data-split]').forEach((el) => {
+      addHost(el.closest('.home-principle, [data-reveal]') || el);
+    });
+    document.querySelectorAll('main figure, main .photo-frame, main .home-city-image').forEach((el) => {
+      if (el.closest('.feature-card, .archive-record, [data-opening]')) return;
+      if (el.matches('figure') && !el.querySelector('img')) return;
+      addHost(el);
+    });
+    document.querySelectorAll('main .feature-card, main .epoch, main .editorial-path-link').forEach(addHost);
+
+    const nested = new Set<HTMLElement>();
+    for (const host of hosts) {
+      if (host.parentElement?.closest('.feature-card, .epoch, .editorial-path-link') && !host.matches('.feature-card, .epoch, .editorial-path-link')) {
+        nested.add(host);
       }
-      target.setAttribute('data-reveal', kind);
     }
+    nested.forEach((host) => hosts.delete(host));
+
+    let imageCount = 0;
+    for (const host of hosts) {
+      let kind = 'text';
+      if (host.matches('.feature-card, .epoch, .editorial-path-link')) kind = 'card';
+      else if (host.matches('figure, .photo-frame, .home-city-image, .home-intro-image, .home-route-image') || (host.matches('figure') && host.querySelector('img'))) kind = 'image';
+      else if (host.querySelector('h1, h2, [data-split]') || host.matches('h1, h2, [data-split]')) kind = 'heading';
+      host.dataset.motion = kind;
+      if (kind === 'image') {
+        const side = imageCount % 3 === 1 ? 'left' : imageCount % 3 === 2 ? 'right' : 'bottom';
+        host.dataset.side = side;
+        imageCount += 1;
+      }
+    }
+
+    document.querySelectorAll('.card-grid, .editorial-path-links').forEach((group) => {
+      Array.from(group.children).forEach((child, index) => {
+        if (child instanceof HTMLElement) child.style.setProperty('--reveal-delay', `${index * 120}ms`);
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add('has-entered');
+        observer.unobserve(entry.target);
+      }
+    }, { rootMargin: '0px 0px -4% 0px', threshold: 0.08 });
+
+    hosts.forEach((host) => observer.observe(host));
+
+    document.addEventListener('focusin', (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      const host = target.closest<HTMLElement>('[data-motion]');
+      host?.classList.add('has-entered');
+    });
   }
-
-  const observer = new IntersectionObserver((entries) => {
-    for (const { target, isIntersecting } of entries) {
-      if (!isIntersecting) continue;
-      if (!target.matches(':focus-within')) target.classList.add('has-entered');
-      observer.unobserve(target);
-    }
-  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
-
-  document.querySelectorAll('main [data-reveal]').forEach((target) => observer.observe(target));
+} catch {
+  document.documentElement.classList.remove('motion');
 }

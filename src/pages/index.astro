@@ -34,7 +34,7 @@ import EditorialImage from '../components/EditorialImage.astro';
 
   <section class="home-principle" data-reveal aria-label="Принцип проекта">
     <span class="home-principle-index">ПРИНЦИП / 01</span>
-    <p>От первого кофе —<br /><em>к первой прогулке.</em></p>
+    <p data-split>От первого кофе —<br /><em>к первой прогулке.</em></p>
   </section>
 
   <section class="city-feature home-city-feature">
@@ -161,7 +161,7 @@ import EditorialImage from '../components/EditorialImage.astro';
   .home-image-disclosure { bottom: 22px; opacity: .78; font-size: 7px; }
   .home-city-copy { position: relative; align-self: center; padding: clamp(36px, 6vw, 88px); }
   .home-chapter-label { display: block; margin: 30px 0 8px; color: var(--muted); font-size: 8px; letter-spacing: .17em; }
-  .home-city-copy h2 { margin-bottom: 16px; font-size: clamp(64px, 8vw, 108px); line-height: .9; }
+  .home-city-copy h2 { margin-bottom: 16px; font-size: clamp(64px, 8vw, 108px); line-height: 1; }
   .home-city-copy > p:not(.eyebrow) { max-width: 390px; }
   .home-city-edition { display: block; margin-top: 42px; color: var(--stone); font-size: 8px; letter-spacing: .14em; }
   .home-route-feature { grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); }

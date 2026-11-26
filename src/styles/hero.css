@@ -1,8 +1,8 @@
 /* Art direction for the opening chapter: cinematic image, editorial framing. */
 .hero--atlas {
-  min-height: min(960px, 100svh);
-  align-items: center;
-  padding: clamp(150px, 18vh, 210px) clamp(28px, 8vw, 132px) 132px;
+  min-height: min(920px, 100svh);
+  align-items: flex-end;
+  padding: clamp(120px, 14vh, 168px) clamp(28px, 7vw, 112px) 128px;
   background: var(--night);
 }
 
@@ -17,22 +17,27 @@
 
 .hero--atlas::after {
   background:
-    linear-gradient(90deg, #0b100de8 0%, #0b100dbd 34%, #0b100d42 67%, #0b100d12 100%),
+  linear-gradient(90deg, #0b100ef2 0%, #0b100ed4 32%, #0b100d66 58%, #0b100d14 100%),
     linear-gradient(0deg, #0b100d9c 0%, transparent 34%),
     radial-gradient(ellipse at 72% 44%, transparent 0 28%, #0b100d24 78%);
 }
 
-.hero--atlas > picture { left: auto; width: 76%; }
+.hero--atlas > picture {
+  left: auto;
+  width: min(78%, 980px);
+  overflow: hidden;
+}
 
 .hero--atlas > picture > .hero-image {
-  object-fit: contain;
+  object-fit: cover;
   filter: saturate(.82) contrast(1.04);
 }
 
 .hero--atlas .hero-content {
   z-index: 2;
-  width: min(100%, 850px);
-  margin-top: 10px;
+  width: min(100%, 540px);
+  max-width: 46vw;
+  margin: 0 0 12px;
 }
 
 .hero--atlas .eyebrow {
@@ -57,22 +62,30 @@
 }
 
 .hero--atlas h1 {
-  max-width: 820px;
-  font-size: clamp(68px, 8.1vw, 120px);
-  line-height: .9;
-  letter-spacing: -.055em;
+  max-width: 8.2ch;
+  margin: 0;
+  font-size: clamp(60px, 6.4vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -.03em;
   text-wrap: balance;
 }
 
 .hero--atlas h1 em {
   color: var(--stone);
+  font-family: var(--editorial-serif);
+  font-style: italic;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.02em;
 }
 
 .hero--atlas .lead {
-  max-width: 440px;
-  margin: 30px 0 34px;
+  max-width: 28em;
+  margin: 26px 0 28px;
   color: #e0d7ca;
-  font-size: clamp(20px, 2vw, 25px);
+  font-size: clamp(18px, 1.7vw, 23px);
+  line-height: 1.35;
 }
 
 .hero-actions {
@@ -140,6 +153,10 @@
     padding-inline: 6vw;
   }
 
+  .hero--atlas .hero-content {
+    max-width: min(100%, 480px);
+  }
+
   .hero-bottomline {
     right: 6vw;
     left: 6vw;
@@ -180,8 +197,9 @@
   }
 
   .hero--atlas h1 {
-    font-size: clamp(54px, 13.5vw, 78px);
-    line-height: .94;
+    max-width: none;
+    font-size: clamp(52px, 13vw, 72px);
+    line-height: 1.04;
   }
 
   .hero--atlas .lead {
@@ -213,7 +231,7 @@
 
 @media (max-width: 360px) {
   .hero--atlas h1 {
-    font-size: clamp(50px, 13.2vw, 58px);
+    font-size: clamp(46px, 12.4vw, 54px);
   }
 
   .hero-chapter {
@@ -236,7 +254,7 @@
 /* Hero finish: stronger editorial hierarchy without adding scroll control. */
 .hero--atlas h1 {
   text-wrap: balance;
-  text-shadow: 0 3px 32px #080b0940;
+  text-shadow: 0 2px 24px #080b0952;
 }
 
 .hero--atlas .lead {
@@ -248,7 +266,7 @@
 }
 
 .hero--atlas .hero-content {
-  max-width: 850px;
+  max-width: min(540px, 46vw);
 }
 
 .hero--atlas .button-filled {
@@ -274,11 +292,12 @@
 @media (max-width: 680px) {
   .hero--atlas .hero-content {
     width: 100%;
+    max-width: none;
   }
 
   .hero--atlas h1 {
-    max-width: 9ch;
-    font-size: clamp(52px, 13.2vw, 78px);
+    max-width: none;
+    font-size: clamp(52px, 13vw, 72px);
   }
 
   .hero--atlas .lead {
@@ -297,10 +316,15 @@
   }
 }
 
+.hero--atlas h1 .line-mask + .line-mask {
+  margin-top: 0.12em;
+}
+
 .hero--atlas h1 em {
   font-family: var(--editorial-serif);
-  font-size: 1.14em;
-  line-height: .78;
+  font-style: italic;
+  font-size: 1em;
+  line-height: 1;
 }
 
 @media (max-width: 680px) and (max-height: 720px) {
@@ -319,13 +343,29 @@
     flex-direction: column;
     align-items: stretch;
     min-height: auto;
-    gap: 20px;
-    padding: 72px 0 24px;
+    gap: 28px;
+    padding: 88px 0 28px;
   }
   .hero--atlas::before, .hero--atlas::after { display: none; }
-  .hero--atlas > picture { position: relative; inset: auto; z-index: 0; width: 100%; height: auto; }
-  .hero--atlas > picture > .hero-image { width: 100%; height: auto; object-fit: contain; }
-  .hero--atlas .hero-content, .hero--atlas .hero-bottomline { margin: 0; padding-inline: 6vw; }
+  .hero--atlas > picture {
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    width: 100%;
+    max-width: none;
+    height: auto;
+  }
+  .hero--atlas > picture > .hero-image {
+    width: 100%;
+    height: auto;
+    max-height: 62svh;
+    object-fit: contain;
+  }
+  .hero--atlas .hero-content,
+  .hero--atlas .hero-bottomline {
+    margin: 0;
+    padding-inline: 6vw;
+  }
   .hero--atlas .hero-bottomline { position: relative; inset: auto; }
 }
 
