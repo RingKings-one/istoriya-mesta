@@ -1,15 +1,27 @@
 @media (prefers-reduced-motion: no-preference) {
+  .hero--atlas[data-opening] > picture,
   [data-opening] > picture {
-    animation: opening-frame 1.7s cubic-bezier(.22, 1, .36, 1);
+    animation: opening-frame 1.8s cubic-bezier(.22, 1, .36, 1) both;
   }
 
-  [data-opening] :is(h1, .lead) {
-    animation: editorial-enter 680ms var(--ease-editorial);
+  .hero--atlas[data-opening] h1 .line-inner {
+    display: block;
+    transform: translateY(110%);
+    animation: line-rise 0.9s cubic-bezier(.22, 1, .36, 1) forwards;
   }
 
-  [data-opening] .lead {
-    animation-duration: 840ms;
+  .hero--atlas[data-opening] h1 .line-inner:nth-child(1) { animation-delay: 0.45s; }
+  .hero--atlas[data-opening] h1 .line-inner:nth-child(2) { animation-delay: 0.6s; }
+
+  [data-opening] :is(.eyebrow, .hero-chapter, .lead, .hero-actions) {
+    opacity: 0;
+    animation: fade-up 0.8s cubic-bezier(.22, 1, .36, 1) forwards;
   }
+
+  [data-opening] .eyebrow { animation-delay: 1.05s; }
+  [data-opening] .hero-chapter { animation-delay: 1.15s; }
+  [data-opening] .lead { animation-delay: 1.3s; }
+  [data-opening] .hero-actions { animation-delay: 1.45s; }
 
   [data-reveal].has-entered:not(:focus-within) {
     animation: content-rise 720ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) both;
@@ -35,12 +47,34 @@
   }
 
   .cafe-opening[data-opening] .cafe-hero-media > picture {
-    animation: opening-frame 1.55s cubic-bezier(.22, 1, .36, 1);
+    animation: opening-frame 1.55s cubic-bezier(.22, 1, .36, 1) both;
   }
 
   .archive-back[open] > .photo-frame {
     animation: content-rise 520ms var(--ease-editorial);
   }
+}
+
+.line-mask { display: block; overflow: hidden; }
+
+@keyframes opening-frame {
+  from {
+    clip-path: inset(16% 18% 16% 18%);
+    transform: scale(1.08);
+  }
+  to {
+    clip-path: inset(0);
+    transform: scale(1);
+  }
+}
+
+@keyframes line-rise {
+  to { transform: translateY(0); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes content-rise {
@@ -56,21 +90,6 @@
 @keyframes photo-arrive {
   from { opacity: .25; transform: translate3d(0, 20px, 0) scale(1.018); }
   to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
-}
-
-@keyframes opening-frame {
-  from {
-    clip-path: inset(12% 14% 12% 14%);
-    transform: scale(1.06);
-  }
-  to {
-    clip-path: inset(0);
-    transform: scale(1);
-  }
-}
-
-@keyframes editorial-enter {
-  from { opacity: .62; translate: 0 18px; }
 }
 
 @keyframes documentary-frame {
@@ -92,8 +111,8 @@
 
   @keyframes opening-frame {
     from {
-      clip-path: inset(8% 6% 8% 6%);
-      transform: scale(1.03);
+      clip-path: inset(10% 8% 10% 8%);
+      transform: scale(1.04);
     }
     to {
       clip-path: inset(0);
@@ -107,9 +126,17 @@
     animation: low-motion-fade 260ms ease-out both;
   }
 
-  [data-opening] > picture {
+  [data-opening] > picture,
+  .hero--atlas[data-opening] > picture {
     animation: none;
     clip-path: none;
+    transform: none;
+  }
+
+  .hero--atlas[data-opening] h1 .line-inner,
+  [data-opening] :is(.eyebrow, .hero-chapter, .lead, .hero-actions) {
+    animation: none;
+    opacity: 1;
     transform: none;
   }
 }
