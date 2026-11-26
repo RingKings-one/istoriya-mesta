@@ -1,6 +1,6 @@
 @media (prefers-reduced-motion: no-preference) {
   [data-opening] > picture {
-    animation: opening-image 1.45s var(--ease-editorial);
+    animation: opening-frame 1.7s cubic-bezier(.22, 1, .36, 1);
   }
 
   [data-opening] :is(h1, .lead) {
@@ -35,7 +35,7 @@
   }
 
   .cafe-opening[data-opening] .cafe-hero-media > picture {
-    animation: opening-image 1.55s var(--ease-editorial);
+    animation: opening-frame 1.55s cubic-bezier(.22, 1, .36, 1);
   }
 
   .archive-back[open] > .photo-frame {
@@ -58,8 +58,15 @@
   to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
 }
 
-@keyframes opening-image {
-  from { scale: 1.035; }
+@keyframes opening-frame {
+  from {
+    clip-path: inset(12% 14% 12% 14%);
+    transform: scale(1.06);
+  }
+  to {
+    clip-path: inset(0);
+    transform: scale(1);
+  }
 }
 
 @keyframes editorial-enter {
@@ -82,11 +89,28 @@
   .epoch.has-entered:not(:focus-within),
   .trail-stop.has-entered:not(:focus-within),
   .editorial-path-link.has-entered:not(:focus-within) { animation-duration: 620ms; }
+
+  @keyframes opening-frame {
+    from {
+      clip-path: inset(8% 6% 8% 6%);
+      transform: scale(1.03);
+    }
+    to {
+      clip-path: inset(0);
+      transform: scale(1);
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   [data-reveal].has-entered:not(:focus-within) {
     animation: low-motion-fade 260ms ease-out both;
+  }
+
+  [data-opening] > picture {
+    animation: none;
+    clip-path: none;
+    transform: none;
   }
 }
 
