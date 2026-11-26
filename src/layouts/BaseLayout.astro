@@ -49,6 +49,15 @@ const {
     <script is:inline>
       (() => {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        // Split hero / page-intro titles into line masks for cinematic rise
+        document.querySelectorAll('.hero h1, .page-intro h1').forEach((h1) => {
+          const parts = h1.innerHTML.split(/<br\s*\/?>/i);
+          h1.innerHTML = parts
+            .map((p) => `<span class="line-mask"><span class="line-inner">${p.trim()}</span></span>`)
+            .join('');
+        });
+
         if (!('IntersectionObserver' in window)) return;
 
         const targets = document.querySelectorAll(
