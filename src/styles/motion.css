@@ -1,4 +1,6 @@
+/* Cinematic motion system — hero + all sections */
 @media (prefers-reduced-motion: no-preference) {
+  /* Hero: Opening Frame */
   .hero--atlas[data-opening] > picture,
   [data-opening] > picture {
     animation: opening-frame 1.75s cubic-bezier(.22, 1, .36, 1) both;
@@ -6,7 +8,7 @@
   }
 
   .hero--atlas[data-opening] > picture > img {
-    animation: ken-burns 8s ease-out both;
+    animation: ken-burns 9s ease-out both;
   }
 
   .hero--atlas[data-opening] h1 .line-inner {
@@ -28,27 +30,56 @@
   [data-opening] .lead { animation-delay: 1.45s; }
   [data-opening] .hero-actions { animation-delay: 1.6s; }
 
-  [data-reveal].has-entered:not(:focus-within) {
-    animation: content-rise 720ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) both;
+  /* Sections: line-masked headings */
+  [data-reveal="heading"] .line-inner,
+  h2.has-entered .line-inner,
+  .section-heading.has-entered .line-inner {
+    display: block;
+    transform: translateY(110%);
+    animation: line-rise 0.85s cubic-bezier(.22, 1, .36, 1) forwards;
   }
 
-  [data-reveal="image"].has-entered:not(:focus-within),
-  figure.has-entered:not(:focus-within),
-  .photo-frame.has-entered:not(:focus-within) {
-    animation: photo-arrive 900ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) both;
+  [data-reveal="heading"] .line-inner:nth-child(2),
+  h2.has-entered .line-inner:nth-child(2) { animation-delay: 0.12s; }
+  [data-reveal="heading"] .line-inner:nth-child(3) { animation-delay: 0.22s; }
+
+  /* Images: clip-path reveal */
+  [data-reveal="image"].has-entered > picture,
+  figure.has-entered > picture,
+  .photo-frame.has-entered > picture,
+  .home-intro-image.has-entered > picture,
+  .home-route-image.has-entered > picture,
+  .home-city-image.has-entered > picture {
+    animation: image-clip 1.05s cubic-bezier(.22, 1, .36, 1) both;
   }
 
-  [data-reveal="card"].has-entered:not(:focus-within),
-  .feature-card.has-entered:not(:focus-within),
-  .archive-tile.has-entered:not(:focus-within),
-  .epoch.has-entered:not(:focus-within),
-  .trail-stop.has-entered:not(:focus-within),
-  .editorial-path-link.has-entered:not(:focus-within) {
-    animation: card-arrive 720ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) both;
+  [data-reveal="image"].has-entered > picture > img,
+  figure.has-entered > picture > img,
+  .photo-frame.has-entered > picture > img {
+    animation: image-settle 1.05s cubic-bezier(.22, 1, .36, 1) both;
   }
 
-  .photo-frame.has-entered:not(:focus-within) > picture {
-    animation: documentary-frame 900ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) both;
+  /* Text blocks after titles */
+  [data-reveal="text"].has-entered,
+  .feature-copy.has-entered > p,
+  .home-intro-copy.has-entered > p,
+  .route-feature-copy.has-entered > p {
+    animation: content-rise 720ms cubic-bezier(.22, 1, .36, 1) 0.15s both;
+  }
+
+  /* Cards: staggered vertical clip + rise */
+  [data-reveal="card"].has-entered,
+  .feature-card.has-entered,
+  .archive-tile.has-entered,
+  .epoch.has-entered,
+  .trail-stop.has-entered,
+  .editorial-path-link.has-entered {
+    animation: card-clip 0.85s cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms) both;
+  }
+
+  .feature-card.has-entered > picture,
+  .archive-tile.has-entered > picture {
+    animation: image-clip 0.9s cubic-bezier(.22, 1, .36, 1) calc(var(--reveal-delay, 0ms) + 80ms) both;
   }
 
   .cafe-opening[data-opening] .cafe-hero-media > picture {
@@ -63,19 +94,13 @@
 .line-mask { display: block; overflow: hidden; }
 
 @keyframes opening-frame {
-  from {
-    clip-path: inset(18% 22% 18% 22%);
-    transform: scale(1.08);
-  }
-  to {
-    clip-path: inset(0);
-    transform: scale(1);
-  }
+  from { clip-path: inset(18% 22% 18% 22%); transform: scale(1.08); }
+  to { clip-path: inset(0); transform: scale(1); }
 }
 
 @keyframes ken-burns {
-  from { transform: scale(1.04) translate(0, 0); }
-  to { transform: scale(1.08) translate(-1.2%, -0.6%); }
+  from { transform: scale(1.04); }
+  to { transform: scale(1.08) translate(-1%, -0.5%); }
 }
 
 @keyframes line-rise {
@@ -92,14 +117,19 @@
   to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
-@keyframes card-arrive {
-  from { opacity: 0; transform: translate3d(0, 22px, 0); }
-  to { opacity: 1; transform: translate3d(0, 0, 0); }
+@keyframes image-clip {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0); }
 }
 
-@keyframes photo-arrive {
-  from { opacity: .25; transform: translate3d(0, 20px, 0) scale(1.018); }
-  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+@keyframes image-settle {
+  from { transform: scale(1.06); }
+  to { transform: scale(1); }
+}
+
+@keyframes card-clip {
+  from { opacity: 0; clip-path: inset(0 0 40% 0); transform: translate3d(0, 18px, 0); }
+  to { opacity: 1; clip-path: inset(0); transform: translate3d(0, 0, 0); }
 }
 
 @keyframes documentary-frame {
@@ -108,51 +138,34 @@
 }
 
 @media (max-width: 680px) and (prefers-reduced-motion: no-preference) {
-  [data-reveal].has-entered:not(:focus-within) { animation-duration: 620ms; }
-  [data-reveal="image"].has-entered:not(:focus-within),
-  figure.has-entered:not(:focus-within),
-  .photo-frame.has-entered:not(:focus-within) { animation-duration: 760ms; }
-  [data-reveal="card"].has-entered:not(:focus-within),
-  .feature-card.has-entered:not(:focus-within),
-  .archive-tile.has-entered:not(:focus-within),
-  .epoch.has-entered:not(:focus-within),
-  .trail-stop.has-entered:not(:focus-within),
-  .editorial-path-link.has-entered:not(:focus-within) { animation-duration: 620ms; }
+  [data-reveal].has-entered { animation-duration: 680ms; }
+  [data-reveal="image"].has-entered > picture,
+  figure.has-entered > picture { animation-duration: 820ms; }
+  [data-reveal="card"].has-entered { animation-duration: 700ms; }
 
   @keyframes opening-frame {
-    from {
-      clip-path: inset(12% 10% 12% 10%);
-      transform: scale(1.05);
-    }
-    to {
-      clip-path: inset(0);
-      transform: scale(1);
-    }
+    from { clip-path: inset(12% 10% 12% 10%); transform: scale(1.05); }
+    to { clip-path: inset(0); transform: scale(1); }
+  }
+
+  @keyframes image-clip {
+    from { clip-path: inset(0 0 80% 0); }
+    to { clip-path: inset(0); }
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal].has-entered:not(:focus-within) {
-    animation: low-motion-fade 260ms ease-out both;
-  }
-
+  [data-reveal].has-entered,
   [data-opening] > picture,
   .hero--atlas[data-opening] > picture,
-  .hero--atlas[data-opening] > picture > img {
-    animation: none;
-    clip-path: none;
-    transform: none;
-  }
-
+  .hero--atlas[data-opening] > picture > img,
   .hero--atlas[data-opening] h1 .line-inner,
-  [data-opening] :is(.eyebrow, .hero-chapter, .lead, .hero-actions) {
+  [data-opening] :is(.eyebrow, .hero-chapter, .lead, .hero-actions),
+  [data-reveal="heading"] .line-inner,
+  h2.has-entered .line-inner {
     animation: none;
     opacity: 1;
     transform: none;
+    clip-path: none;
   }
-}
-
-@keyframes low-motion-fade {
-  from { opacity: .25; }
-  to { opacity: 1; }
 }
