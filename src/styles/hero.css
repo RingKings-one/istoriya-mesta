@@ -180,6 +180,65 @@
   to { transform: translateX(0); }
 }
 
+/* Cinematic frame open for hero image */
+@keyframes hero-frame-open {
+  from {
+    clip-path: inset(14% 16% 14% 16%);
+    transform: scale(1.07);
+  }
+  to {
+    clip-path: inset(0);
+    transform: scale(1);
+  }
+}
+
+.hero--atlas > picture {
+  animation: hero-frame-open 1.7s cubic-bezier(.22, 1, .36, 1) both;
+  will-change: clip-path, transform;
+}
+
+.hero--atlas > picture > img {
+  transform: scale(1.02);
+}
+
+/* Line mask for hero titles */
+.line-mask {
+  display: block;
+  overflow: hidden;
+}
+
+.line-inner {
+  display: block;
+  transform: translateY(110%);
+  animation: line-rise 0.9s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+.line-inner:nth-child(1) { animation-delay: 0.35s; }
+.line-inner:nth-child(2) { animation-delay: 0.48s; }
+.line-inner:nth-child(3) { animation-delay: 0.62s; }
+
+@keyframes line-rise {
+  to { transform: translateY(0); }
+}
+
+.hero--atlas .eyebrow,
+.hero--atlas .hero-chapter,
+.hero--atlas .lead,
+.hero--atlas .hero-actions {
+  opacity: 0;
+  animation: fade-up 0.8s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+.hero--atlas .eyebrow { animation-delay: 0.9s; }
+.hero--atlas .hero-chapter { animation-delay: 1.05s; }
+.hero--atlas .lead { animation-delay: 1.2s; }
+.hero--atlas .hero-actions { animation-delay: 1.35s; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @media (max-width: 900px) {
   .hero--atlas {
     padding-inline: 6vw;
@@ -264,6 +323,17 @@
     font-size: 8px;
     line-height: 1.6;
   }
+
+  @keyframes hero-frame-open {
+    from {
+      clip-path: inset(10% 8% 10% 8%);
+      transform: scale(1.04);
+    }
+    to {
+      clip-path: inset(0);
+      transform: scale(1);
+    }
+  }
 }
 
 @media (max-width: 360px) {
@@ -290,8 +360,27 @@
   .hero-secondary-link {
     transition: none;
   }
-}
 
+  .hero--atlas > picture {
+    animation: none;
+    clip-path: none;
+    transform: none;
+  }
+
+  .line-inner {
+    animation: none;
+    transform: none;
+  }
+
+  .hero--atlas .eyebrow,
+  .hero--atlas .hero-chapter,
+  .hero--atlas .lead,
+  .hero--atlas .hero-actions {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
 
 /* Hero finish: stronger editorial hierarchy without adding scroll control. */
 .hero--atlas h1 {
