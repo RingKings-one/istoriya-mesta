@@ -1,3 +1,12 @@
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.hero--atlas h1').forEach((h1) => {
+    const parts = h1.innerHTML.split(/<br\s*\/?>/i);
+    h1.innerHTML = parts
+      .map((p) => `<span class="line-mask"><span class="line-inner">${p.trim()}</span></span>`)
+      .join('');
+  });
+}
+
 if ('IntersectionObserver' in window) {
   const revealGroups = '.card-grid, .archive-grid, .epoch-list, .editorial-path-links';
   const groups = document.querySelectorAll(revealGroups);
