@@ -329,6 +329,3 @@
   .hero--atlas .hero-bottomline { position: relative; inset: auto; }
 }
 
-@media (prefers-reduced-motion: no-preference) and (max-width: 680px) {
-  .hero--atlas[data-opening] > picture { animation-name: editorial-enter; }
-}
