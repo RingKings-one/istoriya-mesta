@@ -30,7 +30,7 @@
 
 .hero--atlas > picture > .hero-image {
   object-fit: cover;
-  filter: saturate(.82) contrast(1.04);
+  filter: saturate(.96) contrast(1.03) sepia(.08) brightness(1.02);
 }
 
 .hero--atlas .hero-content {
@@ -96,9 +96,10 @@
 }
 
 .hero-actions .button {
-  gap: 18px;
-  min-height: 50px;
-  padding-inline: 24px;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 18px;
+  line-height: 1;
 }
 
 .hero-secondary-link {

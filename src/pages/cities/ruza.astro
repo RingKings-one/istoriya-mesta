@@ -8,7 +8,6 @@ import FeatureCard from '../../components/FeatureCard.astro';
 import { ruzaMedia as photo } from '../../content/ruza-media';
 import EditorialImage from '../../components/EditorialImage.astro';
 import PhotoFrame from '../../components/PhotoFrame.astro';
-import CityEpochs from '../../components/CityEpochs.astro';
 
 ---
 <BaseLayout
@@ -33,6 +32,7 @@ import CityEpochs from '../../components/CityEpochs.astro';
       <p>Первый визит удобно начать с трёх ориентиров: площади Партизан, краеведческого музея и Городка. Они дают три разных вида на Рузу — с улицы, из архива и над рекой.</p>
       <span class="ruza-edition">АТЛАС ЖИВЫХ ИСТОРИЙ <i>—</i> ГЛАВА 01</span>
       <a class="text-link" href="/stories/gorod-kotoryy-pomnit/">Откуда начинается история Рузы</a>
+      <a class="text-link" href="/archive/#city-epochs">Путь по годам на старом плане</a>
     </div>
   </section>
   <section class="ruza-spread">
@@ -44,7 +44,6 @@ import CityEpochs from '../../components/CityEpochs.astro';
       <p>Город удобнее читать от площади Партизан. Здесь соседствуют собор, музей и старые торговые дома. От площади можно продолжить путь к Городку или свернуть на Федеративную за кофе.</p>
     </div>
   </section>
-  <CityEpochs />
   <section class="section city-return">
     <PhotoFrame photo={photo.cafeHands} caption={false} />
     <div data-reveal>

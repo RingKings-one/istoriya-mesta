@@ -1,5 +1,6 @@
 ---
 import SiteOpening from '../components/SiteOpening.astro';
+import HomeCup from '../components/HomeCup.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { ruzaMedia } from '../content/ruza-media';
@@ -57,6 +58,7 @@ const socialImage = new URL(sharePhoto.src, import.meta.env.DEPLOY_PRIME_URL || 
       <slot />
     </main>
     <Footer />
+    {Astro.url.pathname !== "/" && <HomeCup />}
     <script>
       import '../scripts/editorial-motion';
     </script>

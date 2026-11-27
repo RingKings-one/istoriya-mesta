@@ -24,6 +24,7 @@
     const listeners = new AbortController();
     const closeOpening = () => {
       stamp.classList.remove('is-playing');
+      document.documentElement.classList.remove('await-opening');
       listeners.abort();
       clearTimeout(fallback);
     };
@@ -35,6 +36,7 @@
     window.addEventListener('pointerdown', closeOpening, { signal: listeners.signal });
     window.addEventListener('scroll', closeOpening, { passive: true, signal: listeners.signal });
     motion.addEventListener('change', closeOpening, { signal: listeners.signal });
+    document.documentElement.classList.add('await-opening');
     stamp.classList.add('is-playing');
   })();
 </script>

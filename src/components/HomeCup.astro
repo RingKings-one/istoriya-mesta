@@ -1,0 +1,188 @@
+<a class="home-cup" href="/" data-coffee-cursor>
+  <span class="home-cup-glyph" aria-hidden="true">
+    <span class="home-cup-steam"></span>
+    <span class="home-cup-bowl"></span>
+  </span>
+  <span class="home-cup-label">На главную</span>
+</a>
+
+<script>
+  const cup = document.querySelector<HTMLAnchorElement>('.home-cup');
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  const introLink = document.querySelector('.page-home-return');
+
+  function showCup() {
+    cup?.classList.toggle('is-ready', !introLink || motion.matches || window.scrollY > window.innerHeight * .42);
+  }
+
+  if (cup) {
+    showCup();
+    window.addEventListener('scroll', showCup, { passive: true });
+    motion.addEventListener('change', showCup);
+    cup.addEventListener('click', (event) => {
+      if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0 || motion.matches) return;
+      event.preventDefault();
+      cup.classList.add('is-leaving');
+      document.body.classList.add('is-returning-home');
+      window.setTimeout(() => location.assign(cup.href), 460);
+    });
+    window.addEventListener('pageshow', () => {
+      cup.classList.remove('is-leaving');
+      document.body.classList.remove('is-returning-home');
+      showCup();
+    });
+  }
+</script>
+
+<style is:global>
+.home-cup {
+  z-index:30;
+  right:max(16px, env(safe-area-inset-right));
+  bottom:max(16px, env(safe-area-inset-bottom));
+  min-height:48px;
+  color:var(--light);
+  font:600 11px/1 var(--sans);
+  letter-spacing:.03em;
+  -webkit-backdrop-filter:blur(12px);
+  opacity:0;
+  pointer-events:none;
+  background:#181d1ad6;
+  border:1px solid #e8e1d6b0;
+  border-radius:999px;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  padding:0 16px 0 12px;
+  display:inline-flex;
+  position:fixed;
+  translate:0 12px;
+  box-shadow:0 14px 34px #080b0966;
+}
+.home-cup.is-ready {
+  opacity:1;
+  pointer-events:auto;
+  transition:opacity .45s,translate .5s cubic-bezier(.16,1,.3,1),background .25s,border-color .25s;
+  translate:0;
+}
+.home-cup-glyph {
+  flex:0 0 26px;
+  width:26px;
+  height:24px;
+  position:relative;
+}
+.home-cup-bowl {
+  border:1.25px solid #e4c5a5;
+  border-radius:0 0 42% 42%;
+  width:14px;
+  height:9px;
+  position:absolute;
+  bottom:4px;
+  left:3px;
+}
+.home-cup-bowl:before {
+  content:"";
+  border-top:1.25px solid #d7c7b2;
+  width:22px;
+  position:absolute;
+  bottom:-4px;
+  left:-4px;
+}
+.home-cup-bowl:after {
+  content:"";
+  border:1.25px solid #e4c5a5;
+  border-left:0;
+  border-radius:0 70% 70% 0;
+  width:5px;
+  height:6px;
+  position:absolute;
+  top:1px;
+  left:100%;
+}
+.home-cup-steam {
+  opacity:.35;
+  border:0 solid #d2ac7e;
+  border-right-width:1.25px;
+  border-radius:40%;
+  width:7px;
+  height:8px;
+  position:absolute;
+  top:1px;
+  left:8px;
+  rotate:14deg;
+}
+.home-cup:hover,.home-cup:focus-visible {
+  border-color:var(--stone);
+  background:#334d40e8;
+}
+.home-cup:focus-visible {
+  outline:2px solid var(--stone);
+  outline-offset:4px;
+}
+body:has(.home-cup) .site-footer {
+  padding-bottom:calc(28px + 68px + env(safe-area-inset-bottom));
+}
+@media (prefers-reduced-motion:no-preference) {
+  .home-cup.is-ready .home-cup-steam {
+    animation:3.2s ease-in-out infinite home-cup-steam;
+  }
+  .home-cup.is-ready:hover {
+    translate:0 -2px;
+  }
+  .home-cup.is-leaving .home-cup-steam {
+    animation:.46s forwards home-cup-steam-rise;
+  }
+  .home-cup.is-leaving .home-cup-bowl {
+    translate:0 1px;
+  }
+  body.is-returning-home:after {
+    z-index:25;
+    content:"";
+    pointer-events:none;
+    background:radial-gradient(circle at calc(100% - 78px) calc(100% - 40px),#c58a6d38,#181d1acc 42%);
+    animation:.46s both home-return-veil;
+    position:fixed;
+    inset:0;
+  }
+}
+@media (width<=680px) {
+  .home-cup {
+    min-height:44px;
+    padding-inline:12px 14px;
+    font-size:10px;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .home-cup,.home-cup.is-ready,.home-cup:hover {
+    opacity:1;
+    pointer-events:auto;
+    transition:none;
+    translate:0;
+  }
+}
+@keyframes home-cup-steam {
+  0%,to {
+    opacity:.28;
+    translate:0 2px;
+  }
+  50% {
+    opacity:.92;
+    translate:0 -3px;
+  }
+}
+@keyframes home-cup-steam-rise {
+  to {
+    opacity:0;
+    translate:0 -12px;
+  }
+}
+@keyframes home-return-veil {
+  0% {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+/* Keep the link visible if JavaScript is disabled. */
+html:not(.motion) .home-cup { opacity: 1; pointer-events: auto; translate: none; }
+</style>

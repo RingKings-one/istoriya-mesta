@@ -1,4 +1,5 @@
 ---
+import CityEpochs from '../../components/CityEpochs.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import PhotoFrame from '../../components/PhotoFrame.astro';
@@ -40,6 +41,7 @@ const records = [
 ---
 <BaseLayout title="Архив Рузы — История места" description="Открытки, исторические фотографии и план: Руза от старого укрепления до военных и послевоенных лет.">
   <PageIntro eyebrow="ВИЗУАЛЬНЫЙ АРХИВ · РУЗА" title="Архив Рузы" description="Старые открытки, план города и история Рузского края в годы войны." />
+  <CityEpochs />
   <section class="section archive-feature" id="postcard">
     <PhotoFrame photo={front} priority />
     <div data-reveal>

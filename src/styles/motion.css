@@ -1,202 +1,195 @@
-/* Cinematic motion.
-   Opening chapters animate on load. Everything else waits for .has-entered.
-   Transforms stay inside overflow masks so type never collides. */
-
+/* Opening and scroll choreography reconstructed from the published stylesheet. */
 .line-mask {
-  display: block;
-  overflow: hidden;
-  padding: 0.02em 0.06em 0.08em 0;
+  padding:.02em .06em .08em 0;
+  display:block;
+  overflow:hidden;
 }
-
 .line-inner {
-  display: block;
+  display:block;
 }
-
-.hero--atlas h1 .line-mask + .line-mask,
-.cafe-heading h1 .line-mask + .line-mask {
-  margin-top: 0.1em;
+.hero--atlas h1 .line-mask+.line-mask,.cafe-heading h1 .line-mask+.line-mask {
+  margin-top:.1em;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .hero--atlas > picture,
-  .page-intro > picture,
-  .cafe-opening .cafe-hero-media {
-    animation: opening-frame 1.72s cubic-bezier(.22, 1, .36, 1) both;
+@media (prefers-reduced-motion:no-preference) {
+  html:not(.await-opening) .hero--atlas>picture,html:not(.await-opening) .page-intro>picture,html:not(.await-opening) .cafe-opening .cafe-hero-media {
+    animation:2.45s cubic-bezier(.32,.04,.16,1) both opening-frame;
   }
-
-  .hero--atlas > picture img,
-  .page-intro > picture img,
-  .cafe-opening .cafe-hero-media img {
-    transform-origin: 64% 46%;
-    animation: hero-drift 14s cubic-bezier(.22, 1, .36, 1) both;
+  html:not(.await-opening) .hero--atlas>picture img,html:not(.await-opening) .page-intro>picture img,html:not(.await-opening) .cafe-opening .cafe-hero-media img {
+    transform-origin:64% 46%;
+    animation:18s cubic-bezier(.22,1,.36,1) both hero-drift;
   }
-
-  [data-opening] .line-inner {
-    animation: line-unmask 1.05s cubic-bezier(.22, 1, .36, 1) both;
+  html:not(.await-opening) .hero--atlas .line-mask:first-child .line-inner {
+    animation:1.05s cubic-bezier(.22,1,.36,1) .48s both line-unmask;
   }
-
-  .hero--atlas .line-mask:nth-child(1) .line-inner { animation-delay: .42s; }
-  .hero--atlas .line-mask:nth-child(2) .line-inner { animation-delay: .6s; }
-  .cafe-heading .line-mask:nth-child(1) .line-inner { animation-delay: .4s; }
-  .cafe-heading .line-mask:nth-child(2) .line-inner { animation-delay: .58s; }
-  .page-intro .line-inner { animation-delay: .32s; }
-
-  .hero--atlas .eyebrow,
-  .hero--atlas .hero-chapter,
-  .hero--atlas .lead,
-  .hero--atlas .hero-actions,
-  .hero--atlas .hero-bottomline,
-  .page-intro .page-home-return,
-  .page-intro .eyebrow,
-  .page-intro .page-intro-edition,
-  .page-intro .lead,
-  .page-intro .page-intro-note,
-  .cafe-heading .eyebrow,
-  .cafe-heading > p:not(.eyebrow),
-  .cafe-heading .opening-links {
-    animation: fade-up .82s cubic-bezier(.22, 1, .36, 1) both;
+  html:not(.await-opening) .hero--atlas .line-mask:nth-child(2) .line-inner {
+    animation:1.05s cubic-bezier(.22,1,.36,1) .66s both line-unmask;
   }
-
-  .hero--atlas .eyebrow { animation-delay: 1.12s; }
-  .hero--atlas .hero-chapter { animation-delay: 1.24s; }
-  .hero--atlas .lead { animation-delay: 1.38s; }
-  .hero--atlas .hero-actions { animation-delay: 1.52s; }
-  .hero--atlas .hero-bottomline { animation-delay: 1.66s; }
-  .page-intro .page-home-return { animation-delay: .95s; }
-  .page-intro .eyebrow,
-  .page-intro .page-intro-edition { animation-delay: 1.08s; }
-  .page-intro .lead,
-  .page-intro .page-intro-note { animation-delay: 1.24s; }
-  .cafe-heading .eyebrow { animation-delay: 1.08s; }
-  .cafe-heading > p:not(.eyebrow) { animation-delay: 1.24s; }
-  .cafe-heading .opening-links { animation-delay: 1.4s; }
-
-  html.motion [data-motion="heading"]:not(.has-entered) .line-inner,
-  html.motion h2[data-motion="heading"]:not(.has-entered) > .line-mask > .line-inner,
-  html.motion [data-split][data-motion="heading"]:not(.has-entered) .line-inner {
-    transform: translate3d(0, 110%, 0);
+  html:not(.await-opening) .cafe-heading .line-mask:first-child .line-inner {
+    animation:1.05s cubic-bezier(.22,1,.36,1) .46s both line-unmask;
   }
-
-  html.motion [data-motion="heading"].has-entered .line-inner {
-    transform: translate3d(0, 0, 0);
-    transition: transform 1s cubic-bezier(.22, 1, .36, 1);
+  html:not(.await-opening) .cafe-heading .line-mask:nth-child(2) .line-inner {
+    animation:1.05s cubic-bezier(.22,1,.36,1) .64s both line-unmask;
   }
-
-  html.motion [data-motion="heading"].has-entered .line-mask:nth-child(2) .line-inner {
-    transition-delay: .14s;
+  html:not(.await-opening) .page-intro .line-inner {
+    animation:1.05s cubic-bezier(.22,1,.36,1) .36s both line-unmask;
   }
-
-  html.motion [data-motion="heading"].has-entered .line-mask:nth-child(3) .line-inner {
-    transition-delay: .26s;
+  html:not(.await-opening) .hero--atlas .eyebrow {
+    animation:.9s cubic-bezier(.22,1,.36,1) 1.05s both fade-up;
   }
-
-  html.motion [data-motion="heading"]:not(.has-entered) :is(.eyebrow, p, .text-link, address, blockquote, figcaption, .home-folio, .home-chapter-label, .home-city-edition),
-  html.motion [data-motion="text"]:not(.has-entered) {
-    opacity: 0;
+  html:not(.await-opening) .hero--atlas .hero-chapter {
+    animation:.9s cubic-bezier(.22,1,.36,1) 1.16s both fade-up;
   }
-
-  html.motion [data-motion="heading"].has-entered :is(.eyebrow, .home-folio, .home-chapter-label) {
-    opacity: 1;
-    transition: opacity .7s ease;
+  html:not(.await-opening) .hero--atlas .lead {
+    animation:.9s cubic-bezier(.22,1,.36,1) 1.28s both fade-up;
   }
-
-  html.motion [data-motion="heading"].has-entered :is(p, .text-link, address, blockquote, figcaption, .home-city-edition),
-  html.motion [data-motion="text"].has-entered {
-    opacity: 1;
-    transition: opacity .8s ease .2s;
+  html:not(.await-opening) .hero--atlas .hero-actions {
+    animation:.9s cubic-bezier(.22,1,.36,1) 1.42s both fade-up;
   }
-
-  html.motion [data-motion="image"] picture {
-    display: block;
-    overflow: hidden;
+  html:not(.await-opening) .hero--atlas .hero-bottomline {
+    animation:.9s cubic-bezier(.22,1,.36,1) 1.56s both fade-up;
   }
-
-  html.motion [data-motion="image"]:not(.has-entered) picture {
-    clip-path: inset(0 0 100% 0);
+  html:not(.await-opening) .page-intro .page-home-return {
+    animation:.9s cubic-bezier(.22,1,.36,1) .88s both fade-up;
   }
-
-  html.motion [data-motion="image"][data-side="left"]:not(.has-entered) picture {
-    clip-path: inset(0 0 0 100%);
+  html:not(.await-opening) .page-intro .eyebrow,html:not(.await-opening) .page-intro .page-intro-edition {
+    animation:.9s cubic-bezier(.22,1,.36,1) 1s both fade-up;
   }
-
-  html.motion [data-motion="image"][data-side="right"]:not(.has-entered) picture {
-    clip-path: inset(0 100% 0 0);
+  html:not(.await-opening) .page-intro .lead,html:not(.await-opening) .page-intro .page-intro-note {
+    animation:.9s cubic-bezier(.22,1,.36,1) 1.16s both fade-up;
   }
-
-  html.motion [data-motion="image"].has-entered picture {
-    clip-path: inset(0);
-    transition: clip-path 1.08s cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms);
+  html:not(.await-opening) .cafe-heading .eyebrow {
+    animation:.9s cubic-bezier(.22,1,.36,1) 1s both fade-up;
   }
-
-  html.motion [data-motion="image"]:not(.has-entered) img {
-    transform: scale(1.045);
+  html:not(.await-opening) .cafe-heading>p:not(.eyebrow) {
+    animation:.9s cubic-bezier(.22,1,.36,1) 1.16s both fade-up;
   }
-
-  html.motion [data-motion="image"].has-entered img {
-    transform: scale(1);
-    transition: transform 1.2s cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms);
+  html:not(.await-opening) .cafe-heading .opening-links {
+    animation:.9s cubic-bezier(.22,1,.36,1) 1.32s both fade-up;
   }
-
-  html.motion [data-motion="image"]:not(.has-entered) figcaption {
-    opacity: 0;
+  html.motion [data-motion=heading]:not(.has-entered) .line-inner,html.motion h2[data-motion=heading]:not(.has-entered)>.line-mask>.line-inner,html.motion [data-split][data-motion=heading]:not(.has-entered) .line-inner {
+    transform:translateY(110%);
   }
-
-  html.motion [data-motion="image"].has-entered figcaption {
-    opacity: 1;
-    transition: opacity .7s ease .28s;
+  html.motion [data-motion=heading].has-entered .line-inner {
+    transition:transform 1s cubic-bezier(.22,1,.36,1);
+    transform:translate(0,0);
   }
-
-  html.motion [data-motion="card"]:not(.has-entered) {
-    opacity: 0;
-    clip-path: inset(0 0 16% 0);
+  html.motion [data-motion=heading].has-entered .line-mask:nth-child(2) .line-inner {
+    transition-delay:.14s;
   }
-
-  html.motion [data-motion="card"].has-entered {
-    opacity: 1;
-    clip-path: inset(0);
-    transition:
-      opacity .7s ease var(--reveal-delay, 0ms),
-      clip-path .95s cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms);
+  html.motion [data-motion=heading].has-entered .line-mask:nth-child(3) .line-inner {
+    transition-delay:.26s;
+  }
+  html.motion [data-motion=heading]:not(.has-entered) :is(.eyebrow,p,.text-link,address,blockquote,figcaption,.home-folio,.home-chapter-label,.home-city-edition),html.motion [data-motion=text]:not(.has-entered) {
+    opacity:0;
+  }
+  html.motion [data-motion=heading].has-entered :is(.eyebrow,.home-folio,.home-chapter-label) {
+    opacity:1;
+    transition:opacity .7s;
+  }
+  html.motion [data-motion=heading].has-entered :is(p,.text-link,address,blockquote,figcaption,.home-city-edition),html.motion [data-motion=text].has-entered {
+    opacity:1;
+    transition:opacity .8s .2s;
+  }
+  html.motion [data-motion=image] picture {
+    display:block;
+    overflow:hidden;
+  }
+  html.motion [data-motion=image]:not(.has-entered) picture {
+    clip-path:inset(11% 7%);
+    filter:saturate(.55)brightness(.72);
+  }
+  html.motion [data-motion=image].has-entered picture {
+    clip-path:inset(0);
+    filter:none;
+    transition:clip-path 2.15s cubic-bezier(.33, .04, .18, 1) var(--reveal-delay,0s), filter 2.3s ease var(--reveal-delay,0s);
+  }
+  html.motion [data-motion=image]:not(.has-entered) img {
+    transform:scale(1.12)translateY(1.1%);
+  }
+  html.motion [data-motion=image].has-entered img {
+    transition:transform 2.65s cubic-bezier(.33, .04, .2, 1) var(--reveal-delay,0s);
+    transform:scale(1);
+  }
+  html.motion [data-motion=image]:not(.has-entered) figcaption {
+    opacity:0;
+  }
+  html.motion [data-motion=image].has-entered figcaption {
+    opacity:1;
+    transition:opacity .75s .55s;
+  }
+  html.motion .feature-card[data-motion=card]:not(.has-entered) .feature-image img {
+    filter:saturate(.62)brightness(.8);
+    transform:scale(1.1);
+  }
+  html.motion .feature-card[data-motion=card].has-entered .feature-image img {
+    transition:transform 1.85s cubic-bezier(.16, 1, .22, 1) var(--reveal-delay,0s), filter 1.7s ease var(--reveal-delay,0s);
+    transform:scale(1);
+  }
+  html.motion [data-motion=card]:not(.has-entered) {
+    opacity:0;
+    clip-path:inset(0 0 10%);
+  }
+  html.motion [data-motion=card].has-entered {
+    opacity:1;
+    clip-path:inset(0);
+    transition:opacity .85s ease var(--reveal-delay,0s), clip-path 1.55s cubic-bezier(.16, 1, .3, 1) var(--reveal-delay,0s);
+  }
+  html.await-opening .hero--atlas>picture,html.await-opening .page-intro>picture,html.await-opening .cafe-opening .cafe-hero-media {
+    clip-path:inset(14% 16%);
+  }
+  html.await-opening :is(.hero--atlas>picture img,.page-intro>picture img,.cafe-opening .cafe-hero-media img) {
+    transform-origin:64% 46%;
+    transform:scale(1.08)translate(.4%,.35%);
+  }
+  html.await-opening [data-opening] .line-inner {
+    transform:translateY(110%);
+  }
+  html.await-opening :is(.hero--atlas .eyebrow,.hero--atlas .hero-chapter,.hero--atlas .lead,.hero--atlas .hero-actions,.hero--atlas .hero-bottomline,.page-intro .page-home-return,.page-intro .eyebrow,.page-intro .page-intro-edition,.page-intro .lead,.page-intro .page-intro-note,.cafe-heading .eyebrow,.cafe-heading>p:not(.eyebrow),.cafe-heading .opening-links) {
+    opacity:0;
   }
 }
-
 @keyframes opening-frame {
-  from { clip-path: inset(17% 21% 17% 21%); }
-  to { clip-path: inset(0); }
+  0% {
+    clip-path:inset(14% 16%);
+  }
+  to {
+    clip-path:inset(0);
+  }
 }
-
 @keyframes hero-drift {
-  0% { transform: scale(1.06) translate3d(0.35%, 0.2%, 0); }
-  14% { transform: scale(1) translate3d(0, 0, 0); }
-  100% { transform: scale(1.025) translate3d(-0.45%, -0.2%, 0); }
+  0% {
+    transform:scale(1.08)translate(.4%,.35%);
+  }
+  18% {
+    transform:scale(1.02)translate(0,0);
+  }
+  to {
+    transform:scale(1.045)translate(-.55%,-.28%);
+  }
 }
-
 @keyframes line-unmask {
-  from { transform: translate3d(0, 110%, 0); }
-  to { transform: translate3d(0, 0, 0); }
+  0% {
+    transform:translateY(110%);
+  }
+  to {
+    transform:translate(0,0);
+  }
 }
-
 @keyframes fade-up {
-  from { opacity: 0; transform: translate3d(0, 10px, 0); }
-  to { opacity: 1; transform: none; }
+  0% {
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to {
+    opacity:1;
+    transform:none;
+  }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .line-inner,
-  .hero--atlas > picture,
-  .hero--atlas > picture img,
-  .page-intro > picture,
-  .page-intro > picture img,
-  .cafe-opening .cafe-hero-media,
-  .cafe-opening .cafe-hero-media img,
-  .hero--atlas .eyebrow,
-  .hero--atlas .hero-chapter,
-  .hero--atlas .lead,
-  .hero--atlas .hero-actions,
-  .hero--atlas .hero-bottomline {
-    animation: none;
-    opacity: 1;
-    transform: none;
-    clip-path: none;
+@media (prefers-reduced-motion:reduce) {
+  .line-inner,.hero--atlas>picture,.hero--atlas>picture img,.page-intro>picture,.page-intro>picture img,.cafe-opening .cafe-hero-media,.cafe-opening .cafe-hero-media img,.hero--atlas .eyebrow,.hero--atlas .hero-chapter,.hero--atlas .lead,.hero--atlas .hero-actions,.hero--atlas .hero-bottomline {
+    opacity:1;
+    clip-path:none;
+    animation:none;
+    transform:none;
   }
 }
