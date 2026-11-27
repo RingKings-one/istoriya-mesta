@@ -1,4 +1,5 @@
 ---
+import EditorialImage from './EditorialImage.astro';
 import { nav } from '../data';
 import ArrowMark from './ArrowMark.astro';
 
@@ -6,7 +7,7 @@ const currentPath = Astro.url.pathname;
 ---
 <header class="site-header">
   <a class="brand" href="/" aria-label="История места — главная">
-    <img class="brand-mark" src="/images/brand-seal.webp" alt="" width="46" height="46" decoding="async" />
+    <EditorialImage className="brand-mark" src="/images/brand-seal.webp" alt="" width={46} height={46} loading="eager" />
     <span>История<br />места</span>
   </a>
 

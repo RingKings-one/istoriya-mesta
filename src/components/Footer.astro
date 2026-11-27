@@ -1,11 +1,12 @@
 ---
+import EditorialImage from './EditorialImage.astro';
 import { nav } from '../data';
 
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <a class="brand" href="/" aria-label="История места — главная">
-    <img class="brand-mark" src="/images/brand-seal.webp" alt="" width="50" height="50" decoding="async" />
+    <EditorialImage className="brand-mark" src="/images/brand-seal.webp" alt="" width={50} height={50} loading="eager" />
     <span>История<br />места</span>
   </a>
   <nav aria-label="Навигация в подвале">
